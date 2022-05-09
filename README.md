@@ -1,4 +1,4 @@
-# HobbyLobby
+# HobbyBoard
 App allows users to create pages where they can share projects they are working on and allow other users to search for projects and join if they are interested.
 
 ### Which industry does this app belong to?
