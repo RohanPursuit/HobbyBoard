@@ -2,6 +2,14 @@
 
 App allows users to create pages where they can share projects they are working on and allow other users to search for projects and join if they are interested.
 
+### Front end Deployment
+
+[Front end via Netlify](https://rad-pie-0d3f25.netlify.app/)
+
+### Back-end Deployment
+
+[Back end via Heroku](https://hobbyboard.herokuapp.com/)
+
 ## User Story
 
 [Our user stories using Google Docs](https://docs.google.com/document/d/1-Ih7_wcw9ZgtJEl6MM0uFQC09EW57RVMp4bcgmNzftw/edit?usp=sharing)
