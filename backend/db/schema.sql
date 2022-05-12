@@ -5,6 +5,11 @@ CREATE DATABASE hobbyboard_dev;
 
 DROP TABLE IF EXISTS projects, users;
 
+CREATE TABLE testTable (
+    test_id SERIAL PRIMARY KEY,
+    content TEXT NOT NULL
+);
+
 CREATE TABLE projects (
     project_id SERIAL PRIMARY KEY,
     name TEXT UNIQUE,
