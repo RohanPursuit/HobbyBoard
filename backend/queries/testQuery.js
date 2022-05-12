@@ -8,7 +8,7 @@ const testQuery = async () => {
   //try the query
   try {
     //fetch data from the database
-    const test = db.one('SELECT * FROM groups WHERE contact="Benny"');
+    const test = db.one("SELECT * FROM groups WHERE contact='Benny'");
     //return it
     return test;
   } catch (err) {
