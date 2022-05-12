@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dbreset": "psql -U postgres -f db/schema.sql && psql -U postgres -f db/seed.sql"
+    "dbreset": "psql -U postgres -f db/schema.sql && psql -U postgres -f db/seed.sql",
+    "db:reset": "psql -U justindiaz -f db/schema.sql && psql -U justindiaz -f db/seed.sql"
   },
   "keywords": [],
   "author": "",
