@@ -16,5 +16,24 @@ const getAllProjects = async () => {
   }
 };
 
+//createProject async function
+//input(project)
+//output new project
+const createProject = async (project) => {
+  //try to create new project
+  try {
+    const { name, details, project_image, archived } = project;
+    const newProject = await db.one(
+      "INSERT INTO projects (name, details, project_image, archived) VALUES ($1, $2, $3, $4) RETURNING *",
+      [name, details, project_image, archived]
+    );
+    //return project
+    return newProject;
+  } catch (err) {
+    //if err, return err
+    return err;
+  }
+};
+
 //export query functions
-module.exports = { getAllProjects };
+module.exports = { getAllProjects, createProject };
