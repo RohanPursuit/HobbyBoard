@@ -15,7 +15,7 @@ function App() {
     };
 
     testQuery();
-  }, []);
+  }, [URL]);
 
   return (
     <div className="App">
