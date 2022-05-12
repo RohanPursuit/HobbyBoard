@@ -9,7 +9,6 @@ const getAllProjects = async () => {
   try {
     const allProjects = await db.any("SELECT * FROM projects");
     //return it
-    console.log(allProjects);
     return allProjects;
   } catch (err) {
     //if there's an error, return it.
