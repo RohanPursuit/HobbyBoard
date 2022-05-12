@@ -1,5 +1,8 @@
 \c hobbyboard_dev;
 
+INSERT INTO testTable(content) VALUES
+('This is our database''s test data');
+
 INSERT INTO projects(name, details, project_image, archived) VALUES
 ('T -1Hour','This is an idea for a video game that begins about an hour before the downfall of society..', null, false),
 ('Rohan''s Gamer Dating App', 'something something games', null, false),

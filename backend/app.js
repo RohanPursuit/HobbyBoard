@@ -19,7 +19,7 @@ app.use("/projects", projectsControllers);
 app.get("/", async (req, res) => {
   //use query function to get data from db
   const exampleData = await testQuery();
-  res.send(exampleData.name);
+  res.send(exampleData.content);
 });
 
 // EXPORT
