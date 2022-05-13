@@ -3,6 +3,11 @@ import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import New from "./pages/New";
+import AllProjects from "./pages/AllProjects";
+import ProjectDetails from "./pages/ProjectDetails";
+import NavBar from "./components/common/NavBar";
+import BackButton from "./components/common/BackButton";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -20,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <main>
+        <BackButton/>
         <Routes>
           <Route
             exact
@@ -31,7 +37,12 @@ function App() {
               </header>
             }
           />
+          <Route path="/projects/new" element={<New />} />
+          <Route path="/projects" element={<AllProjects />} />
+          <Route path="/projects/:pid" element={<ProjectDetails />} />
+          <Route path="/projects/new" element={<div>/projects/new</div>} />
         </Routes>
+        <NavBar />
       </main>
     </div>
   );

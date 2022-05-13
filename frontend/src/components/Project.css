@@ -1,0 +1,30 @@
+.Project {
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 5%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  width: 100%;
+  height: 100%;
+}
+
+.Project img {
+  box-sizing: border-box;
+  height: 100%;
+  width: auto;
+  grid-row-start: span 2;
+}
+
+.Project p {
+  box-sizing: border-box;
+  padding: 4%;
+  height: 100%;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.Project h3 {
+  height: 100%;
+  margin: 0px;
+}
