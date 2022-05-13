@@ -31,6 +31,15 @@ function App() {
               </header>
             }
           />
+          <Route path="/projects" element={<div>/projects path</div>}></Route>
+          <Route
+            path="/projects/:pid"
+            element={<div>/projects/:pid</div>}
+          ></Route>
+          <Route
+            path="/projects/new"
+            element={<div>/projects/new</div>}
+          ></Route>
         </Routes>
       </main>
     </div>
