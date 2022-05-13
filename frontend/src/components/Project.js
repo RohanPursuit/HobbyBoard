@@ -3,7 +3,7 @@ import "./Project.css";
 
 const Project = (props) => {
     return (
-        <Link to={`/projucts/${props.details.project_id}`}>
+        <Link to={`/projects/${props.details.project_id}`}>
       <div className="Project">
         <img src={props.details.project_image} alt='' width='75' height='75'/>
         <h3>{props.details.name}</h3>
