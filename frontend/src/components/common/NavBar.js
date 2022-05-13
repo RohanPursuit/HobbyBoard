@@ -1,8 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import plus from "../../assets/circle-plus.svg";
 
 const NavBar = () => {
   const nav = useNavigate()
+  const location = useLocation().pathname
 
   const handleCreateProject = () => {
     nav("/projects/new")
