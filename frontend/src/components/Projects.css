@@ -1,7 +1,9 @@
 .Projects {
+  box-sizing: border-box;
   width: 100%;
   padding: 5%;
-  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: 125px;
 }
