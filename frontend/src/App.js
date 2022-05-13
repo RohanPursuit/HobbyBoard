@@ -4,6 +4,9 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
+import AllProjects from "./pages/AllProjects";
+import NavBar from "./components/common/NavBar";
+
 function App() {
   const [res, setRes] = useState("Loading...");
   const URL = process.env.REACT_APP_API_URL;
@@ -31,7 +34,7 @@ function App() {
               </header>
             }
           />
-          <Route path="/projects" element={<div>/projects path</div>}></Route>
+          <Route path="/projects" element={<AllProjects />}></Route>
           <Route
             path="/projects/:pid"
             element={<div>/projects/:pid</div>}
@@ -41,6 +44,7 @@ function App() {
             element={<div>/projects/new</div>}
           ></Route>
         </Routes>
+        <NavBar />
       </main>
     </div>
   );
