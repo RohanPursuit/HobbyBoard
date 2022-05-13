@@ -1,0 +1,7 @@
+.Projects {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
