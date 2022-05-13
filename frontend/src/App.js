@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import New from "./pages/New";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
@@ -26,12 +26,16 @@ function App() {
     <div className="App">
       <main>
         <BackButton/>
+        
         <Routes>
           <Route
             exact
             path="/"
             element={
               <header className="App-header">
+                <Link to="/projects">
+                  <p>All Project</p>
+                </Link>
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>Here is our database call = {res}</p>
               </header>
