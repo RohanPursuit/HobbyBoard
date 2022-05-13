@@ -6,8 +6,6 @@ import { Routes, Route } from "react-router-dom";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
 
-import AllProjects from "./pages/AllProjects";
-
 function App() {
   const [res, setRes] = useState("Loading...");
   const URL = process.env.REACT_APP_API_URL;

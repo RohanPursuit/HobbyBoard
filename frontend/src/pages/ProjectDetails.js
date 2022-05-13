@@ -4,22 +4,15 @@ import { useEffect, useState } from "react";
 
 const ProjectDetails = (props) => {
   const API = process.env.REACT_APP_API_URL;
-  //   const [project, setProject] = useState([]);
-  //   const params = useParams();
-  //   useEffect(() => {
-  //     axios
-  //       .get(`${API}products/${params.pid}`)
-  //       .then((response) => setProject(response.data))
-  //       .catch((error) => console.warn(error));
-  //   });
-  const project = {
-    project_id: 1,
-    name: "T -1Hour",
-    details:
-      "This is an idea for a video game that begins about an hour before the downfall of society..",
-    project_image: null,
-    archived: false,
-  };
+  const [project, setProject] = useState([]);
+  const params = useParams();
+  console.log(`${API}projects/${params.pid}`);
+  useEffect(() => {
+    axios
+      .get(`${API}projects/${params.pid}`)
+      .then((response) => setProject(response.data))
+      .catch((error) => console.warn(error));
+  }, [API, params.pid]);
   return (
     <div className="ProjectDetails">
       <img src={project.project_image} alt="Project Banner" />
