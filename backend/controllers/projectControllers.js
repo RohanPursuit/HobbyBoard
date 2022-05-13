@@ -1,6 +1,10 @@
 const express = require("express");
 const projects = express.Router();
-const { getAllProjects, createProject } = require("../queries/projectsQueries");
+const {
+  getAllProjects,
+  createProject,
+  getOneProject,
+} = require("../queries/projectsQueries");
 
 //get all project
 projects.get("/", async (_, res) => {
@@ -12,10 +16,16 @@ projects.get("/", async (_, res) => {
   }
 });
 
+//get one project
+projects.get("/:pid", async (req, res) => {
+  const { pid } = req.params;
+  const singleProject = await getOneProject(pid);
+  res.status(200).json(singleProject);
+});
+
 //create project
-projects.post("/:id", async (req, res) => {
+projects.post("/", async (req, res) => {
   const addProject = await createProject(req.body);
   res.status(200).json(addProject);
 });
-
 module.exports = projects;

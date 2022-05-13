@@ -16,6 +16,22 @@ const getAllProjects = async () => {
   }
 };
 
+//getOneProject
+const getOneProject = async (pid) => {
+  //try to fetch project using pid
+  try {
+    const targetProject = await db.one(
+      "SELECT * FROM projects WHERE project_id=$1",
+      pid
+    );
+    //return it
+    return targetProject;
+  } catch (err) {
+    //if there's an error, return it.
+    return err;
+  }
+};
+
 //createProject async function
 //input(project)
 //output new project
@@ -36,4 +52,4 @@ const createProject = async (project) => {
 };
 
 //export query functions
-module.exports = { getAllProjects, createProject };
+module.exports = { getAllProjects, createProject, getOneProject };
