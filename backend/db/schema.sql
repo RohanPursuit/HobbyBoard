@@ -20,9 +20,17 @@ CREATE TABLE projects (
 
 
 CREATE TABLE users (
-    username TEXT NOT NULL,
-    first_name TEXT,
-    last_name TEXT,
+    username TEXT NOT NULL PRIMARY KEY,
     password TEXT,
-    email TEXT NOT NULL PRIMARY KEY
+    email TEXT NOT NULL,
+    date DATE,
+    details TEXT
+)
+
+CREATE TABLE connections (
+    username TEXT,
+    project_id INTEGER,
+    permissions TEXT,
+    FOREIGN KEY(username) REFERENCES users(username),
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
 )

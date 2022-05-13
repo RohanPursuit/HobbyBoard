@@ -12,5 +12,16 @@ INSERT INTO projects(name, details, project_image, archived) VALUES
 
 
 
-INSERT INTO users(username, first_name, last_name, password, email) VALUES 
-('Tester', 'B', 'Z', 'password', 'email@email.com')
+INSERT INTO users(username, password, email, date, details) VALUES 
+('BZ', 'password', 'email@email.com', '05/13/2022', 'Can type gud.'),
+('JD', 'password', 'email@email.com', '05/14/2022', 'Can type gud.'),
+('RS', 'password', 'email@email.com', '05/15/2022', 'Can type gudder.'),
+('DL', 'password', 'email@email.com', '05/16/2022', 'Can type gud.');
+
+INSERT INTO connections (username, project_id, permissions) VALUES
+('BZ', 5, 'owner'),
+('JD', 3, 'owner'),
+('RS', 1, 'owner'),
+('DL', 4, 'owner');
+-- ('BZ', 4, 'collaborator'),
+-- ('BZ', 3, 'follower');
