@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import AllProjects from "./pages/AllProjects";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -31,6 +32,7 @@ function App() {
               </header>
             }
           />
+          <Route path='/projects' element={<AllProjects/>} />
         </Routes>
       </main>
     </div>
