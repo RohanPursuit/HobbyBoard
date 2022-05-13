@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import AllProjects from "./pages/AllProjects";
+import NavBar from "./components/common/NavBar";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -43,6 +44,7 @@ function App() {
             element={<div>/projects/new</div>}
           ></Route>
         </Routes>
+        <NavBar />
       </main>
     </div>
   );
