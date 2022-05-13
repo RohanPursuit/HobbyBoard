@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import New from "./pages/New";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -36,10 +37,7 @@ function App() {
             path="/projects/:pid"
             element={<div>/projects/:pid</div>}
           ></Route>
-          <Route
-            path="/projects/new"
-            element={<div>/projects/new</div>}
-          ></Route>
+          <Route path="/projects/new" element={<New />}></Route>
         </Routes>
       </main>
     </div>
