@@ -7,6 +7,7 @@ import New from "./pages/New";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
 import NavBar from "./components/common/NavBar";
+import BackButton from "./components/common/BackButton";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="App">
       <main>
+        <BackButton/>
         <Routes>
           <Route
             exact
