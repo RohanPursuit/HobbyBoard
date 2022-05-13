@@ -33,6 +33,14 @@ function App() {
             }
           />
           <Route path='/projects' element={<AllProjects/>} />
+          <Route
+            path="/projects/:pid"
+            element={<div>/projects/:pid</div>}
+          ></Route>
+          <Route
+            path="/projects/new"
+            element={<div>/projects/new</div>}
+          ></Route>
         </Routes>
       </main>
     </div>
