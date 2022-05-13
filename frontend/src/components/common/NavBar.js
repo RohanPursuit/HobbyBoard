@@ -11,7 +11,7 @@ const NavBar = () => {
 
   return (
     <nav className="Nav">
-      <img onClick={handleCreateProject} src={plus} alt="Add Project" />
+      {location !== '/projects/new' && <img onClick={handleCreateProject} src={plus} alt="Add Project" />}
     </nav>
   );
 };
