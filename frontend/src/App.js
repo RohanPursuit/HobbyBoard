@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
+import NavBar from "./components/common/NavBar";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -37,6 +38,7 @@ function App() {
           <Route path="/projects/:pid" element={<ProjectDetails />} />
           <Route path="/projects/new" element={<div>/projects/new</div>} />
         </Routes>
+        <NavBar />
       </main>
     </div>
   );
