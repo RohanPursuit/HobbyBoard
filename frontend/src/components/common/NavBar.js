@@ -10,7 +10,7 @@ const NavBar = () => {
 
   return (
     <nav className="Nav">
-      <img src={plus} alt="Add Project" />
+      <img onClick={handleCreateProject} src={plus} alt="Add Project" />
     </nav>
   );
 };
