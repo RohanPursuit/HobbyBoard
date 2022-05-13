@@ -26,15 +26,16 @@ function App() {
     <div className="App">
       <main>
         <BackButton/>
-        <Link to="/projects">
-          <p>All Project</p>
-        </Link>
+        
         <Routes>
           <Route
             exact
             path="/"
             element={
               <header className="App-header">
+                <Link to="/projects">
+                  <p>All Project</p>
+                </Link>
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>Here is our database call = {res}</p>
               </header>
