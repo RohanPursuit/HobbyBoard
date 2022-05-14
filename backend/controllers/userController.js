@@ -18,3 +18,5 @@ users.post("/", async (request, response) => {
     response.status(400).json("unable to create user");
   }
 });
+
+module.exports = users;
