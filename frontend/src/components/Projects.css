@@ -7,3 +7,11 @@
   grid-gap: 20px;
   grid-auto-rows: 125px;
 }
+
+.Projects a,
+.Projects a:hover,
+.Projects a:visited,
+.Projects a:active {
+  color: black;
+  text-decoration: none;
+}
