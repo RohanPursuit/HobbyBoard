@@ -5,9 +5,14 @@ function SignInForm(){
         username: "",
         password: ""
     })
+
+    const handleInputChange = (event) => {
+        setSignInCred({...signInCred, [event.target.name]: event.target.value})
+    }
+
     return (
         <div>
-            <form >
+            <form onChange={handleInputChange}>
                 <label htmlFor="username">Username</label>
                 <input id="username" name="username" type="text" />
                 <label htmlFor="password">Password</label>
