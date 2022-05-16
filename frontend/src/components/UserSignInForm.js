@@ -25,9 +25,11 @@ function UserSignInForm(){
                 <label htmlFor="password">Password</label>
                 <input id="password" name="password" type="text" />
                 <input type="submit" />
-                <Link to="/signup">
-                    Sign Up
-                </Link>
+                <div>
+                    <Link to="/signup">
+                        Sign Up
+                    </Link>
+                </div>
             </form>
         </div>
     )
