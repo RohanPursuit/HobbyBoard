@@ -1,6 +1,13 @@
+import { useState} from 'react'
+
 function UserSignupForm(){
+    const [userInfo, setUserInfo] = useState({
+        email: "",
+        username: "",
+        password: "",
+    })
     return (
-        <div>
+        <div className="UserSignupForm">
 
         </div>
     )
