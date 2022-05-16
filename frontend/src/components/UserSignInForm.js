@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 function UserSignInForm(){
+    const API = process.env.REACT_APP_API_URL;
     const [signInCred, setSignInCred] = useState({
         username: "",
         password: ""
@@ -16,14 +17,15 @@ function UserSignInForm(){
         event.preventDefault()
         //axios get user, if no user found show alert message
 
+
     }
     return (
         <div>
-            <form onChange={handleInputChange}>
+            <form onSubmit={handleSubmit} onChange={handleInputChange}>
                 <label htmlFor="username">Username</label>
-                <input id="username" name="username" type="text" />
+                <input id="username" name="username" type="text" required/>
                 <label htmlFor="password">Password</label>
-                <input id="password" name="password" type="text" />
+                <input id="password" name="password" type="text" required/>
                 <input type="submit" />
                 <div>
                     <Link to="/signup">
