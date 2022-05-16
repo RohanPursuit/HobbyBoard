@@ -51,5 +51,48 @@ const createProject = async (project) => {
   }
 };
 
+//deleteProject async function
+//input(id)
+//output delete project
+const deleteProject = async (id) => {
+  // try to delete project
+  try {
+    const removeProject = await db.one(
+      "DELETE FROM projects WHERE project_id=$1 RETURNING *",
+      id
+    );
+    //return removeProject
+    return removeProject;
+  } catch (err) {
+    //if err, return err
+    return err;
+  }
+};
+
+//updateProject function
+//input(id, project)
+//output updated project
+const updateProject = async (id, project) => {
+  //try to update project
+  try {
+    const { name, details, project_image, archived } = project;
+    const update = await db.one(
+      "UPDATE projects SET name=$2, details=$3, project_image=$4, archived=$5 WHERE project_id=$1 RETURNING *",
+      [id, name, details, project_image, archived]
+    );
+    //return update
+    return update;
+  } catch (err) {
+    //if err, return err
+    return err;
+  }
+};
+
 //export query functions
-module.exports = { getAllProjects, createProject, getOneProject };
+module.exports = {
+  getAllProjects,
+  createProject,
+  getOneProject,
+  deleteProject,
+  updateProject,
+};
