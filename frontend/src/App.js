@@ -8,6 +8,7 @@ import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
 import NavBar from "./components/common/NavBar";
 import BackButton from "./components/common/BackButton";
+import UserSignup from "./pages/UserSignup";
 
 function App() {
   const [res, setRes] = useState("Loading...");
