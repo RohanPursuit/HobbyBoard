@@ -44,7 +44,7 @@ function App() {
             }
           />
 
-          <Route path="/signin" element={<UserSignIn/>}/>
+          <Route path="/signIn" element={<UserSignIn/>}/>
           <Route path="/projects/new" element={<New />} />
           <Route path="/projects" element={<AllProjects />} />
           <Route path="/projects/:pid" element={<ProjectDetails />} />
