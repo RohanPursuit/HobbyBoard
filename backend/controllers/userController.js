@@ -1,5 +1,5 @@
 const express = require("express");
-const { addNewUser } = require("../queries/userQueries");
+const { addNewUser, getAllUsers } = require("../queries/userQueries");
 
 const users = express.Router();
 
@@ -17,6 +17,12 @@ users.post("/", async (request, response) => {
     //otherwise respond with an error code
     response.status(400).json("unable to create user");
   }
+});
+
+users.get("/", async (request, response) => {
+  console.log("Get request to users");
+  const allUsers = await getAllUsers();
+  response.status(200).json(allUsers);
 });
 
 module.exports = users;

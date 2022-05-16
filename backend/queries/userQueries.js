@@ -22,4 +22,14 @@ const addNewUser = async (user) => {
   }
 };
 
-module.exports = { addNewUser };
+//temp getAllUsers for testing
+const getAllUsers = async () => {
+  try {
+    const users = await db.many("SELECT * from users");
+    return users;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { addNewUser, getAllUsers };
