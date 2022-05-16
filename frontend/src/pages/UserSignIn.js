@@ -1,9 +1,9 @@
-import SignInForm from "../components/SignInForm"
+import UserSignInForm from "../components/UserSignInForm"
 
 function UserSignIn(){
     return (
         <div>
-            <SignInForm/>
+            <UserSignInForm/>
         </div>
     )
 }

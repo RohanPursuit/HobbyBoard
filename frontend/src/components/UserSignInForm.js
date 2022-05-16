@@ -2,7 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-function SignInForm(){
+function UserSignInForm(){
     const [signInCred, setSignInCred] = useState({
         username: "",
         password: ""
@@ -34,4 +34,4 @@ function SignInForm(){
     )
 }
 
-export default SignInForm
+export default UserSignInForm
