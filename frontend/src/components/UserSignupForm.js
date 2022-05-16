@@ -8,6 +8,10 @@ function UserSignupForm(){
         password: "",
     })
 
+    const handleInputChange = (event) => {
+        setUserInfo({...userInfo, [event.target.name]: event.target.value})
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault()
         //axios post userInfo
@@ -16,7 +20,7 @@ function UserSignupForm(){
     console.log(userInfo)
     return (
         <div className="UserSignupForm">
-            <form on onSubmit={handleSubmit} action="">
+            <form onChange={handleInputChange} onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
                 <input name="email" type="text" required />
                 <label htmlFor="password">Password</label>
