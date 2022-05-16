@@ -21,8 +21,13 @@ function UserSignupForm(){
 
     const handleSubmit = (event) => {
         event.preventDefault()
+        const today = new Date
+        const [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDay()]
         //axios post userInfo
-        axios.post(API + "users/", userInfo)
+        axios.post(API + "users/", {
+            ...userInfo,
+            date: year + "-" + month + "-" + day
+        })
         .then(console.log)
         .catch(console.log)
     }
