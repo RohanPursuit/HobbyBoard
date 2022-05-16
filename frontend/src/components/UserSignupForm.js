@@ -40,7 +40,7 @@ function UserSignupForm(){
             date: year + "-" + month + "-" + day
         })
         .then(()=>{
-            nav("/projects")
+            nav("/signIn")
         })
         .catch(console.log)
     }
