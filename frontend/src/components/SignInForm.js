@@ -1,4 +1,10 @@
+import { useState } from 'react'
+
 function SignInForm(){
+    const [signInCred, setSignInCred] = useState({
+        username: "",
+        password: ""
+    })
     return (
         <div>
             <form >
