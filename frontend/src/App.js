@@ -25,8 +25,8 @@ function App() {
   return (
     <div className="App">
       <main>
-        <BackButton/>
-        
+        <BackButton />
+
         <Routes>
           <Route
             exact
