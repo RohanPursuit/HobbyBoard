@@ -2,6 +2,7 @@ import { useState} from 'react'
 import axios from 'axios'
 
 function UserSignupForm(){
+    const API = process.env.REACT_APP_API_URL;
     const [chooseUserName, setChooseUserName] = useState(false)
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -21,6 +22,9 @@ function UserSignupForm(){
     const handleSubmit = (event) => {
         event.preventDefault()
         //axios post userInfo
+        axios.post(API + "users/", userInfo)
+        .then(console.log)
+        .catch(console.log)
     }
 
     console.log(userInfo)
