@@ -25,6 +25,7 @@ function UserSignupForm(){
         event.preventDefault()
         const today = new Date
         const [year, month, day] = [today.getFullYear(), today.getMonth(), today.getDay()]
+        
         //axios post userInfo
         axios.post(API + "users/", {
             ...userInfo,
@@ -53,6 +54,8 @@ function UserSignupForm(){
                     <input id="email" name="email" type="text" required />
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="text" />
+                    <label htmlFor="confirm-password">Password</label>
+                    <input id="confirm-password" name="password" type="text" />
                     <input onClick={inputUserName} type="submit"/>
                 </>
                 }
