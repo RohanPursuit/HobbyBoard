@@ -14,7 +14,7 @@ const NavBar = () => {
   };
 
   const handleSignIn = () => {
-    nav("projects/signIn");
+    nav("/signIn");
   };
 
   return (
