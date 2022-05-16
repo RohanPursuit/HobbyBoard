@@ -2,7 +2,7 @@ import UserSignupForm from "../components/UserSignupForm"
 
 function UserSignup(){
     return (
-        <div>
+        <div className="UserSignup">
             <UserSignupForm/>
         </div>
     )
