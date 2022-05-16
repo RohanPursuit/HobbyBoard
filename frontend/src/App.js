@@ -42,6 +42,7 @@ function App() {
               </header>
             }
           />
+          <Route path="/signup" element={<UserSignup/>}/>
           <Route path="/projects/new" element={<New />} />
           <Route path="/projects" element={<AllProjects />} />
           <Route path="/projects/:pid" element={<ProjectDetails />} />
