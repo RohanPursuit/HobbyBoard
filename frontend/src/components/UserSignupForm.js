@@ -58,7 +58,7 @@ function UserSignupForm(){
                 :
                 <>
                     <label htmlFor="email">Email</label>
-                    <input id="email" name="email" type="text" required />
+                    <input id="email" name="email" type="email" required />
                     <label htmlFor="password">Password</label>
                     <input id="password" name="password" type="text" />
                     <label htmlFor="confirm-password">Confirm Password</label>
