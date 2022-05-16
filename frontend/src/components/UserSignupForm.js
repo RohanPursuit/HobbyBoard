@@ -1,8 +1,10 @@
 import { useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 function UserSignupForm(){
     const API = process.env.REACT_APP_API_URL;
+    const nav = useNavigate()
     const [chooseUserName, setChooseUserName] = useState(false)
     const [userInfo, setUserInfo] = useState({
         email: "",
@@ -28,7 +30,9 @@ function UserSignupForm(){
             ...userInfo,
             date: year + "-" + month + "-" + day
         })
-        .then(console.log)
+        .then(()=>{
+            nav("/projects")
+        })
         .catch(console.log)
     }
 
