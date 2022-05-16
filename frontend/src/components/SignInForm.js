@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function SignInForm(){
     const [signInCred, setSignInCred] = useState({
@@ -10,6 +12,11 @@ function SignInForm(){
         setSignInCred({...signInCred, [event.target.name]: event.target.value})
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        //axios get user, if no user found show alert message
+
+    }
     return (
         <div>
             <form onChange={handleInputChange}>
@@ -19,6 +26,9 @@ function SignInForm(){
                 <input id="password" name="password" type="text" />
                 <div>Forgot password</div>
                 <input type="submit" />
+                <Link to="/signup">
+                    Sign Up
+                </Link>
             </form>
         </div>
     )
