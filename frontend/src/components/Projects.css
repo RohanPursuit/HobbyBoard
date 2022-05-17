@@ -20,7 +20,7 @@
 
 .AllProjects {
   box-sizing: border-box;
-  height: calc(100% - 70px - 30px);
+  height: calc(100% - 70px - 70px);
   width: 100%;
   overflow-x: scroll;
 }
