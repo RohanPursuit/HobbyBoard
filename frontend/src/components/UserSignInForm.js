@@ -16,6 +16,12 @@ function UserSignInForm(){
     const handleSubmit = (event) => {
         event.preventDefault()
         //axios get user, if no user found show alert message
+        axios.post(API + "users/signin", signInCred)
+        .then((response) => {
+            console.log(response.data)
+            document.cookie = "username="+response.data
+        })
+        .catch(console.log)
 
 
     }
