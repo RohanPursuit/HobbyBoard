@@ -7,9 +7,8 @@ import New from "./pages/New";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
 import NavBar from "./components/common/NavBar";
-import BackButton from "./components/common/BackButton";
+import TopBarM from "./components/common/TopBarM";
 import UserSignup from "./pages/UserSignup";
-
 import UserSignIn from "./pages/UserSignIn";
 
 function App() {
@@ -28,8 +27,7 @@ function App() {
   return (
     <div className="App">
       <main>
-        <BackButton />
-
+        <TopBarM />
         <Routes>
           <Route
             exact
