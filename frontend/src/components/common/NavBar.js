@@ -4,6 +4,7 @@ import profile from "../../assets/profile-circled.svg";
 import settings from "../../assets/settings.svg";
 import signIn from "../../assets/sign-in.svg";
 import home from "../../assets/home.svg";
+import BackButton from "./BackButton";
 import "./NavBar.css";
 
 const NavBar = () => {
@@ -19,6 +20,9 @@ const NavBar = () => {
 
   return (
     <nav className="Nav">
+      <div className="NavLeft">
+        <BackButton />
+      </div>
       <img src={profile} alt="Profile" />
       <img src={settings} alt="settings" />
       <img src={home} alt="home" />
