@@ -22,6 +22,7 @@ const addNewUser = async (user) => {
   }
 };
 
+//confirm if username matched up with password
 const findUser = async (user) => {
   let { username, password } = user;
   try {
@@ -29,7 +30,6 @@ const findUser = async (user) => {
       "SELECT * FROM users WHERE username=$1 AND password=$2",
       [username, password]
     );
-
     return user;
   } catch (error) {
     return error;
