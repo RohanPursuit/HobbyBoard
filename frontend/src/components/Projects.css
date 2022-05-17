@@ -32,4 +32,12 @@
     height: 100%;
     padding-top: 70px;
   }
+  .Projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 1000px) {
+  .Projects {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
