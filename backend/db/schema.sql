@@ -3,11 +3,18 @@ CREATE DATABASE hobbyboard_dev;
 
 \c hobbyboard_dev;
 
-DROP TABLE IF EXISTS projects, users, connections, ;
+DROP TABLE IF EXISTS projects, users, connections ;
 
 CREATE TABLE testTable (
     test_id SERIAL PRIMARY KEY,
     content TEXT NOT NULL
+);
+CREATE TABLE users (
+    username TEXT NOT NULL PRIMARY KEY,
+    password TEXT,
+    email TEXT NOT NULL,
+    date DATE,
+    details TEXT
 );
 
 CREATE TABLE projects (
@@ -21,13 +28,7 @@ CREATE TABLE projects (
 );
 
 
-CREATE TABLE users (
-    username TEXT NOT NULL PRIMARY KEY,
-    password TEXT,
-    email TEXT NOT NULL,
-    date DATE,
-    details TEXT
-);
+
 
 CREATE TABLE connections (
     username TEXT,
