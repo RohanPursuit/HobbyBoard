@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function UserSignInForm(){
     const API = process.env.REACT_APP_API_URL;
+    const nav = useNavigate()
     const [signInCred, setSignInCred] = useState({
         username: "",
         password: ""
@@ -16,6 +17,16 @@ function UserSignInForm(){
     const handleSubmit = (event) => {
         event.preventDefault()
         //axios get user, if no user found show alert message
+        axios.post(API + "users/signin", signInCred)
+        .then((response) => {
+            console.log(response.data)
+            document.cookie = "credentials="+response.data
+            nav("/projects")
+            
+        })
+        .catch(()=> {
+            alert("Invalid Username/Password")
+        })
 
 
     }

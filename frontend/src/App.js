@@ -11,7 +11,6 @@ import BackButton from "./components/common/BackButton";
 import UserSignup from "./pages/UserSignup";
 
 import UserSignIn from "./pages/UserSignIn";
-import NewProject from "./components/NewProjects";
 
 function App() {
   const [res, setRes] = useState("Loading...");
