@@ -26,3 +26,10 @@
   height: calc(100% - 140px);
   width: 100%;
 }
+
+@media screen and (min-width: 719px) {
+  .AllProjects {
+    height: 100%;
+    padding-top: 70px;
+  }
+}
