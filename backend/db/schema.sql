@@ -15,7 +15,9 @@ CREATE TABLE projects (
     name TEXT UNIQUE,
     details TEXT,
     project_image TEXT,
-    archived BOOLEAN DEFAULT false
+    archived BOOLEAN DEFAULT false,
+    creator TEXT,
+    FOREIGN KEY (creator) REFERENCES users(username)
 );
 
 
