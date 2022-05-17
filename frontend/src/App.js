@@ -7,11 +7,10 @@ import New from "./pages/New";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
 import NavBar from "./components/common/NavBar";
-import TopBarM from "./components/common/TopBarM";
 import BackButton from "./components/common/BackButton";
 import UserSignup from "./pages/UserSignup";
+
 import UserSignIn from "./pages/UserSignIn";
-import NewProject from "./components/NewProjects";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -29,7 +28,7 @@ function App() {
   return (
     <div className="App">
       <main>
-        <TopBarM />
+        <BackButton />
 
         <Routes>
           <Route
@@ -45,11 +44,13 @@ function App() {
               </header>
             }
           />
-          <Route path="/signIn" element={<UserSignIn/>}/>
-          <Route path="/signup" element={<UserSignup/>}/>
+          <Route path="/signup" element={<UserSignup />} />
+
+          <Route path="/signIn" element={<UserSignIn />} />
+          <Route path="/projects/new" element={<New />} />
           <Route path="/projects" element={<AllProjects />} />
           <Route path="/projects/:pid" element={<ProjectDetails />} />
-          <Route path="/projects/new" element={<NewProject/>} />
+          <Route path="/projects/new" element={<New />} />
         </Routes>
         <NavBar />
       </main>
