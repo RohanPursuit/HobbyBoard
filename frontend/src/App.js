@@ -11,6 +11,7 @@ import TopBarM from "./components/common/TopBarM";
 import BackButton from "./components/common/BackButton";
 import UserSignup from "./pages/UserSignup";
 import UserSignIn from "./pages/UserSignIn";
+import NewProject from "./components/NewProjects";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -48,7 +49,7 @@ function App() {
           <Route path="/signup" element={<UserSignup/>}/>
           <Route path="/projects" element={<AllProjects />} />
           <Route path="/projects/:pid" element={<ProjectDetails />} />
-          <Route path="/projects/new" element={<div>/projects/new</div>} />
+          <Route path="/projects/new" element={<NewProject/>} />
         </Routes>
         <NavBar />
       </main>
