@@ -3,7 +3,7 @@ CREATE DATABASE hobbyboard_dev;
 
 \c hobbyboard_dev;
 
-DROP TABLE IF EXISTS projects, users;
+DROP TABLE IF EXISTS projects, users, connections, ;
 
 CREATE TABLE testTable (
     test_id SERIAL PRIMARY KEY,
