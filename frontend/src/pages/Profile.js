@@ -4,7 +4,7 @@ const Profile = () => {
   //pass in pid to ProfileDetails
   return (
     <div>
-      <ProfileDetails username={"BZ"} />
+      <ProfileDetails username={""} />
     </div>
   );
 };

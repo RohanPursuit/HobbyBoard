@@ -56,4 +56,18 @@ const getOneUser = async (name) => {
   }
 };
 
-module.exports = { addNewUser, getAllUsers, findUser, getOneUser };
+//updateUser
+const updateUser = async (edits, user) => {
+  const { username, password, email, date, details } = edits;
+  try {
+    const editedUser = await db.one(
+      "UPDATE users set username=$2, password=$3, email=$4, date=$5, details=$6 WHERE username=$1 RETURNING *",
+      [user, username, password, email, date, details]
+    );
+    return editedUser;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { addNewUser, getAllUsers, findUser, getOneUser, updateUser };

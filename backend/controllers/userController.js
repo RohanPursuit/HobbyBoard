@@ -5,6 +5,7 @@ const {
   getAllUsers,
   findUser,
   getOneUser,
+  updateUser,
 } = require("../queries/userQueries");
 
 const users = express.Router();
@@ -47,6 +48,14 @@ users.post("/signin", async (request, response) => {
   } else {
     response.status(400).json(false);
   }
+});
+
+users.put("/:user", async (request, response) => {
+  console.log("Put request to users/username");
+  const edits = request.body;
+  const { user } = request.params;
+  const editedUser = await updateUser(edits, user);
+  response.status(200).json(editedUser);
 });
 
 module.exports = users;
