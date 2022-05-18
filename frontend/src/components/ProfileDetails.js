@@ -7,7 +7,7 @@ const ProfileDetails = (props) => {
   const [user, setUser] = useState([]);
   useEffect(() => {
     axios
-      .get(`${API}profile/${props.username}`)
+      .get(`${API}users/${props.username}`)
       .then((response) => setUser(response.data))
       .catch((error) => console.warn(error));
   }, [API, props.username]);
