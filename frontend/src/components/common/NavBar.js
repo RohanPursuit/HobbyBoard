@@ -18,10 +18,14 @@ const NavBar = () => {
     nav("/signIn");
   };
 
+  const handleProfile = () => {
+    nav("/profile");
+  };
+
   return (
     <nav className="Nav">
       <TopBarM />
-      <img src={profile} alt="Profile" />
+      <img onClick={handleProfile} src={profile} alt="Profile" />
       <img src={settings} alt="settings" />
       <img src={home} alt="home" />
       <img onClick={handleCreateProject} src={plus} alt="Add Project" />
