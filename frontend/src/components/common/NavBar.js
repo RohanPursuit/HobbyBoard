@@ -19,6 +19,11 @@ const NavBar = () => {
     nav("/signIn");
   };
 
+  const handleSignOut = () => {
+    document.cookie = "credentials="
+    nav("/")
+  }
+
   return (
     <nav className="Nav">
       <TopBarM />
@@ -26,7 +31,7 @@ const NavBar = () => {
       <img src={settings} alt="settings" />
       <img src={home} alt="home" />
       <img onClick={handleCreateProject} src={plus} alt="Add Project" />
-      {document.cookie.split("=")[1] ?  <img src={signOut} alt="Sign Out"/> : <img onClick={handleSignIn} src={signIn} alt="Sign In" />}
+      {document.cookie.split("=")[1] ?  <img onClick={handleSignOut} src={signOut} alt="Sign Out"/> : <img onClick={handleSignIn} src={signIn} alt="Sign In" />}
     </nav>
   );
 };
