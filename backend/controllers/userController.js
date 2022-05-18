@@ -1,6 +1,11 @@
-const { request } = require("express");
+const { request, response } = require("express");
 const express = require("express");
-const { addNewUser, getAllUsers, findUser } = require("../queries/userQueries");
+const {
+  addNewUser,
+  getAllUsers,
+  findUser,
+  getOneUser,
+} = require("../queries/userQueries");
 
 const users = express.Router();
 
@@ -24,6 +29,13 @@ users.get("/", async (request, response) => {
   console.log("Get request to users");
   const allUsers = await getAllUsers();
   response.status(200).json(allUsers);
+});
+
+users.get("/:user", async (request, response) => {
+  console.log("Get requested user's profile");
+  const { user } = request.params;
+  const targetUser = await getOneUser(user);
+  response.status(200).json(targetUser);
 });
 
 // Boolean response for a signin check

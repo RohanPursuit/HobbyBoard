@@ -46,4 +46,14 @@ const getAllUsers = async () => {
   }
 };
 
-module.exports = { addNewUser, getAllUsers, findUser };
+//getOneUser (for profile?)
+const getOneUser = async (name) => {
+  try {
+    const user = await db.one("SELECT * from users WHERE username=$1", name);
+    return user;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { addNewUser, getAllUsers, findUser, getOneUser };
