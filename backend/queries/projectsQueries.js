@@ -38,10 +38,10 @@ const getOneProject = async (pid) => {
 const createProject = async (project) => {
   //try to create new project
   try {
-    const { name, details, project_image, archived } = project;
+    const { name, details, project_image, archived, creator } = project;
     const newProject = await db.one(
-      "INSERT INTO projects (name, details, project_image, archived) VALUES ($1, $2, $3, $4) RETURNING *",
-      [name, details, project_image, archived]
+      "INSERT INTO projects (name, details, project_image, archived, creator) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [name, details, project_image, archived, creator]
     );
     //return project
     return newProject;
@@ -88,6 +88,21 @@ const updateProject = async (id, project) => {
   }
 };
 
+// query to change the archive status of a project
+// input(project_id, boolean)
+//output => project
+const updateArchiveStatus = async (id, archiveBool) => {
+  try {
+    const update = await db.one(
+      "UPDATE projects SET archived=$2 WHERE project_id=$1 RETURNING *",
+      [id, archiveBool]
+    );
+    return update;
+  } catch (error) {
+    return error;
+  }
+};
+
 //export query functions
 module.exports = {
   getAllProjects,
@@ -95,4 +110,5 @@ module.exports = {
   getOneProject,
   deleteProject,
   updateProject,
+  updateArchiveStatus,
 };

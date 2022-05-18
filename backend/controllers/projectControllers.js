@@ -1,3 +1,4 @@
+const e = require("express");
 const express = require("express");
 const projects = express.Router();
 const {
@@ -6,6 +7,7 @@ const {
   getOneProject,
   deleteProject,
   updateProject,
+  updateArchiveStatus,
 } = require("../queries/projectsQueries");
 
 //get all project
@@ -45,6 +47,21 @@ projects.put("/:id", async (req, res) => {
   update.project_id
     ? res.status(200).json(update)
     : res.status(404).json({ error: "error" });
+});
+
+//put project Archive status
+projects.put("/:id/archive", async (request, response) => {
+  const { id } = request.params;
+  const currentStatus = await getOneProject(id);
+  if (currentStatus.project_id) {
+    const updatedStatus = await updateArchiveStatus(
+      id,
+      !currentStatus.archived
+    );
+    response.status(200).json(updatedStatus);
+  } else {
+    response.status(400).json("error: invalid ID");
+  }
 });
 
 module.exports = projects;

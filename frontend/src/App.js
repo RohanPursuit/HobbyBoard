@@ -25,12 +25,10 @@ function App() {
 
     testQuery();
   }, [URL]);
-
   return (
     <div className="App">
       <main>
         <TopBarM />
-
         <Routes>
           <Route
             exact
