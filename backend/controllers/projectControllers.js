@@ -36,7 +36,7 @@ projects.post("/", async (req, res) => {
 //delete project
 projects.delete("/:id", async (req, res) => {
   const removeProject = await deleteProject(req.params.id);
-  removeProject.id
+  removeProject.project_id
     ? res.status(200).json(removeProject)
     : res.status(404).json({ error: "error" });
 });
