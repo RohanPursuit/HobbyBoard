@@ -4,6 +4,7 @@ import plus from "../../assets/circle-plus.svg";
 import profile from "../../assets/profile-circled.svg";
 import settings from "../../assets/settings.svg";
 import signIn from "../../assets/sign-in.svg";
+import signOut from "../../assets/sign-out.svg";
 import home from "../../assets/home.svg";
 import "./NavBar.css";
 
@@ -18,6 +19,11 @@ const NavBar = () => {
     nav("/signIn");
   };
 
+  const handleSignOut = () => {
+    document.cookie = "credentials="
+    nav("/")
+  }
+
   return (
     <nav className="Nav">
       <TopBarM />
@@ -25,7 +31,7 @@ const NavBar = () => {
       <img src={settings} alt="settings" />
       <img src={home} alt="home" />
       <img onClick={handleCreateProject} src={plus} alt="Add Project" />
-      <img onClick={handleSignIn} src={signIn} alt="Sign In" />
+      {document.cookie.split("=")[1] ?  <img onClick={handleSignOut} src={signOut} alt="Sign Out"/> : <img onClick={handleSignIn} src={signIn} alt="Sign In" />}
     </nav>
   );
 };
