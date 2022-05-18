@@ -88,6 +88,21 @@ const updateProject = async (id, project) => {
   }
 };
 
+// query to change the archive status of a project
+// input(project_id, boolean)
+//output => project
+const updateArchiveStatus = async (id, archiveBool) => {
+  try {
+    const update = await db.one(
+      "UPDATE projects SET archived=$2 WHERE project_id=$1 RETURNING *",
+      [id, archiveBool]
+    );
+    return update;
+  } catch (error) {
+    return error;
+  }
+};
+
 //export query functions
 module.exports = {
   getAllProjects,
@@ -95,4 +110,5 @@ module.exports = {
   getOneProject,
   deleteProject,
   updateProject,
+  updateArchiveStatus,
 };
