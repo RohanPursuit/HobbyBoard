@@ -34,7 +34,7 @@ projects.post("/", async (req, res) => {
 //delete project
 projects.delete("/:id", async (req, res) => {
   const removeProject = await deleteProject(req.params.id);
-  removeProject.id
+  removeProject.project_id
     ? res.status(200).json(removeProject)
     : res.status(404).json({ error: "error" });
 });
@@ -42,7 +42,7 @@ projects.delete("/:id", async (req, res) => {
 //put project
 projects.put("/:id", async (req, res) => {
   const update = await updateProject(req.params.id, req.body);
-  update.id
+  update.project_id
     ? res.status(200).json(update)
     : res.status(404).json({ error: "error" });
 });
