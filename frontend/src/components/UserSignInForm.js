@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
+import './UserSignInForm.css'
 
 function UserSignInForm(){
     const API = process.env.REACT_APP_API_URL;
@@ -31,12 +32,16 @@ function UserSignInForm(){
 
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit} onChange={handleInputChange}>
-                <label htmlFor="username">Username</label>
-                <input id="username" name="username" type="text" required/>
-                <label htmlFor="password">Password</label>
-                <input id="password" name="password" type="text" required/>
+            <form className="UserSignInForm" onSubmit={handleSubmit} onChange={handleInputChange}>
+                <div className="username-input">
+                    <label htmlFor="username">Username</label>
+                    <input id="username" name="username" type="text" required/>
+                </div>
+                <div className="password-input">
+                    <label htmlFor="password">Password</label>
+                    <input id="password" name="password" type="text" required/>
+                </div>
+                
                 <input type="submit" />
                 <div>
                     <Link to="/signup">
@@ -44,7 +49,6 @@ function UserSignInForm(){
                     </Link>
                 </div>
             </form>
-        </div>
     )
 }
 
