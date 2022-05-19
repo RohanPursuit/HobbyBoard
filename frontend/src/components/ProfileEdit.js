@@ -16,7 +16,7 @@ const ProfileEdit = ({ username }) => {
     axios
       .get(`${API}users/${username}`)
       .then((response) => setUser(response.data));
-  }, [API]);
+  }, [API, username]);
 
   const handleChange = (event) => {
     setUser({
