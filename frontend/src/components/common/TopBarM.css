@@ -1,0 +1,27 @@
+.TopBarM {
+  box-sizing: border-box;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.TopBarM .topLogo {
+  height: 50px;
+  width: auto;
+}
+
+.TopBarM .back-button {
+  margin-left: 5%;
+  position: absolute;
+  left: 0px;
+  height: 30px;
+}
+
+@media screen and (min-width: 719px) {
+  .TopBarM {
+    display: none;
+  }
+}

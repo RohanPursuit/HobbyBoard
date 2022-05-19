@@ -3,11 +3,18 @@ CREATE DATABASE hobbyboard_dev;
 
 \c hobbyboard_dev;
 
-DROP TABLE IF EXISTS projects, users;
+DROP TABLE IF EXISTS projects, users, connections ;
 
 CREATE TABLE testTable (
     test_id SERIAL PRIMARY KEY,
     content TEXT NOT NULL
+);
+CREATE TABLE users (
+    username TEXT NOT NULL PRIMARY KEY,
+    password TEXT,
+    email TEXT NOT NULL,
+    date DATE,
+    details TEXT
 );
 
 CREATE TABLE projects (
@@ -15,14 +22,18 @@ CREATE TABLE projects (
     name TEXT UNIQUE,
     details TEXT,
     project_image TEXT,
-    archived BOOLEAN DEFAULT false
+    archived BOOLEAN DEFAULT false,
+    creator TEXT,
+    FOREIGN KEY (creator) REFERENCES users(username)
 );
 
 
-CREATE TABLE users (
-    username TEXT NOT NULL,
-    first_name TEXT,
-    last_name TEXT,
-    password TEXT,
-    email TEXT NOT NULL PRIMARY KEY
-)
+
+
+CREATE TABLE connections (
+    username TEXT,
+    project_id INTEGER,
+    permissions TEXT,
+    FOREIGN KEY(username) REFERENCES users(username),
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+);

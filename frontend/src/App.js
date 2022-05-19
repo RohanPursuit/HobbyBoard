@@ -7,7 +7,11 @@ import New from "./pages/New";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
 import NavBar from "./components/common/NavBar";
-import BackButton from "./components/common/BackButton";
+import TopBarM from "./components/common/TopBarM";
+import UserSignup from "./pages/UserSignup";
+import UserSignIn from "./pages/UserSignIn";
+import Profile from "./pages/Profile";
+import EditP from "./pages/EditP";
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -21,12 +25,10 @@ function App() {
 
     testQuery();
   }, [URL]);
-
   return (
     <div className="App">
       <main>
-        <BackButton/>
-        
+        <TopBarM />
         <Routes>
           <Route
             exact
@@ -41,10 +43,13 @@ function App() {
               </header>
             }
           />
-          <Route path="/projects/new" element={<New />} />
+          <Route path="/signIn" element={<UserSignIn />} />
+          <Route path="/signup" element={<UserSignup />} />
           <Route path="/projects" element={<AllProjects />} />
           <Route path="/projects/:pid" element={<ProjectDetails />} />
-          <Route path="/projects/new" element={<div>/projects/new</div>} />
+          <Route path="/projects/new" element={<New />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/editProfile" element={<EditP />} />
         </Routes>
         <NavBar />
       </main>
