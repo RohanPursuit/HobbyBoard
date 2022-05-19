@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect, useState } from "react";
 import { Img } from "react-image";
 import "./ProjectDetails.css";
 
