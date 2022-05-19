@@ -10,7 +10,7 @@ INSERT INTO users(username, password, email, date, details) VALUES
 ('DL', 'password', 'email@email.com', '05/16/2022', 'Can type gud.');
 
 INSERT INTO projects(name, details, project_image, archived, creator) VALUES
-('T -1Hour','This is an idea for a video game that begins about an hour before the downfall of society..', null, false, 'RS'),
+('T -1Hour','This is an idea for a video game that begins about an hour before the downfall of society..', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/aptera-0025-1-1607066100.png?crop=1.00xw:1.00xh;0,0&resize=980:*', false, 'RS'),
 ('Rohan''s Gamer Dating App', 'something something games', null, false, 'RS'),
 ('Noob game devs', 'Help me make a game.', null, false, 'JD'),
 ('Backflippers', 'and we do be hittin backflips 4real', null, false, 'DL'),
