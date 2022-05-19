@@ -1,10 +1,14 @@
 import NewProject from "../components/NewProjects";
-import './New.css'
+import "./New.css";
 
 const New = () => {
   return (
     <div className="NewProjectPage">
-      <NewProject />
+      {document.cookie.split("=")[1] ? (
+        <NewProject />
+      ) : (
+        <p>Please Sign in to create a project!</p>
+      )}
     </div>
   );
 };
