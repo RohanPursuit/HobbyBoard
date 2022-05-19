@@ -14,7 +14,8 @@ CREATE TABLE users (
     password TEXT,
     email TEXT NOT NULL,
     date DATE,
-    details TEXT
+    details TEXT,
+    image TEXT
 );
 
 CREATE TABLE projects (
