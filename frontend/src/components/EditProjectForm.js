@@ -22,7 +22,7 @@ const EditProjectForm = () => {
   const handleChange = (event) => {
     setProject({
       ...project,
-      [event.target.pid]: event.target.value,
+      [event.target.id]: event.target.value,
     });
   };
 
