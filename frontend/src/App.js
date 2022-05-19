@@ -51,6 +51,7 @@ function App() {
           <Route path="/projects/:pid/edit" element={<EditProjectPage />} />
           <Route path="/projects/new" element={<New />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile />} />
           <Route path="/profile/editProfile" element={<EditP />} />
         </Routes>
         <NavBar />
