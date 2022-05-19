@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Img } from "react-image";
+import { Link } from "react-router-dom";
 
-const ProfileDetails = (props) => {
+const ProfileDetails = ({ username }) => {
   const API = process.env.REACT_APP_API_URL;
   const [user, setUser] = useState([]);
   useEffect(() => {
     axios
-      .get(`${API}users/${props.username}`)
+      .get(`${API}users/${username}`)
       .then((response) => setUser(response.data))
       .catch((error) => console.warn(error));
-  }, [API, props.username]);
+  }, [API, username]);
 
   return (
     <div className="ProfileDetails">
@@ -24,6 +25,13 @@ const ProfileDetails = (props) => {
       <h2>{user.username}</h2>
       <p>{user.details}</p>
       {/* user resources */}
+      {document.cookie.split("=")[1] === username ? (
+        <Link to={`/profile/editProfile`}>
+          <button>Edit Profile</button>
+        </Link>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
