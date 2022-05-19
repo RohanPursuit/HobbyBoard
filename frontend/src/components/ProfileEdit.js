@@ -2,7 +2,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-const ProfileEdit = () => {
+const ProfileEdit = ({ username }) => {
   const navigator = useNavigate();
   const API = process.env.REACT_APP_API_URL;
   const [user, setUser] = useState({
@@ -13,7 +13,9 @@ const ProfileEdit = () => {
   });
 
   useEffect(() => {
-    axios.get(`${API}users/JD`).then((response) => setUser(response.data));
+    axios
+      .get(`${API}users/${username}`)
+      .then((response) => setUser(response.data));
   }, [API]);
 
   const handleChange = (event) => {
@@ -25,7 +27,9 @@ const ProfileEdit = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.put(`${API}users/JD`, user).then(() => navigator(`/profile`));
+    axios
+      .put(`${API}users/${username}`, user)
+      .then(() => navigator(`/profile`));
   };
 
   return (
