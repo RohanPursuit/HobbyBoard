@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const ProjectEdit = () => {
+const EditProjectForm = () => {
   const { pid } = useParams();
   const navigator = useNavigate();
   const API = process.env.REACT_APP_API_URL;
@@ -65,4 +65,4 @@ const ProjectEdit = () => {
   );
 };
 
-export default ProjectEdit;
+export default EditProjectForm;
