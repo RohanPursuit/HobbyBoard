@@ -1,6 +1,6 @@
 import ProjectEdit from "../components/ProjectEdit"
 
-function EditProject(){
+function EditProjectPage(){
     return (
         <div>
             <ProjectEdit/>
@@ -8,4 +8,4 @@ function EditProject(){
     )
 }
 
-export default EditProject
+export default EditProjectPage
