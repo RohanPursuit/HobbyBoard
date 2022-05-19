@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Img } from "react-image";
 import "./ProjectDetails.css";
@@ -8,6 +8,7 @@ const ProjectDetails = (props) => {
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
   const params = useParams();
+  const nav = useNavigate()
   // console.log(`${API}projects/${params.pid}`);
   useEffect(() => {
     axios
@@ -26,7 +27,11 @@ const ProjectDetails = (props) => {
       .then((response) => setProject(response.data))
       .catch((error) => console.warn(error));
   };
-  console.log(project.archived);
+
+  const handleEdit = () => {
+    nav("/projects/"+params.pid+"/edit")
+  }
+
   return (
     <div className="ProjectDetails">
       <Img
@@ -43,6 +48,7 @@ const ProjectDetails = (props) => {
       {/* Archive Project Button */}
       <p>Archived: {`${project.archived}`}</p>
       <button onClick={handleArchive}>Archive</button>
+      <button onClick={handleEdit}>Edit</button>
       {/* Edit Project Page Button for authorized users */}
       {/* Delete Project Button */}
       {/* Links/Resources */}
