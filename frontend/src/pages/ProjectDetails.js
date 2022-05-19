@@ -8,7 +8,7 @@ const ProjectDetails = (props) => {
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
   const params = useParams();
-  const nav = useNavigate()
+  const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
   useEffect(() => {
     axios
@@ -29,8 +29,12 @@ const ProjectDetails = (props) => {
   };
 
   const handleEdit = () => {
-    nav("/projects/"+params.pid+"/edit")
-  }
+    nav("/projects/" + params.pid + "/edit");
+  };
+
+  const handleViewProfile = () => {
+    nav("/profile/" + project.creator);
+  };
 
   return (
     <div className="ProjectDetails">
@@ -43,6 +47,7 @@ const ProjectDetails = (props) => {
         className="pBanner"
       />
       <h2>{project.name}</h2>
+      <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
       <h3>Details:</h3>
       <p>{project.details}</p>
       {/* Archive Project Button */}
