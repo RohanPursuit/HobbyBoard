@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { Img } from "react-image";
 import "./ProjectDetails.css";
 
@@ -32,6 +32,10 @@ const ProjectDetails = (props) => {
     nav("/projects/" + params.pid + "/edit");
   };
 
+  const handleViewProfile = () => {
+    nav("/profile/" + project.creator);
+  };
+
   return (
     <div className="ProjectDetails">
       <Img
@@ -43,7 +47,7 @@ const ProjectDetails = (props) => {
         className="pBanner"
       />
       <h2>{project.name}</h2>
-      <h3>Project Owner: {project.creator}</h3>
+      <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
       <h3>Details:</h3>
       <p>{project.details}</p>
       {/* Archive Project Button */}
