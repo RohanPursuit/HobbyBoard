@@ -56,7 +56,7 @@ const EditProjectForm = () => {
         <input
           id="project_image"
           type="text"
-          value={project.project_image}
+          value={project.project_image || ""}
           onChange={handleChange}
         />
         <input type="submit" />
