@@ -15,7 +15,7 @@ const ProjectEdit = () => {
 
   useEffect(() => {
     axios
-      .get(`${API}/projects/${pid}`)
+      .get(`${API}projects/${pid}`)
       .then((response) => setProject(response.data));
   }, [API, pid]);
 
@@ -29,7 +29,7 @@ const ProjectEdit = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(`${API}/projects/${pid}`, project)
+      .put(`${API}projects/${pid}`, project)
       .then(() => navigator(`/projects/${pid}`));
   };
 
