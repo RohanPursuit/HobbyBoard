@@ -1,8 +1,9 @@
 import EditProjectForm from "../components/EditProjectForm"
+import './EditProjectPage.css'
 
 function EditProjectPage(){
     return (
-        <div>
+        <div className="EditProjectPage">
             <EditProjectForm/>
         </div>
     )
