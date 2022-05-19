@@ -34,9 +34,9 @@ const EditProjectForm = () => {
   };
 
   return (
-    <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Project Name</label>
+        <div className="project-name-input">
+          <label htmlFor="name">Project Name</label>
         <input
           id="name"
           type="text"
@@ -44,24 +44,29 @@ const EditProjectForm = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="details">Description</label>
-        <textarea
-          id="details"
-          type="text"
-          value={project.details}
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="project_image">Image</label>
-        <input
-          id="project_image"
-          type="text"
-          value={project.project_image || ""}
-          onChange={handleChange}
-        />
+        </div>
+        <div className="project-details-input">
+          <label htmlFor="details">Description</label>
+          <textarea
+            id="details"
+            type="text"
+            value={project.details}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="project-image-input">
+          <label htmlFor="project_image">Image</label>
+          <input
+            id="project_image"
+            type="text"
+            value={project.project_image || ""}
+            onChange={handleChange}
+          />
+        </div>
+        
         <input type="submit" />
       </form>
-    </div>
   );
 };
 
