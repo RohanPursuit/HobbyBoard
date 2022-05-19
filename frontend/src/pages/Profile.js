@@ -1,10 +1,14 @@
 import ProfileDetails from "../components/ProfileDetails";
 
 const Profile = () => {
-  //pass in pid to ProfileDetails
+  //fetch username from cookies
+  const user = document.cookie.split("=")[1];
+
+  //pass in username to ProfileDetails
+
   return (
     <div>
-      <ProfileDetails username={""} />
+      <ProfileDetails username={user} />
     </div>
   );
 };
