@@ -1,9 +1,9 @@
-import ProjectEdit from "../components/ProjectEdit"
+import EditProjectForm from "../components/EditProjectForm"
 
 function EditProjectPage(){
     return (
         <div>
-            <ProjectEdit/>
+            <EditProjectForm/>
         </div>
     )
 }
