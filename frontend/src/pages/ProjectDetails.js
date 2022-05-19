@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Img } from "react-image";
 import "./ProjectDetails.css";
 
-const ProjectDetails = (props) => {
+const ProjectDetails = () => {
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
   const params = useParams();
@@ -52,8 +52,14 @@ const ProjectDetails = (props) => {
       <p>{project.details}</p>
       {/* Archive Project Button */}
       <p>Archived: {`${project.archived}`}</p>
-      <button onClick={handleArchive}>Archive</button>
-      <button onClick={handleEdit}>Edit</button>
+      {document.cookie.split("=")[1] === project.creator ? (
+        <div>
+          <button onClick={handleArchive}>Archive</button>
+          <button onClick={handleEdit}>Edit</button>
+        </div>
+      ) : (
+        <></>
+      )}
       {/* Edit Project Page Button for authorized users */}
       {/* Delete Project Button */}
       {/* Links/Resources */}
