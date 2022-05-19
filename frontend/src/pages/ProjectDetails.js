@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Img } from "react-image";
+import defaultImage from "../helpers/helperFunction";
 import "./ProjectDetails.css";
 
 const ProjectDetails = (props) => {
@@ -38,13 +38,11 @@ const ProjectDetails = (props) => {
 
   return (
     <div className="ProjectDetails">
-      <Img
-        src={[
-          project.project_image,
-          "https://redzonekickboxing.com/wp-content/uploads/2017/04/default-image.jpg",
-        ]}
+      <img
+        src={project.project_image || ""}
         alt="Project Banner"
         className="pBanner"
+        onError={defaultImage}
       />
       <h2>{project.name}</h2>
       <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
