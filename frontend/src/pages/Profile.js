@@ -1,8 +1,13 @@
+import { useParams } from "react-router-dom";
 import ProfileDetails from "../components/ProfileDetails";
 
 const Profile = () => {
   //fetch username from cookies
-  const user = document.cookie.split("=")[1];
+  let user = document.cookie.split("=")[1];
+  let { username } = useParams();
+  if (username) {
+    user = username;
+  }
 
   //pass in username to ProfileDetails
 

@@ -25,9 +25,13 @@ const ProfileDetails = ({ username }) => {
       <h2>{user.username}</h2>
       <p>{user.details}</p>
       {/* user resources */}
-      <Link to={`/profile/editProfile`}>
-        <button>Edit Profile</button>
-      </Link>
+      {document.cookie.split("=")[1] === username ? (
+        <Link to={`/profile/editProfile`}>
+          <button>Edit Profile</button>
+        </Link>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };
