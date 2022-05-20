@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import './ProfileEdit.css'
 
 const ProfileEdit = ({ username }) => {
   const navigator = useNavigate();
