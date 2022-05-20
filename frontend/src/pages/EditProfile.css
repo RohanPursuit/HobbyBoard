@@ -1,4 +1,4 @@
-.EditProjectPage{
+.EditProfile{
     box-sizing: border-box;
     height: calc(100% - 140px);
     width: 100%;
@@ -8,6 +8,6 @@
     scrollbar-width: none;
 }
 
-.EditProjectPage::-webkit-scrollbar {
+.EditProfile::-webkit-scrollbar {
     display: none;
   }
