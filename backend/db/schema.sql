@@ -16,8 +16,8 @@ CREATE TABLE users (
     date DATE,
     details TEXT,
     created_projects TEXT[],
-    collaborated_projects TEXT[]
-    image TEXT
+    collaborated_projects TEXT[],
+    profile_image TEXT
 );
 
 CREATE TABLE projects (
