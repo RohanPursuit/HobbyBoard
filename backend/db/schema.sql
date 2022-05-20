@@ -15,6 +15,8 @@ CREATE TABLE users (
     email TEXT NOT NULL,
     date DATE,
     details TEXT,
+    created_projects TEXT[],
+    collaborated_projects TEXT[]
     image TEXT
 );
 
