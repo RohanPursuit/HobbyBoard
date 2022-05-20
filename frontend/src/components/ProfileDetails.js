@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Img } from "react-image";
+import defaultImage from "../helpers/helperFunction";
 import { Link } from "react-router-dom";
+import './ProfileDetails.css'
 
 const ProfileDetails = ({ username }) => {
   const API = process.env.REACT_APP_API_URL;
@@ -15,12 +16,10 @@ const ProfileDetails = ({ username }) => {
 
   return (
     <div className="ProfileDetails">
-      <Img
-        src={[
-          "place holder user image",
-          "https://redzonekickboxing.com/wp-content/uploads/2017/04/default-image.jpg",
-        ]}
+      <img
+        src={user.profile_image || ""}
         alt=""
+        onError={defaultImage}
       />
       <h2>{user.username}</h2>
       <p>{user.details}</p>

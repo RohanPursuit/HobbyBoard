@@ -58,11 +58,11 @@ const getOneUser = async (name) => {
 
 //updateUser
 const updateUser = async (edits, user) => {
-  const { username, password, email, date, details } = edits;
+  const { profile_image, username, password, email, date, details } = edits;
   try {
     const editedUser = await db.one(
-      "UPDATE users set username=$2, password=$3, email=$4, date=$5, details=$6 WHERE username=$1 RETURNING *",
-      [user, username, password, email, date, details]
+      "UPDATE users set username=$2, password=$3, email=$4, date=$5, details=$6, profile_image=$7 WHERE username=$1 RETURNING *",
+      [user, username, password, email, date, details, profile_image]
     );
     return editedUser;
   } catch (error) {

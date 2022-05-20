@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import './ProfileEdit.css'
 
 const ProfileEdit = ({ username }) => {
   const navigator = useNavigate();
@@ -10,6 +11,7 @@ const ProfileEdit = ({ username }) => {
     password: "",
     email: "",
     details: "",
+    profile_image: "",
   });
 
   useEffect(() => {
@@ -33,8 +35,17 @@ const ProfileEdit = ({ username }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
+      <div className="edit-image-input">
+        <label htmlFor="profile_image">Image:</label>
+        <input
+          id="profile_image"
+          type="text"
+          value={user.profile_image || ""}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="edit-username-input">
         <label htmlFor="username">Username:</label>
         <input
           id="username"
@@ -43,6 +54,8 @@ const ProfileEdit = ({ username }) => {
           onChange={handleChange}
           required
         />
+      </div>
+      <div className="edit-password-input">
         <label htmlFor="password">Password:</label>
         <input
           id="password"
@@ -51,6 +64,8 @@ const ProfileEdit = ({ username }) => {
           onChange={handleChange}
           required
         />
+      </div>
+      <div className="edit-email-input">
         <label htmlFor="email">Email:</label>
         <input
           id="email"
@@ -58,6 +73,8 @@ const ProfileEdit = ({ username }) => {
           value={user.email}
           onChange={handleChange}
         />
+      </div>
+      <div className="edit-details-input">
         <label htmlFor="details">Details:</label>
         <input
           id="details"
@@ -65,9 +82,9 @@ const ProfileEdit = ({ username }) => {
           value={user.details}
           onChange={handleChange}
         />
-        <input type="submit" />
-      </form>
-    </div>
+      </div>
+      <input type="submit" />
+    </form>
   );
 };
 
