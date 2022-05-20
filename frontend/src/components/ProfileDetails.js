@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import defaultImage from "../helpers/helperFunction";
 import { Link } from "react-router-dom";
+import './ProfileDetails.css'
 
 const ProfileDetails = ({ username }) => {
   const API = process.env.REACT_APP_API_URL;
