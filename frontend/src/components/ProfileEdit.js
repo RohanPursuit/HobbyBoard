@@ -10,6 +10,7 @@ const ProfileEdit = ({ username }) => {
     password: "",
     email: "",
     details: "",
+    image: "",
   });
 
   useEffect(() => {
@@ -33,41 +34,47 @@ const ProfileEdit = ({ username }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          id="username"
-          type="text"
-          value={user.username}
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          id="password"
-          type="text"
-          value={user.password}
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="email">Email:</label>
-        <input
-          id="email"
-          type="text"
-          value={user.email}
-          onChange={handleChange}
-        />
-        <label htmlFor="details">Details:</label>
-        <input
-          id="details"
-          type="text"
-          value={user.details}
-          onChange={handleChange}
-        />
-        <input type="submit" />
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="image">Image:</label>
+      <input
+        id="image"
+        type="text"
+        value={user.image || ""}
+        onChange={handleChange}
+        required
+      />
+      <label htmlFor="username">Username:</label>
+      <input
+        id="username"
+        type="text"
+        value={user.username}
+        onChange={handleChange}
+        required
+      />
+      <label htmlFor="password">Password:</label>
+      <input
+        id="password"
+        type="text"
+        value={user.password}
+        onChange={handleChange}
+        required
+      />
+      <label htmlFor="email">Email:</label>
+      <input
+        id="email"
+        type="text"
+        value={user.email}
+        onChange={handleChange}
+      />
+      <label htmlFor="details">Details:</label>
+      <input
+        id="details"
+        type="text"
+        value={user.details}
+        onChange={handleChange}
+      />
+      <input type="submit" />
+    </form>
   );
 };
 
