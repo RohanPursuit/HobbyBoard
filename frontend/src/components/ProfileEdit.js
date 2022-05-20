@@ -35,44 +35,54 @@ const ProfileEdit = ({ username }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="image">Image:</label>
-      <input
-        id="image"
-        type="text"
-        value={user.image || ""}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="username">Username:</label>
-      <input
-        id="username"
-        type="text"
-        value={user.username}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="password">Password:</label>
-      <input
-        id="password"
-        type="text"
-        value={user.password}
-        onChange={handleChange}
-        required
-      />
-      <label htmlFor="email">Email:</label>
-      <input
-        id="email"
-        type="text"
-        value={user.email}
-        onChange={handleChange}
-      />
-      <label htmlFor="details">Details:</label>
-      <input
-        id="details"
-        type="text"
-        value={user.details}
-        onChange={handleChange}
-      />
+      <div className="edit-image-input">
+        <label htmlFor="image">Image:</label>
+        <input
+          id="image"
+          type="text"
+          value={user.image || ""}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="edit-username-input">
+        <label htmlFor="username">Username:</label>
+        <input
+          id="username"
+          type="text"
+          value={user.username}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="edit-password-input">
+        <label htmlFor="password">Password:</label>
+        <input
+          id="password"
+          type="text"
+          value={user.password}
+          onChange={handleChange}
+          required
+        />
+      </div>
+      <div className="edit-email-input">
+        <label htmlFor="email">Email:</label>
+        <input
+          id="email"
+          type="text"
+          value={user.email}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="edit-details-input">
+        <label htmlFor="details">Details:</label>
+        <input
+          id="details"
+          type="text"
+          value={user.details}
+          onChange={handleChange}
+        />
+      </div>
       <input type="submit" />
     </form>
   );
