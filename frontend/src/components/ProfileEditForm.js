@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import './ProfileEdit.css'
+import "./ProfileEditForm.css";
 
-const ProfileEdit = ({ username }) => {
+const ProfileEditForm = ({ username }) => {
   const navigator = useNavigate();
   const API = process.env.REACT_APP_API_URL;
   const [user, setUser] = useState({
@@ -88,4 +88,4 @@ const ProfileEdit = ({ username }) => {
   );
 };
 
-export default ProfileEdit;
+export default ProfileEditForm;
