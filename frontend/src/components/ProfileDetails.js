@@ -17,7 +17,7 @@ const ProfileDetails = ({ username }) => {
   return (
     <div className="ProfileDetails">
       <img
-        src={"place holder user image" || null}
+        src={user.profile_image || null}
         alt=""
         onError={defaultImage}
       />
