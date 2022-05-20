@@ -17,6 +17,7 @@ CREATE TABLE users (
     details TEXT,
     created_projects TEXT[],
     collaborated_projects TEXT[]
+    image TEXT
 );
 
 CREATE TABLE projects (
