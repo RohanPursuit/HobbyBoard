@@ -11,7 +11,7 @@ const ProfileEdit = ({ username }) => {
     password: "",
     email: "",
     details: "",
-    image: "",
+    profile_image: "",
   });
 
   useEffect(() => {
@@ -37,13 +37,12 @@ const ProfileEdit = ({ username }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="edit-image-input">
-        <label htmlFor="image">Image:</label>
+        <label htmlFor="profile_image">Image:</label>
         <input
-          id="image"
+          id="profile_image"
           type="text"
-          value={user.image || ""}
+          value={user.profile_image || ""}
           onChange={handleChange}
-          required
         />
       </div>
       <div className="edit-username-input">
