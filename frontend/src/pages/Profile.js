@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import ProfileDetails from "../components/ProfileDetails";
+import './Profile.css'
 
 const Profile = () => {
   //fetch username from cookies
@@ -12,7 +13,7 @@ const Profile = () => {
   //pass in username to ProfileDetails
 
   return (
-    <div>
+    <div className="Profile">
       <ProfileDetails username={user} />
     </div>
   );

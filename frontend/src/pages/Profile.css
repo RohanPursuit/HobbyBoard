@@ -1,0 +1,13 @@
+.Profile{
+    box-sizing: border-box;
+    height: calc(100% - 140px);
+    width: 100%;
+    padding-top: 10px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.Profile::-webkit-scrollbar {
+    display: none;
+  }
