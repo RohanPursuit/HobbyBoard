@@ -46,6 +46,19 @@ const ProjectDetails = () => {
     })
     .catch(() =>{
       alert("Request failed")
+     })
+  }
+  const handleCancelRequest = () => {
+    axios.delete(`${API}connections`, {
+      username: document.cookie.split("=")[1],
+      project_id: project.project_id,
+      permissions: "request"
+    })
+    .then(() => {
+      alert("Request Canceled")
+    })
+    .catch(() => {
+      alert("Error")
     })
   }
 
@@ -78,9 +91,8 @@ const ProjectDetails = () => {
                 return <a href={link}>{link}</a>
             })} */}
       {/* Contributors */}
-      {document.cookie.split("=")[1] !== project.creator ? <button onClick={handleJoin}>Join</button>
-      :
-      ""}
+      {document.cookie.split("=")[1] !== project.creator ? <button onClick={handleJoin}>Join</button> : ""}
+      {document.cookie.split("=")[1] !== project.creator ? <button onClick={handleCancelRequest}>Cancel Request</button> : ""}
     </div>
   );
 };
