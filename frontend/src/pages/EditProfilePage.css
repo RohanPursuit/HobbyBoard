@@ -11,10 +11,3 @@
 .EditProfile::-webkit-scrollbar {
   display: none;
 }
-
-@media screen and (min-width: 719px) {
-  .EditProfile {
-    height: 100%;
-    padding-top: 70px;
-  }
-}
