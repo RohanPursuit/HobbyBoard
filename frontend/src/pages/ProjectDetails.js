@@ -72,7 +72,7 @@ const ProjectDetails = () => {
       setShowModal(false)
     } else {
       setShowModal(true)
-      axios.get(`${API}connections`)
+      axios.get(`${API}connections/${project.project_id}`)
       .then((response) => {
         console.log(response.data)
         //filter response ??
