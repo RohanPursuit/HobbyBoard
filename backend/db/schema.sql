@@ -38,5 +38,6 @@ CREATE TABLE connections (
     project_id INTEGER,
     permissions TEXT,
     FOREIGN KEY(username) REFERENCES users(username),
-    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+    FOREIGN KEY(project_id) REFERENCES projects(project_id),
+    CONSTRAINT unique_connection UNIQUE (username, project_id, permissions)
 );
