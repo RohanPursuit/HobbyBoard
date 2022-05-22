@@ -36,6 +36,20 @@ const ProjectDetails = () => {
     nav("/profile/" + project.creator);
   };
 
+  const handleCancelRequest = () => {
+    axios.delete(`${API}connections`, {
+      username: document.cookie.split("=")[1],
+      project_id: project.project_id,
+      permissions: "request"
+    })
+    .then(() => {
+      alert("Request Canceled")
+    })
+    .catch(() => {
+      alert("Error")
+    })
+  }
+
   return (
     <div className="ProjectDetails">
       <img
@@ -65,6 +79,9 @@ const ProjectDetails = () => {
                 return <a href={link}>{link}</a>
             })} */}
       {/* Contributors */}
+      {document.cookie.split("=")[1] !== project.creator ? <button onClick={handleCancelRequest}>Cancel Request</button>
+      :
+      ""}
     </div>
   );
 };
