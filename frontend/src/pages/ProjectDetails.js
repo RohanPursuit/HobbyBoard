@@ -65,6 +65,9 @@ const ProjectDetails = () => {
                 return <a href={link}>{link}</a>
             })} */}
       {/* Contributors */}
+      {document.cookie.split("=")[1] !== project.creator ? <button>Cancel Request</button>
+      :
+      ""}
     </div>
   );
 };
