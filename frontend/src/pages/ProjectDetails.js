@@ -66,7 +66,18 @@ const ProjectDetails = () => {
   };
 
   const handleShowModal = () => {
-    
+    if(showModal){
+      setShowModal(false)
+    } else {
+      setShowModal(true)
+      axios.get(`${API}connections`)
+      .then((response) => {
+        console.log(response)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
   }
 
   return (
@@ -110,7 +121,7 @@ const ProjectDetails = () => {
       )}
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}
-      {document.cookie.split("=")[1] !== project.creator ? (
+      {document.cookie.split("=")[1] === project.creator ? (
         <button onClick={handleShowModal}>Collaborators</button>
       ) : (
         ""
