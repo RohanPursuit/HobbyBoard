@@ -9,6 +9,7 @@ const ProjectDetails = () => {
   const [project, setProject] = useState([]);
   const [showModal, setShowModal] = useState(false)
   const [collaborators, setCollaborators] = useState([])
+  const [requests, setRequest] = useState([])
   const params = useParams();
   const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
@@ -74,7 +75,10 @@ const ProjectDetails = () => {
       axios.get(`${API}connections`)
       .then((response) => {
         console.log(response.data)
+        //filter response ??
         setCollaborators(response.data)
+        //filter response ??
+        setRequest(response.data)
       })
       .catch((err) => {
         console.log(err)
@@ -82,6 +86,7 @@ const ProjectDetails = () => {
 
       //placeholder setter
       setCollaborators([{username: 1}, {username: 2}, {username: 3}, {username: 4}])
+      setRequest([{username: 5}])
     }
   }
 
@@ -131,7 +136,15 @@ const ProjectDetails = () => {
       ) : (
         ""
       )}
-      {showModal && <select>{collaborators.map((collab, i) => <option key={i} value={collab.username}>{collab.username}</option>)}</select>}
+      {showModal 
+      && 
+      <>
+        <select>{collaborators.map((collab, i) => <option key={i} value={collab.username}>{collab.username}</option>)}</select>
+        
+        <select>{requests.map((req, i) => <option key={i} value={req.username}>{req.username}</option>)}</select>
+      </>
+      
+      }
     </div>
   );
 };
