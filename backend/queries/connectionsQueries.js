@@ -33,4 +33,18 @@ const deleteRequest = async ({ username, project_id }) => {
   }
 };
 
-module.exports = { joinRequest, deleteRequest };
+// input: object w/ project_id key
+// output: array of objects reflecting all user connects w/ the project_id project
+const getAllProjectConnections = async ({ project_id }) => {
+  try {
+    const allProCons = await db.any(
+      "SELECT * FROM connections WHERE project_id=$1",
+      project_id
+    );
+    return allProCons;
+  } catch (err) {
+    return err;
+  }
+};
+
+module.exports = { joinRequest, deleteRequest, getAllProjectConnections };
