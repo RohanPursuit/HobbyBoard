@@ -8,6 +8,7 @@ const ProjectDetails = () => {
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
   const [showModal, setShowModal] = useState(false)
+  const [collaborators, setCollaborators] = useState([])
   const params = useParams();
   const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
@@ -72,11 +73,15 @@ const ProjectDetails = () => {
       setShowModal(true)
       axios.get(`${API}connections`)
       .then((response) => {
-        console.log(response)
+        console.log(response.data)
+        setCollaborators(response.data)
       })
       .catch((err) => {
         console.log(err)
       })
+
+      //placeholder setter
+      setCollaborators([{username: 1}, {username: 2}, {username: 3}, {username: 4}])
     }
   }
 
@@ -126,7 +131,7 @@ const ProjectDetails = () => {
       ) : (
         ""
       )}
-      {showModal && <select></select>}
+      {showModal && <select>{collaborators.map((collab, i) => <option key={i} value={collab.username}>{collab.username}</option>)}</select>}
     </div>
   );
 };
