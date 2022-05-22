@@ -37,30 +37,32 @@ const ProjectDetails = () => {
   };
 
   const handleJoin = () => {
-    axios.post(`${API}connections`, {
-      username: document.cookie.split("=")[1],
-      project_id: project.project_id
-    })
-    .then(() => {
-      alert("Request Pending")
-    })
-    .catch(() =>{
-      alert("Request failed")
-     })
-  }
+    axios
+      .post(`${API}connections`, {
+        username: document.cookie.split("=")[1],
+        project_id: project.project_id,
+      })
+      .then(() => {
+        alert("Request Pending");
+      })
+      .catch(() => {
+        alert("Request failed");
+      });
+  };
+
   const handleCancelRequest = () => {
-    axios.delete(`${API}connections`, {
-      username: document.cookie.split("=")[1],
-      project_id: project.project_id,
-      permissions: "request"
-    })
-    .then(() => {
-      alert("Request Canceled")
-    })
-    .catch(() => {
-      alert("Error")
-    })
-  }
+    const username = document.cookie.split("=")[1];
+    const project_id = project.project_id;
+    console.log(username, project_id);
+    axios
+      .delete(`${API}connections`, { data: { username, project_id } })
+      .then(() => {
+        alert("Request Canceled");
+      })
+      .catch(() => {
+        alert("Error");
+      });
+  };
 
   return (
     <div className="ProjectDetails">
@@ -91,8 +93,16 @@ const ProjectDetails = () => {
                 return <a href={link}>{link}</a>
             })} */}
       {/* Contributors */}
-      {document.cookie.split("=")[1] !== project.creator ? <button onClick={handleJoin}>Join</button> : ""}
-      {document.cookie.split("=")[1] !== project.creator ? <button onClick={handleCancelRequest}>Cancel Request</button> : ""}
+      {document.cookie.split("=")[1] !== project.creator ? (
+        <button onClick={handleJoin}>Join</button>
+      ) : (
+        ""
+      )}
+      {document.cookie.split("=")[1] !== project.creator ? (
+        <button onClick={handleCancelRequest}>Cancel Request</button>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
