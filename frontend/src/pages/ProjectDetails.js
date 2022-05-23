@@ -7,9 +7,9 @@ import "./ProjectDetails.css";
 const ProjectDetails = () => {
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
-  const [showModal, setShowModal] = useState(false)
-  const [collaborators, setCollaborators] = useState([])
-  const [requests, setRequest] = useState([])
+  const [showModal, setShowModal] = useState(false);
+  const [collaborators, setCollaborators] = useState([]);
+  const [requests, setRequest] = useState([]);
   const params = useParams();
   const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
@@ -18,6 +18,15 @@ const ProjectDetails = () => {
       .get(`${API}projects/${params.pid}`)
       .then((response) => setProject(response.data))
       .catch((error) => console.warn(error));
+    axios.get(`${API}connections/${params.pid}`).then((response) => {
+      console.log(response.data);
+      //filter response ??
+      setCollaborators(
+        response.data.filter((el) => el.permissions === "collaborator")
+      );
+      //filter response ??
+      setRequest(response.data.filter((el) => el.permissions === "request"));
+    });
   }, [API, params.pid]);
 
   // could move the handleArchive and button to its own component
@@ -68,23 +77,12 @@ const ProjectDetails = () => {
   };
 
   const handleShowModal = () => {
-    if(showModal){
-      setShowModal(false)
+    if (showModal) {
+      setShowModal(false);
     } else {
-      setShowModal(true)
-      axios.get(`${API}connections/${project.project_id}`)
-      .then((response) => {
-        console.log(response.data)
-        //filter response ??
-        setCollaborators(response.data.filter(el => el.permissions === "collaborator"))
-        //filter response ??
-        setRequest(response.data.filter(el => el.permissions === "request"))
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+      setShowModal(true);
     }
-  }
+  };
 
   return (
     <div className="ProjectDetails">
@@ -132,15 +130,25 @@ const ProjectDetails = () => {
       ) : (
         ""
       )}
-      {showModal 
-      && 
-      <>
-        <select>{collaborators.map((collab, i) => <option key={i} value={collab.username}>{collab.username}</option>)}</select>
-        
-        <select>{requests.map((req, i) => <option key={i} value={req.username}>{req.username}</option>)}</select>
-      </>
-      
-      }
+      {showModal && (
+        <>
+          <select>
+            {collaborators.map((collab, i) => (
+              <option key={i} value={collab.username}>
+                {collab.username}
+              </option>
+            ))}
+          </select>
+
+          <select>
+            {requests.map((req, i) => (
+              <option key={i} value={req.username}>
+                {req.username}
+              </option>
+            ))}
+          </select>
+        </>
+      )}
     </div>
   );
 };
