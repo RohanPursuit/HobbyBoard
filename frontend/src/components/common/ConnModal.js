@@ -1,7 +1,7 @@
 import "./ConnModal.css";
 
-//input {display Status (boolnean), collaborators(array), request(array)}
-const ConnModal = ({ displayStatus, collaborators, requests }) => {
+//input {display (boolnean), project_id(number), setDisplay(state function)}
+const ConnModal = ({ display, project_id, setDisplay }) => {
   return <div className="ConnModal">ConnModal</div>;
 };
 
