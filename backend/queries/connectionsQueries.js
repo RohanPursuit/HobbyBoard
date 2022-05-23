@@ -33,4 +33,16 @@ const deleteRequest = async ({ username, project_id }) => {
   }
 };
 
-module.exports = { joinRequest, deleteRequest };
+const removeCollaborator = async ({ username, project_id }) => {
+  try {
+    const removedUser = await db.one(
+      "DELETE FROM connections WHERE username=$1 AND project_id=$2 AND permissions='collaborator' RETURNING *",
+      [username, project_id]
+    );
+    return removedUser;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { joinRequest, deleteRequest, removeCollaborator };
