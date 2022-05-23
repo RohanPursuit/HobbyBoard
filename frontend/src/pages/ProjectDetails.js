@@ -76,17 +76,13 @@ const ProjectDetails = () => {
       .then((response) => {
         console.log(response.data)
         //filter response ??
-        setCollaborators(response.data)
+        setCollaborators(response.data.filter(el => el.permissions === "collaborator"))
         //filter response ??
-        setRequest(response.data)
+        setRequest(response.data.filter(el => el.permission === "request"))
       })
       .catch((err) => {
         console.log(err)
       })
-
-      //placeholder setter
-      setCollaborators([{username: 1}, {username: 2}, {username: 3}, {username: 4}])
-      setRequest([{username: 5}])
     }
   }
 
