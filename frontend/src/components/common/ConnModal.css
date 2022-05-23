@@ -1,8 +1,12 @@
-.ConnModal {
-  box-sizing: border-box;
-  background-color: orange;
-  height: calc(100% - 70px);
+.ConnModal .darkScreen {
+  background-color: black;
+  height: 100%;
   width: 100%;
   position: absolute;
-  top: 70px;
+  z-index: 12;
+  margin: 0px;
+  padding: 0px;
+  top: 0;
+  left: 0;
+  opacity: 30%;
 }

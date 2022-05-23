@@ -148,9 +148,9 @@ const ProjectDetails = () => {
               </option>
             ))}
           </select>
+          <ConnModal setDisplay={handleShowModal} />
         </>
       )}
-      <ConnModal />
     </div>
   );
 };
