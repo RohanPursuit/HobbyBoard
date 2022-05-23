@@ -3,10 +3,25 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  z-index: 12;
+  z-index: 2;
   margin: 0px;
   padding: 0px;
   top: 0;
   left: 0;
-  opacity: 30%;
+  opacity: 40%;
+}
+
+.ConnModal .modalContent {
+  box-sizing: border-box;
+  display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 75vh;
+  margin-top: -37.5vh;
+  width: 85vw;
+  margin-left: -42.5vw;
+  background-color: aqua;
+  z-index: 3;
+  padding: 30px;
 }
