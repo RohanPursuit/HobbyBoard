@@ -12,6 +12,7 @@
 }
 
 .ConnModal .modalContent {
+  border-radius: 20px;
   box-sizing: border-box;
   display: flex;
   position: fixed;
@@ -21,7 +22,7 @@
   margin-top: -37.5vh;
   width: 85vw;
   margin-left: -42.5vw;
-  background-color: aqua;
+  background-color: bisque;
   z-index: 3;
   padding: 30px;
 }
