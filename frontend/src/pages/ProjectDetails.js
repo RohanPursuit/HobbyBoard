@@ -78,7 +78,7 @@ const ProjectDetails = () => {
         //filter response ??
         setCollaborators(response.data.filter(el => el.permissions === "collaborator"))
         //filter response ??
-        setRequest(response.data.filter(el => el.permission === "request"))
+        setRequest(response.data.filter(el => el.permissions === "request"))
       })
       .catch((err) => {
         console.log(err)
