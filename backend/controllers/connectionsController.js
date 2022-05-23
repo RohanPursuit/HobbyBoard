@@ -34,4 +34,10 @@ connections.get("/:project_id", async (request, response) => {
   response.status(200).json(projectConnections);
 });
 
+connections.put("/", async (request, response) => {
+  console.log("put /connections");
+  const newConnection = await updateToCollaborator(request.body)
+  response.status(200).json(newConnection);
+})
+
 module.exports = connections;
