@@ -5,6 +5,7 @@ const {
   deleteRequest,
   removeCollaborator,
   getAllProjectConnections,
+  updateToCollaborator,
 } = require("../queries/connectionsQueries");
 
 //Send join request
