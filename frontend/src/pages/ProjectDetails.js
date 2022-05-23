@@ -148,7 +148,10 @@ const ProjectDetails = () => {
               </option>
             ))}
           </select>
-          <ConnModal setDisplay={handleShowModal} />
+          <ConnModal
+            setDisplay={handleShowModal}
+            project_id={project.project_id}
+          />
         </>
       )}
     </div>
