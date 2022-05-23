@@ -4,6 +4,7 @@ const {
   joinRequest,
   deleteRequest,
   removeCollaborator,
+  getAllProjectConnections,
 } = require("../queries/connectionsQueries");
 
 //Send join request
@@ -25,6 +26,12 @@ connections.delete("/:username", async (request, response) => {
   console.log(`DELETE request for ${username} on project ${project_id}`);
   const removedCollaborator = await removeCollaborator(username, project_id);
   response.status(200).json(removedCollaborator);
+  });
+
+connections.get("/:project_id", async (request, response) => {
+  console.log("get /connections");
+  const projectConnections = await getAllProjectConnections(request.params);
+  response.status(200).json(projectConnections);
 });
 
 module.exports = connections;

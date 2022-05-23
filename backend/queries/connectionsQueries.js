@@ -33,6 +33,7 @@ const deleteRequest = async ({ username, project_id }) => {
   }
 };
 
+
 const removeCollaborator = async ({ username, project_id }) => {
   try {
     const removedUser = await db.one(
@@ -45,4 +46,18 @@ const removeCollaborator = async ({ username, project_id }) => {
   }
 };
 
-module.exports = { joinRequest, deleteRequest, removeCollaborator };
+// input: object w/ project_id key
+// output: array of objects reflecting all user connects w/ the project_id project
+const getAllProjectConnections = async ({ project_id }) => {
+  try {
+    const allProCons = await db.any(
+      "SELECT * FROM connections WHERE project_id=$1",
+      project_id
+    );
+    return allProCons;
+  } catch (err) {
+    return err;
+  }
+};
+
+module.exports = { joinRequest, deleteRequest, getAllProjectConnections, removeCollaborator};
