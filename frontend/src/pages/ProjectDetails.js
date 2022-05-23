@@ -2,6 +2,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import defaultImage from "../helpers/helperFunction";
+import ConnModal from "../components/common/ConnModal.js";
 import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
@@ -149,6 +150,7 @@ const ProjectDetails = () => {
           </select>
         </>
       )}
+      <ConnModal />
     </div>
   );
 };
