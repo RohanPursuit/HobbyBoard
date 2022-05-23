@@ -19,9 +19,9 @@ connections.delete("/", async (request, response) => {
   response.status(200).json(removeConnection);
 });
 
-connections.get("/", async (request, response) => {
+connections.get("/:project_id", async (request, response) => {
   console.log("get /connections");
-  const projectConnections = await getAllProjectConnections(request.body);
+  const projectConnections = await getAllProjectConnections(request.params);
   response.status(200).json(projectConnections);
 });
 
