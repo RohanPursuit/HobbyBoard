@@ -3,6 +3,7 @@ const connections = express();
 const {
   joinRequest,
   deleteRequest,
+  removeCollaborator,
   getAllProjectConnections,
 } = require("../queries/connectionsQueries");
 
@@ -18,6 +19,14 @@ connections.delete("/", async (request, response) => {
   const removeConnection = await deleteRequest(request.body);
   response.status(200).json(removeConnection);
 });
+
+connections.delete("/:username", async (request, response) => {
+  const { username } = request.params;
+  const { project_id } = request.body;
+  console.log(`DELETE request for ${username} on project ${project_id}`);
+  const removedCollaborator = await removeCollaborator(username, project_id);
+  response.status(200).json(removedCollaborator);
+  });
 
 connections.get("/:project_id", async (request, response) => {
   console.log("get /connections");

@@ -33,6 +33,19 @@ const deleteRequest = async ({ username, project_id }) => {
   }
 };
 
+
+const removeCollaborator = async ({ username, project_id }) => {
+  try {
+    const removedUser = await db.one(
+      "DELETE FROM connections WHERE username=$1 AND project_id=$2 AND permissions='collaborator' RETURNING *",
+      [username, project_id]
+    );
+    return removedUser;
+  } catch (error) {
+    return error;
+  }
+};
+
 // input: object w/ project_id key
 // output: array of objects reflecting all user connects w/ the project_id project
 const getAllProjectConnections = async ({ project_id }) => {
@@ -47,4 +60,4 @@ const getAllProjectConnections = async ({ project_id }) => {
   }
 };
 
-module.exports = { joinRequest, deleteRequest, getAllProjectConnections };
+module.exports = { joinRequest, deleteRequest, getAllProjectConnections, removeCollaborator};
