@@ -7,6 +7,9 @@ import "./ProjectDetails.css";
 const ProjectDetails = () => {
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
+  const [showModal, setShowModal] = useState(false)
+  const [collaborators, setCollaborators] = useState([])
+  const [requests, setRequest] = useState([])
   const params = useParams();
   const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
@@ -64,6 +67,25 @@ const ProjectDetails = () => {
       });
   };
 
+  const handleShowModal = () => {
+    if(showModal){
+      setShowModal(false)
+    } else {
+      setShowModal(true)
+      axios.get(`${API}connections/${project.project_id}`)
+      .then((response) => {
+        console.log(response.data)
+        //filter response ??
+        setCollaborators(response.data.filter(el => el.permissions === "collaborator"))
+        //filter response ??
+        setRequest(response.data.filter(el => el.permissions === "request"))
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+  }
+
   return (
     <div className="ProjectDetails">
       <img
@@ -103,6 +125,22 @@ const ProjectDetails = () => {
       ) : (
         ""
       )}
+      {/* If visitor is the creator or collaborator on the current project
+      a collaborators button should be rendered */}
+      {document.cookie.split("=")[1] === project.creator ? (
+        <button onClick={handleShowModal}>Collaborators</button>
+      ) : (
+        ""
+      )}
+      {showModal 
+      && 
+      <>
+        <select>{collaborators.map((collab, i) => <option key={i} value={collab.username}>{collab.username}</option>)}</select>
+        
+        <select>{requests.map((req, i) => <option key={i} value={req.username}>{req.username}</option>)}</select>
+      </>
+      
+      }
     </div>
   );
 };
