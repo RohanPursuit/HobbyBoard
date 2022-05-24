@@ -17,8 +17,11 @@ const ProfileDetails = ({ username }) => {
     axios
       .get(`${API}connections/associated/${username}`)
       .then((response) => {
-        console.log(response.data);
-        setAssociations(response.data);
+        setAssociations(
+          response.data.filter(
+            (association) => association.permissions !== "request"
+          )
+        );
       })
       .catch((error) => console.warn(error));
   }, [API, username]);

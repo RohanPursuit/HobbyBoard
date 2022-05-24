@@ -7,9 +7,10 @@ const AssociatedProject = (props) => {
   const handleRemoveCollaborator = () => {
     const { username, project_id } = props.details;
     if (window.confirm("Are you sure you want to kick contributor")) {
-      axios.delete(`${API}connections/${username}`, { data: { project_id } });
+      axios
+        .delete(`${API}connections/${username}`, { data: { project_id } })
+        .then(() => window.location.reload(false));
     }
-    window.location.reload(false);
   };
 
   return (
