@@ -11,6 +11,7 @@ const {
 //Send join request
 connections.post("/", async (request, response) => {
   console.log("Post /connections");
+  console.log(request.body);
   const pending = await joinRequest(request.body);
   response.status(200).json(pending);
 });
@@ -37,8 +38,8 @@ connections.get("/:project_id", async (request, response) => {
 
 connections.put("/", async (request, response) => {
   console.log("put /connections");
-  const newConnection = await updateToCollaborator(request.body)
+  const newConnection = await updateToCollaborator(request.body);
   response.status(200).json(newConnection);
-})
+});
 
 module.exports = connections;

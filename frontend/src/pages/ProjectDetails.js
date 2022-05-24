@@ -86,8 +86,27 @@ const ProjectDetails = () => {
 
   const handleRemoveCollaborator = ({ username }) => {
     const project_id = project.project_id;
-    if (window.confirm("Are you sure you want to kick contributor")) {
+    if (window.confirm("Are you sure you want to kick contributor?")) {
       axios.delete(`${API}connections/BZ`, { data: { project_id } });
+    }
+  };
+
+  const handleAcceptRequest = () => {
+    const username = "BZ";
+    const project_id = project.project_id;
+    if (window.confirm("Confirm acceptance.")) {
+      axios.put(`${API}connections`, {
+        username,
+        project_id,
+      });
+    }
+  };
+
+  const handleDenyRequest = () => {
+    const username = "BZ";
+    const project_id = project.project_id;
+    if (window.confirm("Are you sure you want to deny acceptance?")) {
+      axios.delete(`${API}connections`, { data: { username, project_id } });
     }
   };
 
@@ -156,7 +175,6 @@ const ProjectDetails = () => {
           </select>
         </>
       )}
-      <button onClick={handleRemoveCollaborator}>click</button>
     </div>
   );
 };
