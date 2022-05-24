@@ -6,6 +6,7 @@ const {
   removeCollaborator,
   getAllProjectConnections,
   updateToCollaborator,
+  getAllUserConnections,
 } = require("../queries/connectionsQueries");
 
 //Send join request
@@ -34,6 +35,13 @@ connections.get("/:project_id", async (request, response) => {
   console.log("get /connections");
   const projectConnections = await getAllProjectConnections(request.params);
   response.status(200).json(projectConnections);
+});
+
+connections.get("/associated/:username", async (request, response) => {
+  console.log("get user /connections");
+  console.log(request.params);
+  const userConnections = await getAllUserConnections(request.params);
+  response.status(200).json(userConnections);
 });
 
 connections.put("/", async (request, response) => {
