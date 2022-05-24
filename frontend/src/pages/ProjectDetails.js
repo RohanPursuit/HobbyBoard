@@ -5,6 +5,7 @@ import defaultImage from "../helpers/helperFunction";
 import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
+  const cred = document.cookie.split("=")[1]
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -84,6 +85,7 @@ const ProjectDetails = () => {
     }
   };
 
+  console.log(requests.find(connection => connection.username === cred) )
   return (
     <div className="ProjectDetails">
       <img
@@ -113,23 +115,26 @@ const ProjectDetails = () => {
                 return <a href={link}>{link}</a>
             })} */}
       {/* Contributors */}
-      {document.cookie.split("=")[1] !== project.creator ? (
-        <button onClick={handleJoin}>Join</button>
-      ) : (
-        ""
-      )}
-      {document.cookie.split("=")[1] !== project.creator ? (
-        <button onClick={handleCancelRequest}>Cancel Request</button>
-      ) : (
-        ""
-      )}
+      {
+        cred === project.creator 
+        || 
+        collaborators.find(connection => connection.username === cred) 
+        ? 
+        (
+          <button onClick={handleShowModal}>Collaborators</button>
+        ) 
+        :
+        requests.find(connection => connection.username === cred) ? 
+          (
+            <button onClick={handleCancelRequest}>Cancel Request</button>
+          ) 
+          : 
+          (
+            <button onClick={handleJoin}>Join</button>
+          )
+      }
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}
-      {document.cookie.split("=")[1] === project.creator ? (
-        <button onClick={handleShowModal}>Collaborators</button>
-      ) : (
-        ""
-      )}
       {showModal && (
         <>
           <select>
