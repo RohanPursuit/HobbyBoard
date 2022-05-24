@@ -30,14 +30,22 @@ const ConnModal = ({ project_id, setDisplay }) => {
 
   const colBttn = <button onClick={handleCollab}>Collaborators</button>;
   const reqBttn = <button onClick={handleRequest}>Request</button>;
+  const xBttn = <button onClick={setDisplay}>X</button>;
+  const collabCards = collaborators.map((e) => (
+    <p>{e.username + " " + e.permissions}</p>
+  ));
+  const requestCards = requesters.map((e) => (
+    <p>{e.username + " " + e.permissions}</p>
+  ));
 
   return (
     <div className="ConnModal">
       <div className="darkScreen" onClick={setDisplay}></div>
       <div className="modalContent">
-        Test
+        {xBttn}
         {colBttn}
         {reqBttn}
+        {requestView ? requestCards : collabCards}
       </div>
     </div>
   );
