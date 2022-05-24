@@ -6,6 +6,7 @@ import axios from "axios";
 //input project_id(number), setDisplay(state function)}
 const ConnModal = ({ project_id, setDisplay }) => {
   const [conns, setConns] = useState([]);
+  const [requestView, setView] = useState(false);
   const collaborators = hoistCollabCard(
     conns.filter(
       (e) => e.permissions === "collaborator" || e.permissions === "owner"
@@ -20,10 +21,24 @@ const ConnModal = ({ project_id, setDisplay }) => {
       .then((res) => setConns(res.data));
   }, [URL, project_id]);
 
+  const handleCollab = () => {
+    setView(false);
+  };
+  const handleRequest = () => {
+    setView(true);
+  };
+
+  const colBttn = <button onClick={handleCollab}>Collaborators</button>;
+  const reqBttn = <button onClick={handleRequest}>Request</button>;
+
   return (
     <div className="ConnModal">
       <div className="darkScreen" onClick={setDisplay}></div>
-      <div className="modalContent">Example Modal</div>
+      <div className="modalContent">
+        Test
+        {colBttn}
+        {reqBttn}
+      </div>
     </div>
   );
 };
