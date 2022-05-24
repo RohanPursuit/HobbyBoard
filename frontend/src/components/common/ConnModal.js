@@ -1,12 +1,15 @@
 import "./ConnModal.css";
 import { useState, useEffect } from "react";
-import defaultImage, { hoistCollabCard } from "../../helpers/helperFunction";
+import { hoistCollabCard } from "../../helpers/helperFunction";
+import ModalCard from "./ModalCard.js";
 import axios from "axios";
 
 //input project_id(number), setDisplay(state function)}
-const ConnModal = ({ project_id, setDisplay }) => {
+const ConnModal = ({ project_id, setDisplay, owner }) => {
   const [conns, setConns] = useState([]);
   const [requestView, setView] = useState(false);
+  const user = document.cookie.split("=")[1];
+  const isOwner = user === owner;
   const collaborators = hoistCollabCard(
     conns.filter(
       (e) => e.permissions === "collaborator" || e.permissions === "owner"
@@ -28,15 +31,30 @@ const ConnModal = ({ project_id, setDisplay }) => {
     setView(true);
   };
 
-  const modalTitle = <p className="modTitle">connections</p>;
-  const colBttn = <button onClick={handleCollab}>Collaborators</button>;
-  const reqBttn = <button onClick={handleRequest}>Request</button>;
-  const xBttn = <button onClick={setDisplay}>X</button>;
+  const modalTitle = <p className="modTitle">Connections</p>;
+  const colBttn = (
+    <button
+      className={isOwner ? "tabBttn" : "tabBttn norm"}
+      onClick={handleCollab}
+    >
+      Collaborators
+    </button>
+  );
+  const reqBttn = (
+    <button className="tabBttn" onClick={handleRequest}>
+      Request
+    </button>
+  );
+  const xBttn = (
+    <button className="xBttn" onClick={setDisplay}>
+      X
+    </button>
+  );
   const collabCards = collaborators.map((e) => (
-    <p className="ModalCard colCard">{e.username + " " + e.permissions}</p>
+    <ModalCard conInfo={e} owner={owner} request={requestView} />
   ));
   const requestCards = requesters.map((e) => (
-    <p claddName="ModalCard reqCard">{e.username + " " + e.permissions}</p>
+    <ModalCard conInfo={e} owner={owner} />
   ));
 
   return (
@@ -46,7 +64,7 @@ const ConnModal = ({ project_id, setDisplay }) => {
         {modalTitle}
         {xBttn}
         {colBttn}
-        {reqBttn}
+        {isOwner && reqBttn}
         {requestView ? requestCards : collabCards}
       </div>
     </div>
