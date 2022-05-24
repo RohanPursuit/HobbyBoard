@@ -174,7 +174,7 @@ const ProjectDetails = () => {
           </select>
         </>
       )}
-      <button onClick={handle}>click</button>
+      <button onClick={handleAcceptRequest}>click</button>
     </div>
   );
 };
