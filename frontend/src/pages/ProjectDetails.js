@@ -85,6 +85,13 @@ const ProjectDetails = () => {
     }
   };
 
+  const handleRemoveCollaborator = ({ username }) => {
+    const project_id = project.project_id;
+    if (window.confirm("Are you sure you want to kick contributor")) {
+      axios.delete(`${API}connections/BZ`, { data: { project_id } });
+    }
+  };
+
   return (
     <div className="ProjectDetails">
       <img
@@ -154,6 +161,7 @@ const ProjectDetails = () => {
           />
         </>
       )}
+      <button onClick={handleRemoveCollaborator}>click</button>
     </div>
   );
 };
