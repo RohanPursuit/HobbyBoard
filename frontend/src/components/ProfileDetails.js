@@ -17,8 +17,11 @@ const ProfileDetails = ({ username }) => {
     axios
       .get(`${API}connections/associated/${username}`)
       .then((response) => {
-        console.log(response.body);
-        setAssociations(response.data);
+        setAssociations(
+          response.data.filter(
+            (association) => association.permissions !== "request"
+          )
+        );
       })
       .catch((error) => console.warn(error));
   }, [API, username]);
@@ -37,8 +40,8 @@ const ProfileDetails = ({ username }) => {
         <></>
       )}
       <div>
-        {associations.map((association) => {
-          return <AssociatedProject key={username} details={association} />;
+        {associations.map((association, i) => {
+          return <AssociatedProject key={i} details={association} />;
         })}
       </div>
     </div>
