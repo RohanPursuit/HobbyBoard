@@ -88,7 +88,6 @@ const ProjectDetails = () => {
     }
   };
 
-  console.log(requests.find(connection => connection.username === cred) )
   return (
     <div className="ProjectDetails">
       <img
