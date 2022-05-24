@@ -12,6 +12,7 @@ const {
 //Send join request
 connections.post("/", async (request, response) => {
   console.log("Post /connections");
+  console.log(request.body);
   const pending = await joinRequest(request.body);
   response.status(200).json(pending);
 });
