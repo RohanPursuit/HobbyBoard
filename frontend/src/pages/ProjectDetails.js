@@ -95,14 +95,15 @@ const ProjectDetails = () => {
     const username = "BZ";
     const project_id = project.project_id;
     if (window.confirm("Confirm acceptance.")) {
-      axios.post(`${API}connections`, {
-        data: { username, project_id },
+      axios.put(`${API}connections`, {
+        username,
+        project_id,
       });
     }
   };
 
   const handleDenyRequest = () => {
-    const username = "RS";
+    const username = "BZ";
     const project_id = project.project_id;
     if (window.confirm("Are you sure you want to deny acceptance?")) {
       axios.delete(`${API}connections`, { data: { username, project_id } });
@@ -174,7 +175,6 @@ const ProjectDetails = () => {
           </select>
         </>
       )}
-      <button onClick={handleAcceptRequest}>click</button>
     </div>
   );
 };
