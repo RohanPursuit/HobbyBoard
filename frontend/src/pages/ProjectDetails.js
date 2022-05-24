@@ -115,6 +115,10 @@ const ProjectDetails = () => {
     }
   };
 
+  const pageReload = () => {
+    setUpdateConnections(!updateConnections);
+  };
+
   return (
     <div className="ProjectDetails">
       <img
@@ -175,6 +179,7 @@ const ProjectDetails = () => {
             setDisplay={handleShowModal}
             project_id={project.project_id}
             owner={project.creator}
+            pageReload={pageReload}
           />
         </>
       )}

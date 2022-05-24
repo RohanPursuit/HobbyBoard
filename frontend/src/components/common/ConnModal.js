@@ -5,9 +5,10 @@ import ModalCard from "./ModalCard.js";
 import axios from "axios";
 
 //input project_id(number), setDisplay(state function)}
-const ConnModal = ({ project_id, setDisplay, owner }) => {
+const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   const [conns, setConns] = useState([]);
   const [requestView, setView] = useState(false);
+  const [reload, setReload] = useState(false);
   const user = document.cookie.split("=")[1];
   const isOwner = user === owner;
   const collaborators = hoistCollabCard(
@@ -22,7 +23,11 @@ const ConnModal = ({ project_id, setDisplay, owner }) => {
     axios
       .get(`${URL}connections/${project_id}`)
       .then((res) => setConns(res.data));
-  }, [URL, project_id]);
+  }, [URL, project_id, reload]);
+
+  const modalReload = () => {
+    setReload(!reload);
+  };
 
   const handleCollab = () => {
     setView(false);
@@ -51,10 +56,16 @@ const ConnModal = ({ project_id, setDisplay, owner }) => {
     </button>
   );
   const collabCards = collaborators.map((e) => (
-    <ModalCard conInfo={e} owner={owner} request={requestView} />
+    <ModalCard
+      conInfo={e}
+      owner={owner}
+      modalReload={modalReload}
+      pageReload={pageReload}
+      closeModal={setDisplay}
+    />
   ));
   const requestCards = requesters.map((e) => (
-    <ModalCard conInfo={e} owner={owner} />
+    <ModalCard conInfo={e} owner={owner} modalReload={modalReload} />
   ));
 
   return (
