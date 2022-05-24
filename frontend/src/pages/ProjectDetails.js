@@ -6,11 +6,13 @@ import ConnModal from "../components/common/ConnModal.js";
 import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
+  const cred = document.cookie.split("=")[1]
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [collaborators, setCollaborators] = useState([]);
   const [requests, setRequest] = useState([]);
+  const [updateConnections, setUpdateConnections] = useState(false)
   const params = useParams();
   const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
@@ -28,7 +30,7 @@ const ProjectDetails = () => {
       //filter response ??
       setRequest(response.data.filter((el) => el.permissions === "request"));
     });
-  }, [API, params.pid]);
+  }, [API, params.pid , updateConnections]);
 
   // could move the handleArchive and button to its own component
   // if we plan on having it in more than one place
@@ -48,19 +50,20 @@ const ProjectDetails = () => {
   const handleViewProfile = () => {
     nav("/profile/" + project.creator);
   };
-
+  
   const handleJoin = () => {
     axios
-      .post(`${API}connections`, {
-        username: document.cookie.split("=")[1],
-        project_id: project.project_id,
-      })
-      .then(() => {
-        alert("Request Pending");
-      })
-      .catch(() => {
-        alert("Request failed");
-      });
+    .post(`${API}connections`, {
+      username: document.cookie.split("=")[1],
+      project_id: project.project_id,
+    })
+    .then(() => {
+      alert("Request Pending");
+      setUpdateConnections(!updateConnections)
+    })
+    .catch(() => {
+      alert("Request failed");
+    });
   };
 
   const handleCancelRequest = () => {
@@ -68,13 +71,14 @@ const ProjectDetails = () => {
     const project_id = project.project_id;
     console.log(username, project_id);
     axios
-      .delete(`${API}connections`, { data: { username, project_id } })
-      .then(() => {
-        alert("Request Canceled");
-      })
-      .catch(() => {
-        alert("Error");
-      });
+    .delete(`${API}connections`, { data: { username, project_id } })
+    .then(() => {
+      alert("Request Canceled");
+      setUpdateConnections(!updateConnections)
+    })
+    .catch(() => {
+      alert("Error");
+    });
   };
 
   const handleShowModal = () => {
@@ -87,8 +91,27 @@ const ProjectDetails = () => {
 
   const handleRemoveCollaborator = ({ username }) => {
     const project_id = project.project_id;
-    if (window.confirm("Are you sure you want to kick contributor")) {
+    if (window.confirm("Are you sure you want to kick contributor?")) {
       axios.delete(`${API}connections/BZ`, { data: { project_id } });
+    }
+  };
+
+  const handleAcceptRequest = () => {
+    const username = "BZ";
+    const project_id = project.project_id;
+    if (window.confirm("Confirm acceptance.")) {
+      axios.put(`${API}connections`, {
+        username,
+        project_id,
+      });
+    }
+  };
+
+  const handleDenyRequest = () => {
+    const username = "BZ";
+    const project_id = project.project_id;
+    if (window.confirm("Are you sure you want to deny acceptance?")) {
+      axios.delete(`${API}connections`, { data: { username, project_id } });
     }
   };
 
@@ -121,23 +144,26 @@ const ProjectDetails = () => {
                 return <a href={link}>{link}</a>
             })} */}
       {/* Contributors */}
-      {document.cookie.split("=")[1] !== project.creator ? (
-        <button onClick={handleJoin}>Join</button>
-      ) : (
-        ""
-      )}
-      {document.cookie.split("=")[1] !== project.creator ? (
-        <button onClick={handleCancelRequest}>Cancel Request</button>
-      ) : (
-        ""
-      )}
+      {
+        cred === project.creator 
+        || 
+        collaborators.find(connection => connection.username === cred) 
+        ? 
+        (
+          <button onClick={handleShowModal}>Collaborators</button>
+        ) 
+        :
+        requests.find(connection => connection.username === cred) ? 
+          (
+            <button onClick={handleCancelRequest}>Cancel Request</button>
+          ) 
+          : 
+          (
+            <button onClick={handleJoin}>Join</button>
+          )
+      }
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}
-      {document.cookie.split("=")[1] === project.creator ? (
-        <button onClick={handleShowModal}>Collaborators</button>
-      ) : (
-        ""
-      )}
       {showModal && (
         <>
           <select>
@@ -161,7 +187,6 @@ const ProjectDetails = () => {
           />
         </>
       )}
-      <button onClick={handleRemoveCollaborator}>click</button>
     </div>
   );
 };
