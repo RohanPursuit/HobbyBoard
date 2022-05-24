@@ -92,7 +92,7 @@ const ProjectDetails = () => {
   };
 
   const handleAcceptRequest = () => {
-    const username = "RS";
+    const username = "BZ";
     const project_id = project.project_id;
     if (window.confirm("Confirm acceptance.")) {
       axios.post(`${API}connections`, {

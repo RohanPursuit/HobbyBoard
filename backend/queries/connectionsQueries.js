@@ -59,9 +59,14 @@ const getAllProjectConnections = async ({ project_id }) => {
   }
 };
 
-module.exports = {
-  joinRequest,
-  deleteRequest,
-  getAllProjectConnections,
-  removeCollaborator,
-};
+
+const updateToCollaborator = async ({username, project_id}) => {
+    try{
+        const newConnection = await db.one("UPDATE connections SET permissions=$4 WHERE username=$1 AND project_id=$2 AND permissions=$3 RETURNING *", [username, project_id, "request", "collaborator"])
+        return newConnection
+    } catch(err){
+        return err
+    }
+}
+
+module.exports = { joinRequest, deleteRequest, getAllProjectConnections, removeCollaborator, updateToCollaborator};
