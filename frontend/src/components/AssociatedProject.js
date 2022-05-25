@@ -36,9 +36,13 @@ const AssociatedProject = (props) => {
     <div>
       <Link to={`/projects/${props.details.project_id}`}>
         <div>
-          <img src={props.project_image || ""} alt="" onError={defaultImage} />
-          <h3>{props.details.project_id}</h3>
-          <p>{props.details.details}</p>
+          <img
+            src={project.project_image || ""}
+            alt=""
+            onError={defaultImage}
+          />
+          <h3>{project.name}</h3>
+          <p>{project.details}</p>
         </div>
       </Link>
 
