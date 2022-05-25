@@ -62,7 +62,7 @@ const getAllProjectConnections = async ({ project_id }) => {
 const getAllUserConnections = async ({ username }) => {
   try {
     const allProCons = await db.any(
-      "SELECT * FROM connections WHERE username=$1",
+      "SELECT username,name,projects.project_id,permissions,project_image FROM connections JOIN projects ON connections.project_id=projects.project_id WHERE username=$1",
       username
     );
     return allProCons;
