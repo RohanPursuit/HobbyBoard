@@ -50,7 +50,7 @@ const removeCollaborator = async (username, project_id) => {
 const getAllProjectConnections = async ({ project_id }) => {
   try {
     const allProCons = await db.any(
-      "SELECT * FROM connections WHERE project_id=$1",
+      "SELECT connections.username,permissions,users.profile_image FROM connections JOIN users ON connections.username=users.username WHERE connections.project_id=$1",
       project_id
     );
     return allProCons;
