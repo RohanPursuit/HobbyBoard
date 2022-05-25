@@ -15,7 +15,7 @@ const ModalCard = ({
   const user = document.cookie.split("=")[1];
   useEffect(() => {
     axios.get(`${URL}users/${username}`).then((res) => setInfo(res.data));
-  }, [URL]);
+  }, [URL, username]);
 
   const handleRemoveCollaborator = () => {
     if (

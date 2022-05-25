@@ -26,7 +26,7 @@ const AssociatedProject = (props) => {
     axios
       .get(`${API}projects/${props.details.project_id}`)
       .then((res) => setProject(res.data));
-  }, [API, updateConnections]);
+  }, [API, updateConnections, props.details.project_id]);
 
   const pageReload = () => {
     setUpdateConnections(!updateConnections);
