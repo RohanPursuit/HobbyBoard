@@ -1,5 +1,6 @@
 import "./ModalCard.css";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import defaultImage from "../../helpers/helperFunction";
 const ModalCard = ({
@@ -68,7 +69,9 @@ const ModalCard = ({
         className="pfp"
       ></img>
       <div className="cardName">
-        <p>{username}</p>
+        <p>
+          <Link to={`/profile/${username}`}>{username}</Link>
+        </p>
         {permissions === "request" && (
           <>
             <button onClick={handleAcceptRequest}>Accept</button>{" "}
