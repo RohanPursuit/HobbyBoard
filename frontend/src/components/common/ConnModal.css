@@ -1,0 +1,57 @@
+.ConnModal .darkScreen {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 2;
+  margin: 0px;
+  padding: 0px;
+  top: 0;
+  left: 0;
+  opacity: 40%;
+}
+
+.ConnModal .modalContent {
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 75vh;
+  margin-top: -37.5vh;
+  width: 85vw;
+  margin-left: -42.5vw;
+  background-color: bisque;
+  z-index: 3;
+  padding: 30px;
+  overflow-y: scroll;
+  grid-template-rows: repeat(10, 1fr);
+}
+
+.ConnModal .norm {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.ConnModal .tabBttn {
+  height: 30px;
+}
+
+.ConnModal .xBttn {
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  margin-left: auto;
+  border-radius: 100%;
+  background-color: red;
+  color: white;
+}
+
+.ConnModal .modTitle {
+  height: 30px;
+  margin: 0px;
+  font-size: larger;
+  font-weight: bolder;
+}

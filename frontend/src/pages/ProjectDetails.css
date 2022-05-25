@@ -2,6 +2,7 @@
   box-sizing: border-box;
   height: calc(100% - 140px);
   width: 100%;
+  overflow-x: hidden;
   overflow-y: scroll;
   padding: 0px 10px;
   -ms-overflow-style: none;
@@ -32,6 +33,7 @@
 
 @media screen and (min-width: 719px) {
   .ProjectDetails {
+    box-sizing: border-box;
     height: 100%;
     padding-top: 70px;
   }
