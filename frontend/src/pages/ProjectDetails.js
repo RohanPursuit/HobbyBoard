@@ -5,8 +5,13 @@ import defaultImage from "../helpers/helperFunction";
 import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
+  const cred = document.cookie.split("=")[1]
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [collaborators, setCollaborators] = useState([]);
+  const [requests, setRequest] = useState([]);
+  const [updateConnections, setUpdateConnections] = useState(false)
   const params = useParams();
   const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
@@ -15,7 +20,16 @@ const ProjectDetails = () => {
       .get(`${API}projects/${params.pid}`)
       .then((response) => setProject(response.data))
       .catch((error) => console.warn(error));
-  }, [API, params.pid]);
+    axios.get(`${API}connections/${params.pid}`).then((response) => {
+      console.log(response.data);
+      //filter response ??
+      setCollaborators(
+        response.data.filter((el) => el.permissions === "collaborator")
+      );
+      //filter response ??
+      setRequest(response.data.filter((el) => el.permissions === "request"));
+    });
+  }, [API, params.pid , updateConnections]);
 
   // could move the handleArchive and button to its own component
   // if we plan on having it in more than one place
@@ -34,6 +48,70 @@ const ProjectDetails = () => {
 
   const handleViewProfile = () => {
     nav("/profile/" + project.creator);
+  };
+  
+  const handleJoin = () => {
+    axios
+    .post(`${API}connections`, {
+      username: document.cookie.split("=")[1],
+      project_id: project.project_id,
+    })
+    .then(() => {
+      alert("Request Pending");
+      setUpdateConnections(!updateConnections)
+    })
+    .catch(() => {
+      alert("Request failed");
+    });
+  };
+
+  const handleCancelRequest = () => {
+    const username = document.cookie.split("=")[1];
+    const project_id = project.project_id;
+    console.log(username, project_id);
+    axios
+    .delete(`${API}connections`, { data: { username, project_id } })
+    .then(() => {
+      alert("Request Canceled");
+      setUpdateConnections(!updateConnections)
+    })
+    .catch(() => {
+      alert("Error");
+    });
+  };
+
+  const handleShowModal = () => {
+    if (showModal) {
+      setShowModal(false);
+    } else {
+      setShowModal(true);
+    }
+  };
+
+  const handleRemoveCollaborator = ({ username }) => {
+    const project_id = project.project_id;
+    if (window.confirm("Are you sure you want to kick contributor?")) {
+      axios.delete(`${API}connections/BZ`, { data: { project_id } });
+    }
+  };
+
+  const handleAcceptRequest = () => {
+    const username = "BZ";
+    const project_id = project.project_id;
+    if (window.confirm("Confirm acceptance.")) {
+      axios.put(`${API}connections`, {
+        username,
+        project_id,
+      });
+    }
+  };
+
+  const handleDenyRequest = () => {
+    const username = "BZ";
+    const project_id = project.project_id;
+    if (window.confirm("Are you sure you want to deny acceptance?")) {
+      axios.delete(`${API}connections`, { data: { username, project_id } });
+    }
   };
 
   return (
@@ -65,6 +143,45 @@ const ProjectDetails = () => {
                 return <a href={link}>{link}</a>
             })} */}
       {/* Contributors */}
+      {
+        cred === project.creator 
+        || 
+        collaborators.find(connection => connection.username === cred) 
+        ? 
+        (
+          <button onClick={handleShowModal}>Collaborators</button>
+        ) 
+        :
+        requests.find(connection => connection.username === cred) ? 
+          (
+            <button onClick={handleCancelRequest}>Cancel Request</button>
+          ) 
+          : 
+          (
+            <button onClick={handleJoin}>Join</button>
+          )
+      }
+      {/* If visitor is the creator or collaborator on the current project
+      a collaborators button should be rendered */}
+      {showModal && (
+        <>
+          <select>
+            {collaborators.map((collab, i) => (
+              <option key={i} value={collab.username}>
+                {collab.username}
+              </option>
+            ))}
+          </select>
+
+          <select>
+            {requests.map((req, i) => (
+              <option key={i} value={req.username}>
+                {req.username}
+              </option>
+            ))}
+          </select>
+        </>
+      )}
     </div>
   );
 };
