@@ -26,6 +26,8 @@ const ProfileDetails = ({ username }) => {
       .catch((error) => console.warn(error));
   }, [API, username]);
 
+  console.log(associations);
+
   return (
     <div className="ProfileDetails">
       <img src={user.profile_image || ""} alt="" onError={defaultImage} />
