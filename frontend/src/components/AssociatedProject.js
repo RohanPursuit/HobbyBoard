@@ -5,10 +5,10 @@ import axios from "axios";
 import ConnModal from "../components/common/ConnModal.js";
 
 const AssociatedProject = (props) => {
-  console.log(props);
   const API = process.env.REACT_APP_API_URL;
   const [showModal, setShowModal] = useState(false);
   const [updateConnections, setUpdateConnections] = useState(false);
+
   const handleRemoveCollaborator = () => {
     const { username, project_id } = props.details;
     if (window.confirm("Are you sure you want to kick contributor")) {

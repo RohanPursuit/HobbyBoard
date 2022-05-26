@@ -55,17 +55,23 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
       X
     </button>
   );
-  const collabCards = collaborators.map((e) => (
+  const collabCards = collaborators.map((e, i) => (
     <ModalCard
       conInfo={e}
       owner={owner}
       modalReload={modalReload}
       pageReload={pageReload}
       closeModal={setDisplay}
+      key={"c" + i}
     />
   ));
-  const requestCards = requesters.map((e) => (
-    <ModalCard conInfo={e} owner={owner} modalReload={modalReload} />
+  const requestCards = requesters.map((e, i) => (
+    <ModalCard
+      conInfo={e}
+      owner={owner}
+      modalReload={modalReload}
+      key={"r" + i}
+    />
   ));
 
   return (
