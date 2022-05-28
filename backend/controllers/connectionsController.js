@@ -9,18 +9,21 @@ const {
   getAllUserConnections,
 } = require("../queries/connectionsQueries");
 
+
 //Send join request
-connections.post("/", async (request, response) => {
+connections.post("/", async (request, response, next) => {
   console.log("Post /connections");
   console.log(request.body);
   const pending = await joinRequest(request.body);
   response.status(200).json(pending);
+  next()
 });
 
-connections.delete("/", async (request, response) => {
+connections.delete("/", async (request, response, next) => {
   console.log("delete /connections");
   const removeConnection = await deleteRequest(request.body);
   response.status(200).json(removeConnection);
+  next()
 });
 
 connections.delete("/:username", async (request, response) => {
@@ -44,10 +47,11 @@ connections.get("/associated/:username", async (request, response) => {
   response.status(200).json(userConnections);
 });
 
-connections.put("/", async (request, response) => {
+connections.put("/", async (request, response, next) => {
   console.log("put /connections");
   const newConnection = await updateToCollaborator(request.body);
   response.status(200).json(newConnection);
+  next()
 });
 
 module.exports = connections;
