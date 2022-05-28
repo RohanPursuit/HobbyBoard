@@ -41,3 +41,13 @@ CREATE TABLE connections (
     FOREIGN KEY(project_id) REFERENCES projects(project_id),
     CONSTRAINT unique_connection UNIQUE (username, project_id, permissions)
 );
+
+CREATE TABLE posts (
+    post_id SERIAL PRIMARY KEY,
+    project_id INTEGER,
+    members_only BOOLEAN DEFAULT true,
+    date timestamp NOT NULL,
+    title TEXT NOT NULL,
+    contents TEXT NOT NULL,
+    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+);
