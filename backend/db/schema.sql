@@ -51,3 +51,12 @@ CREATE TABLE posts (
     contents TEXT NOT NULL,
     FOREIGN KEY(project_id) REFERENCES projects(project_id)
 );
+
+CREATE TABLE comments (
+    post_id INTEGER,
+    username TEXT,
+    comment TEXT NOT NULL,
+    date timestamp NOT NULL,
+    FOREIGN KEY(post_id) REFERENCES posts(post_id),
+    FOREIGN KEY(username) REFERENCES users(username)
+);
