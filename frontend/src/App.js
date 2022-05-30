@@ -13,10 +13,17 @@ import UserSignIn from "./pages/UserSignIn";
 import Profile from "./pages/Profile";
 import EditProfilePage from "./pages/EditProfilePage";
 import EditProjectPage from "./pages/EditProjectPage";
+import {io} from 'socket.io-client'
+const URL = process.env.REACT_APP_API_URL;
+export const socket = io(URL, {
+  query: {
+    username: document.cookie.split("=")[1]
+  }
+})
+
 
 function App() {
   const [res, setRes] = useState("Loading...");
-  const URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const testQuery = async () => {
@@ -24,8 +31,10 @@ function App() {
       setRes(response.data);
     };
 
+
     testQuery();
   }, [URL]);
+
   return (
     <div className="App">
       <main>
