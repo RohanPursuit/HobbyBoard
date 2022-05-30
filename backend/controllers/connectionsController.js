@@ -8,6 +8,7 @@ const {
   updateToCollaborator,
   getAllUserConnections,
   newFollower,
+  getAllFollowers,
 } = require("../queries/connectionsQueries");
 
 //Send join request
