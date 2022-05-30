@@ -7,6 +7,7 @@ const {
   getAllProjectConnections,
   updateToCollaborator,
   getAllUserConnections,
+  newFollower,
 } = require("../queries/connectionsQueries");
 
 //Send join request
@@ -20,7 +21,7 @@ connections.post("/", async (request, response) => {
 //New follower
 connections.post("/followers", async (request, response) => {
   console.log("Post /connections/followers")
-  const following = await followRequest(request.body)
+  const following = await newFollower(request.body)
   response.status(200).json(following)
 })
 
