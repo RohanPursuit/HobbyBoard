@@ -53,6 +53,7 @@ CREATE TABLE posts (
 );
 
 CREATE TABLE comments (
+    comment_id SERIAL PRIMARY KEY,
     post_id INTEGER,
     username TEXT,
     comment TEXT NOT NULL,
