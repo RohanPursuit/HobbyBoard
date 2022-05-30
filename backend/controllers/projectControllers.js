@@ -10,6 +10,8 @@ const {
   updateArchiveStatus,
 } = require("../queries/projectsQueries");
 
+const { getAllPosts } = require("../queries/postsQuery");
+
 //get all project
 projects.get("/", async (_, res) => {
   const allProjects = await getAllProjects();
@@ -62,6 +64,14 @@ projects.put("/:id/archive", async (request, response) => {
   } else {
     response.status(400).json("error: invalid ID");
   }
+});
+
+//get all comments on post
+projects.get("/:project_id/posts", async (request, response) => {
+  const allPosts = await getAllPosts(request.params);
+  Array.isArray(allPosts)
+    ? response.status(200).json(allPosts)
+    : response.status(400).json({ error: "error" });
 });
 
 module.exports = projects;
