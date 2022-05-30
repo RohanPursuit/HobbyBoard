@@ -16,5 +16,18 @@ const getAllPosts = async ({ project_id }) => {
   }
 };
 
+//getOnePost query
+const getOnePost = async ({ project_id, post_id }) => {
+  try {
+    const onePost = await db.one(
+      "SELECT * FROM posts WHERE project_id=$1 AND post_id=$2",
+      [project_id, post_id]
+    );
+    return onePost;
+  } catch (error) {
+    return error;
+  }
+};
+
 //export queries
 module.exports = { getAllPosts };
