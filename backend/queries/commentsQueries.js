@@ -15,7 +15,7 @@ const getAllComments = async ({ post_id }) => {
 };
 
 // create new comment
-const createComment = async ({ post_id, username, comment, date }) => {
+const createComment = async (post_id, username, comment, date) => {
   try {
     const newComment = await db.one(
       "INSERT INTO comments (post_id, username, comment, date) VALUES ($1, $2, $3, $4) RETURNING *",
