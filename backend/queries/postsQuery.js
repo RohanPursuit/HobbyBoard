@@ -30,11 +30,11 @@ const getOnePost = async ({ project_id, post_id }) => {
 };
 
 //createNewPost
-const createPost = async (project_id, members_only, title, content, date) => {
+const createPost = async (project_id, members_only, title, contents, date) => {
   try {
     const newPost = await db.one(
-      "INSERT INTO posts (project_id, members_only, title, content, date) VALUES ($1, $2, $3, $4, $5)",
-      [project_id, members_only, title, content, date]
+      "INSERT INTO posts (project_id, members_only, title, contents, date) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+      [project_id, members_only, title, contents, date]
     );
     return newPost;
   } catch (error) {
@@ -43,4 +43,4 @@ const createPost = async (project_id, members_only, title, content, date) => {
 };
 
 //export queries
-module.exports = { getAllPosts, getOnePost };
+module.exports = { getAllPosts, getOnePost, createPost };

@@ -10,7 +10,11 @@ const {
   updateArchiveStatus,
 } = require("../queries/projectsQueries");
 
-const { getAllPosts, getOnePost } = require("../queries/postsQuery");
+const {
+  getAllPosts,
+  getOnePost,
+  createPost,
+} = require("../queries/postsQuery");
 
 //get all project
 projects.get("/", async (_, res) => {
@@ -79,6 +83,28 @@ projects.get("/:project_id/posts/:post_id", async (request, response) => {
   const onePost = await getOnePost(request.params);
   onePost.project_id
     ? response.status(200).json(onePost)
+    : response.status(400).json({ error: "error" });
+});
+
+//create new post
+projects.post("/:project_id/posts", async (request, response) => {
+  //get project id from params
+  const { project_id } = request.params;
+  //get members_only, title, and content from body
+  const { members_only, title, contents } = request.body;
+  //get current date
+  const date = new Date(Date.now()).toISOString();
+  //use data in query to make new post
+  const newPost = await createPost(
+    project_id,
+    members_only,
+    title,
+    contents,
+    date
+  );
+  //if successful, return respond with the post, if not, return error
+  newPost.project_id
+    ? response.status(200).json(newPost)
     : response.status(400).json({ error: "error" });
 });
 
