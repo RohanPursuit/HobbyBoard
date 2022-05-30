@@ -10,7 +10,7 @@ const {
   updateArchiveStatus,
 } = require("../queries/projectsQueries");
 
-const { getAllPosts } = require("../queries/postsQuery");
+const { getAllPosts, getOnePost } = require("../queries/postsQuery");
 
 //get all project
 projects.get("/", async (_, res) => {
@@ -66,11 +66,19 @@ projects.put("/:id/archive", async (request, response) => {
   }
 });
 
-//get all comments on post
+//get all post from project
 projects.get("/:project_id/posts", async (request, response) => {
   const allPosts = await getAllPosts(request.params);
   Array.isArray(allPosts)
     ? response.status(200).json(allPosts)
+    : response.status(400).json({ error: "error" });
+});
+
+//get one post from project
+projects.get("/:project_id/posts/:post_id", async (request, response) => {
+  const onePost = await getOnePost(request.params);
+  onePost.project_id
+    ? response.status(200).json(onePost)
     : response.status(400).json({ error: "error" });
 });
 

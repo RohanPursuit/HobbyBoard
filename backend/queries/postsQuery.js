@@ -30,4 +30,4 @@ const getOnePost = async ({ project_id, post_id }) => {
 };
 
 //export queries
-module.exports = { getAllPosts };
+module.exports = { getAllPosts, getOnePost };
