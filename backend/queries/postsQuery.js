@@ -42,5 +42,18 @@ const createPost = async (project_id, members_only, title, contents, date) => {
   }
 };
 
+//deletePost
+const deletePost = async ({ project_id, post_id }) => {
+  try {
+    const newPost = await db.one(
+      "DELETE FROM posts WHERE project_id=$1 AND post_id=$2 RETURNING *",
+      [project_id, post_id]
+    );
+    return newPost;
+  } catch (error) {
+    return error;
+  }
+};
+
 //export queries
 module.exports = { getAllPosts, getOnePost, createPost };
