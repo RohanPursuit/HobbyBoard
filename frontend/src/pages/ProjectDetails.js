@@ -159,7 +159,7 @@ const ProjectDetails = () => {
       )}
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}
-      <PostSection />
+      <PostSection project_id={project.project_id} />
       {showModal && (
         <ConnModal
           setDisplay={handleShowModal}
