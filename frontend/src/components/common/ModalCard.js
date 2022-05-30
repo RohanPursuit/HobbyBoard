@@ -1,21 +1,16 @@
 import "./ModalCard.css";
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import defaultImage from "../../helpers/helperFunction";
 const ModalCard = ({
-  conInfo: { username, project_id, permissions },
+  conInfo: { username, project_id, permissions, profile_image },
   owner,
   modalReload,
   pageReload,
   closeModal,
 }) => {
-  const [uInfo, setInfo] = useState({});
   const URL = process.env.REACT_APP_API_URL;
   const user = document.cookie.split("=")[1];
-  useEffect(() => {
-    axios.get(`${URL}users/${username}`).then((res) => setInfo(res.data));
-  }, [URL, username]);
 
   const handleRemoveCollaborator = () => {
     if (
@@ -63,7 +58,7 @@ const ModalCard = ({
   return (
     <div className={cardClass}>
       <img
-        src={uInfo.profile_image || ""}
+        src={profile_image || ""}
         alt=""
         onError={defaultImage}
         className="pfp"
