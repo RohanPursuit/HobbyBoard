@@ -27,4 +27,17 @@ const createComment = async (post_id, username, comment, date) => {
   }
 };
 
-module.exports = { getAllComments, createComment };
+//delete comment
+const deleteComment = async ({ post_id, comment_id }) => {
+  try {
+    const deletedComment = await db.one(
+      "DELETE FROM comments WHERE post_id=$1 AND comment_id=$2 RETURNING *",
+      [post_id, comment_id]
+    );
+    return deletedComment;
+  } catch (error) {
+    return error;
+  }
+};
+
+module.exports = { getAllComments, createComment, deleteComment };
