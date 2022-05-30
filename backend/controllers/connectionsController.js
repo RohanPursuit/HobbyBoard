@@ -17,6 +17,13 @@ connections.post("/", async (request, response) => {
   response.status(200).json(pending);
 });
 
+//New follower
+connections.post("/followers", async (request, response) => {
+  console.log("Post /connections/followers")
+  const following = await followRequest(request.body)
+  response.status(200).json(following)
+})
+
 connections.delete("/", async (request, response) => {
   console.log("delete /connections");
   const removeConnection = await deleteRequest(request.body);
