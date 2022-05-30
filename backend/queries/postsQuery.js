@@ -29,5 +29,18 @@ const getOnePost = async ({ project_id, post_id }) => {
   }
 };
 
+//createNewPost
+const createPost = async (project_id, members_only, title, content, date) => {
+  try {
+    const newPost = await db.one(
+      "INSERT INTO posts (project_id, members_only, title, content, date) VALUES ($1, $2, $3, $4, $5)",
+      [project_id, members_only, title, content, date]
+    );
+    return newPost;
+  } catch (error) {
+    return error;
+  }
+};
+
 //export queries
 module.exports = { getAllPosts, getOnePost };
