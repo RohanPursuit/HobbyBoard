@@ -25,6 +25,13 @@ connections.post("/followers", async (request, response) => {
   response.status(200).json(following)
 })
 
+//Get all followers of single project
+connections.get("/followers/:pid", async (request, response) => {
+  console.log("Post /connections/followers/:pid")
+  const followers = await getAllFollowers(request.params)
+  response.status(200).json(followers)
+})
+
 connections.delete("/", async (request, response) => {
   console.log("delete /connections");
   const removeConnection = await deleteRequest(request.body);
