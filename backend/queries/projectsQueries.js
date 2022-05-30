@@ -43,6 +43,11 @@ const createProject = async (project) => {
       "INSERT INTO projects (name, details, project_image, archived, creator) VALUES ($1, $2, $3, $4, $5) RETURNING *",
       [name, details, project_image, archived, creator]
     );
+    //add owner to connections table
+    const connection = await db.one(
+      "INSERT INTO connections (username, project_id, permissions) VALUES ($1, $2, $3) RETURNING *",
+      [newProject.creator, newProject.project_id, "owner"]
+    );
     //return project
     return newProject;
   } catch (err) {

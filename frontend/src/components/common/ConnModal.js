@@ -75,10 +75,16 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
       modalReload={modalReload}
       pageReload={pageReload}
       closeModal={setDisplay}
+      key={"c" + i}
     />
   ));
   const requestCards = requesters.map((e, i) => (
-    <ModalCard key={i} conInfo={e} owner={owner} modalReload={modalReload} />
+    <ModalCard
+      conInfo={e}
+      owner={owner}
+      modalReload={modalReload}
+      key={"r" + i}
+    />
   ));
 
   return (

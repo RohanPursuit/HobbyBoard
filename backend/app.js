@@ -4,10 +4,13 @@ const express = require("express");
 const http = require('http')
 
 //IMPORT QUERIES
-const { testQuery } = require("./queries/testQuery");
-const projectsControllers = require("./controllers/projectControllers");
-const userController = require("./controllers/userController");
-const connectionsController = require("./controllers/connectionsController")
+const { testQuery } = require('./queries/testQuery');
+
+//IMPORT CONTROLLERS
+const projectsControllers = require('./controllers/projectControllers');
+const userController = require('./controllers/userController');
+const connectionsController = require('./controllers/connectionsController');
+const postControllers = require('./controllers/postController');
 
 // CONFIGURATION
 const app = express();
@@ -41,7 +44,7 @@ function notify(req,res){
 }
 
 //async, so we can use query correctly
-app.get("/", async (req, res) => {
+app.get('/', async (req, res) => {
   //use query function to get data from db
   const exampleData = await testQuery();
   res.send(exampleData.content);
