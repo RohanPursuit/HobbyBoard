@@ -34,9 +34,13 @@ app.use("/connections", notify)
 
 function notify(req,res){
   const {project_id} = req.body
-  if(req.method === "POST" || req.method === "DELETE"){
+  if(req.method === "POST"){
     io.emit("request" + project_id, "New Request") //rename
-    console.log("New/DELETE Request")
+    console.log("Post Request")
+  }
+  if(req.method === "DELETE"){
+    io.emit("request" + project_id, "Request Canceled")
+    console.log("Delete Request")
   }
 }
 
