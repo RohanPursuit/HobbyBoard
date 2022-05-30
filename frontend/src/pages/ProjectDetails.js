@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import defaultImage from "../helpers/helperFunction";
 import ConnModal from "../components/common/ConnModal.js";
+import PostSection from "../components/PostSection";
 import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
@@ -158,6 +159,7 @@ const ProjectDetails = () => {
       )}
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}
+      <PostSection />
       {showModal && (
         <ConnModal
           setDisplay={handleShowModal}
