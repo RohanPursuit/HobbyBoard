@@ -7,6 +7,7 @@ const posts = express.Router();
 //import queries
 const {
   getAllComments,
+  getOneComment,
   createComment,
   deleteComment,
 } = require("../queries/commentsQueries");
@@ -14,15 +15,22 @@ const {
 //create routes
 
 // getAllcomments from post
-
 posts.get("/:post_id/comments", async (request, response) => {
   console.log(`get request to posts/${request.params.post_id}/comments`);
   const allComments = await getAllComments(request.params);
   response.status(200).json(allComments);
 });
 
-// create newComment
+//getOneComment from post
+posts.get("/:post_id/comments/:comment_id", async (request, response) => {
+  console.log(
+    `get request to /posts/${request.params.post_id}/comments/${request.params.comment_id}`
+  );
+  const oneComment = await getOneComment(request.params);
+  response.status(200).json(oneComment);
+});
 
+// create newComment
 posts.post("/:post_id/comments", async (request, response) => {
   console.log(`post request to /posts/${request.params.post_id}/comments`);
   // get post_id from params

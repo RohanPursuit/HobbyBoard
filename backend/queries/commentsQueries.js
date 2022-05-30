@@ -53,4 +53,9 @@ const deleteComment = async ({ post_id, comment_id }) => {
   }
 };
 
-module.exports = { getAllComments, createComment, deleteComment };
+module.exports = {
+  getAllComments,
+  createComment,
+  deleteComment,
+  getOneComment,
+};
