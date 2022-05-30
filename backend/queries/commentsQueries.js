@@ -14,6 +14,19 @@ const getAllComments = async ({ post_id }) => {
   }
 };
 
+//get one comment from a post
+const getOneComment = async ({ post_id, comment_id }) => {
+  try {
+    const oneComment = await db.one(
+      "SELECT * FROM comments WHERE post_id=$1 AND comment_id=$2",
+      [post_id, comment_id]
+    );
+    return oneComment;
+  } catch (error) {
+    return error;
+  }
+};
+
 // create new comment
 const createComment = async (post_id, username, comment, date) => {
   try {
