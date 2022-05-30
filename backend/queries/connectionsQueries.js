@@ -94,6 +94,15 @@ const newFollower = async ({ username, project_id }) => {
   }
 }
 
+const getAllFollowers = async ({pid}) => {
+  try{
+    const allFollowers = await db.one("SELECT * FROM connections WHERE project_id=$1 AND permissions=$2", [pid, "follower"])
+
+  } catch (err){
+    return err
+  }
+}
+
 module.exports = {
   joinRequest,
   deleteRequest,
@@ -102,4 +111,5 @@ module.exports = {
   updateToCollaborator,
   getAllUserConnections,
   newFollower,
+  getAllFollowers,
 };
