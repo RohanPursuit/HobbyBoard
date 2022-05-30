@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import defaultImage from "../helpers/helperFunction";
 import ConnModal from "../components/common/ConnModal.js";
 import "./ProjectDetails.css";
+import {socket} from "../App.js"
 
 const ProjectDetails = () => {
   const cred = document.cookie.split("=")[1];
@@ -15,6 +16,13 @@ const ProjectDetails = () => {
   const [updateConnections, setUpdateConnections] = useState(false);
   const params = useParams();
   const nav = useNavigate();
+  const [redDot, setRedDot] = useState("")
+  // const notify = useCallback(() => {
+  //   socket.off().on("request" + params.pid, () => {
+  //     console.log("Event")
+  //         setRedDot("🔴")
+  //   })
+  // })
   // console.log(`${API}projects/${params.pid}`);
   useEffect(() => {
     axios
@@ -30,6 +38,12 @@ const ProjectDetails = () => {
       //filter response ??
       setRequest(response.data.filter((el) => el.permissions === "request"));
     });
+
+    // notify()
+
+    // return () => {
+    //   socket.off()
+    // }
   }, [API, params.pid, updateConnections]);
 
   // could move the handleArchive and button to its own component
@@ -87,6 +101,7 @@ const ProjectDetails = () => {
     } else {
       setShowModal(true);
     }
+    setRedDot("")
   };
 
   // const handleRemoveCollaborator = ({ username }) => {
@@ -150,7 +165,7 @@ const ProjectDetails = () => {
       {/* Contributors */}
       {cred === project.creator ||
       collaborators.find((connection) => connection.username === cred) ? (
-        <button onClick={handleShowModal}>Collaborators</button>
+        <button onClick={handleShowModal}>Collaborators{redDot}</button>
       ) : requests.find((connection) => connection.username === cred) ? (
         <button onClick={handleCancelRequest}>Cancel Request</button>
       ) : (
