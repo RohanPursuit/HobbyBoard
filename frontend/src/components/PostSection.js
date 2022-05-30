@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import PostCard from "./PostCard";
 import "./PostSection.css";
 
 const PostSection = (props) => {
   const [posts, setPosts] = useState([]);
   const URL = process.env.REACT_APP_API_URL;
-  const { project_id } = props;
+  const { project_id, project_image } = props;
 
   useEffect(() => {
     if (project_id) {
@@ -16,9 +17,14 @@ const PostSection = (props) => {
     }
   }, [URL, project_id]);
 
+  const renderedPosts = posts.map((e, i) => (
+    <PostCard pfp={project_image} postInfo={e} key={"post" + i} />
+  ));
+
   return (
     <div className="PostSection">
       <button className="newPost">New Post</button>
+      {renderedPosts}
     </div>
   );
 };
