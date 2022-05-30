@@ -14,6 +14,7 @@ const {
   getAllPosts,
   getOnePost,
   createPost,
+  deletePost,
 } = require("../queries/postsQuery");
 
 //get all project
@@ -105,6 +106,14 @@ projects.post("/:project_id/posts", async (request, response) => {
   //if successful, return respond with the post, if not, return error
   newPost.project_id
     ? response.status(200).json(newPost)
+    : response.status(400).json({ error: "error" });
+});
+
+//delete post
+projects.delete("/:project_id/posts/:post_id", async (request, response) => {
+  const deletedPost = await deletePost(request.params);
+  deletedPost.project_id
+    ? response.status(200).json(deletedPost)
     : response.status(400).json({ error: "error" });
 });
 

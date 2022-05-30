@@ -56,4 +56,4 @@ const deletePost = async ({ project_id, post_id }) => {
 };
 
 //export queries
-module.exports = { getAllPosts, getOnePost, createPost };
+module.exports = { getAllPosts, getOnePost, createPost, deletePost };
