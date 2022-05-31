@@ -18,7 +18,7 @@ const PostSection = (props) => {
   }, [URL, project_id]);
 
   const renderedPosts = posts.map((e, i) => (
-    <PostCard pfp={project_image} postInfo={e} key={"post" + i} />
+    <PostCard project_image={project_image} postInfo={e} key={"post" + i} />
   ));
 
   return (
