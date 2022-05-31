@@ -96,9 +96,9 @@ const newFollower = async ({ username, project_id }) => {
 
 const getAllFollowers = async ({pid}) => {
   try{
-    const allFollowers = await db.one("SELECT * FROM connections WHERE project_id=$1 AND permissions=$2", [pid, "follower"])
+    const followers = await db.one("SELECT * FROM connections WHERE project_id=$1 AND permissions=$2", [pid, "follower"])
 
-    return allFollowers
+    return followers
   } catch (err){
     return err
   }
