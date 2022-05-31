@@ -63,12 +63,13 @@ posts.get("/:post_id/likes", async (request, response) => {
   response.status(200).json(likesObject.likes.length);
 });
 
-// posts.post("/:post_id/likes/:username", async (request, response) => {
-//   const { post_id, username } = request.params;
-//   console.log(`Adjusting likes for post ${post_id}`);
-//   const newLike = await postLike(post_id, username);
-//   response.status(200).json(await getLikes(post_id));
-// });
+posts.post("/:post_id/likes/:username", async (request, response) => {
+  const { post_id, username } = request.params;
+  console.log(`Adjusting likes for post ${post_id}`);
+  const newLike = await postLike(post_id, username);
+  //filler response, prob want to refresh/update like counter on the front
+  response.status(200).json("good");
+});
 
 //export router
 module.exports = posts;

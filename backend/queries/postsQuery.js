@@ -68,23 +68,24 @@ const getLikes = async (post_id) => {
 };
 
 //like/unlike
-// const postLike = async (post_id, username) => {
-//   let currentLikes = await getLikes(post_id);
-//   //check if user already in the like array
-//   if (currentLikes.likes.includes(username)) {
-//     //if so remove
-//     const removeLike = await db.one(
-//       "UPDATE posts SET likes = array_remove(likes, $1)",
-//       [username]
-//     );
-//   } else {
-//     //if not add
-//     const addLike = await db.one(
-//       "UPDATE posts SET likes = array_append(likes, $1)",
-//       [username]
-//     );
-//   }
-// };
+const postLike = async (post_id, username) => {
+  let currentLikes = await getLikes(post_id);
+  //check if user already in the like array
+  console.log(currentLikes);
+  if (currentLikes.likes.includes(username)) {
+    //if so remove
+    const removeLike = await db.one(
+      "UPDATE posts SET likes=array_remove(likes, $1) WHERE post_id=$2 RETURNING *",
+      [username, post_id]
+    );
+  } else {
+    //if not add
+    const addLike = await db.one(
+      "UPDATE posts SET likes=array_append(likes, $1) WHERE post_id=$2 RETURNING *",
+      [username, post_id]
+    );
+  }
+};
 
 //export queries
 module.exports = {
