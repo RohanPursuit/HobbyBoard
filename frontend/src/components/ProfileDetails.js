@@ -32,7 +32,7 @@ const ProfileDetails = ({ username }) => {
       <h2>{user.username}</h2>
       <p>{user.details}</p>
       {/* user resources */}
-      {document.cookie.split("=")[1] === username ? (
+      {localStorage.getItem("credentials") === username ? (
         <Link to={`/profile/editProfile`}>
           <button>Edit Profile</button>
         </Link>

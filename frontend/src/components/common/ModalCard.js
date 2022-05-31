@@ -10,7 +10,7 @@ const ModalCard = ({
   closeModal,
 }) => {
   const URL = process.env.REACT_APP_API_URL;
-  const user = document.cookie.split("=")[1];
+  const user = localStorage.getItem("credentials");
 
   const handleRemoveCollaborator = () => {
     if (
