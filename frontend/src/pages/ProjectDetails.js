@@ -159,29 +159,12 @@ const ProjectDetails = () => {
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}
       {showModal && (
-        <>
-          <select>
-            {collaborators.map((collab, i) => (
-              <option key={i} value={collab.username}>
-                {collab.username}
-              </option>
-            ))}
-          </select>
-
-          <select>
-            {requests.map((req, i) => (
-              <option key={i} value={req.username}>
-                {req.username}
-              </option>
-            ))}
-          </select>
-          <ConnModal
-            setDisplay={handleShowModal}
-            project_id={project.project_id}
-            owner={project.creator}
-            pageReload={pageReload}
-          />
-        </>
+        <ConnModal
+          setDisplay={handleShowModal}
+          project_id={project.project_id}
+          owner={project.creator}
+          pageReload={pageReload}
+        />
       )}
     </div>
   );
