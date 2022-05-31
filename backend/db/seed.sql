@@ -24,5 +24,5 @@ INSERT INTO connections (username, project_id, permissions) VALUES
 ('DL', 4, 'owner'),
 ('RS', 2, 'owner'),
 ('BZ', 3, 'collaborator'),
-('BZ', 4, 'request');
+('BZ', 4, 'request'),
 ('BZ', 3, 'follower');
