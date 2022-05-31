@@ -1,0 +1,15 @@
+.CommCard {
+  background: red;
+  height: 50px;
+  margin: 5px 0px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+}
+
+.CommCard .pfp {
+  height: 45px;
+  width: 45px;
+  border-radius: 100%;
+  object-fit: cover;
+}

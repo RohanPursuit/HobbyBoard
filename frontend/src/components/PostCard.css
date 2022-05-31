@@ -1,5 +1,39 @@
 .PostCard {
   background-color: bisque;
-  height: 60px;
+  box-sizing: border-box;
   width: 100%;
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+.PostCard .postContainer {
+  background: orange;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.PostCard .projectPfp {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  padding: 5px;
+  object-fit: cover;
+}
+
+.PostCard .postContent {
+  margin-right: auto;
+}
+
+.PostCard .postContent h3 {
+  margin: 0px;
+}
+
+.PostCard .postContent p {
+  margin: 0px;
+}
+
+.PostCard .postDate {
+  font-size: 0.5em;
+  color: grey;
 }
