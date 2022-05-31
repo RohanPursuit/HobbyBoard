@@ -49,6 +49,7 @@ CREATE TABLE posts (
     date timestamp NOT NULL,
     title TEXT NOT NULL,
     contents TEXT NOT NULL,
+    likes TEXT [],
     FOREIGN KEY(project_id) REFERENCES projects(project_id)
 );
 
