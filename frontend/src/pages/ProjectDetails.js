@@ -6,7 +6,7 @@ import ConnModal from "../components/common/ConnModal.js";
 import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
-  const cred = document.cookie.split("=")[1];
+  const cred = localStorage.getItem("credentials");
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -54,7 +54,7 @@ const ProjectDetails = () => {
   const handleJoin = () => {
     axios
       .post(`${API}connections`, {
-        username: document.cookie.split("=")[1],
+        username: localStorage.getItem("credentials"),
         project_id: project.project_id,
       })
       .then(() => {
@@ -67,7 +67,7 @@ const ProjectDetails = () => {
   };
 
   const handleCancelRequest = () => {
-    const username = document.cookie.split("=")[1];
+    const username = localStorage.getItem("credentials");
     const project_id = project.project_id;
     console.log(username, project_id);
     axios
@@ -133,7 +133,7 @@ const ProjectDetails = () => {
       <p>{project.details}</p>
       {/* Archive Project Button */}
       <p>Archived: {`${project.archived}`}</p>
-      {document.cookie.split("=")[1] === project.creator ? (
+      {localStorage.getItem("credentials") === project.creator ? (
         <div>
           <button onClick={handleArchive}>Archive</button>
           <button onClick={handleEdit}>Edit</button>

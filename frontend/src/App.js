@@ -13,14 +13,13 @@ import UserSignIn from "./pages/UserSignIn";
 import Profile from "./pages/Profile";
 import EditProfilePage from "./pages/EditProfilePage";
 import EditProjectPage from "./pages/EditProjectPage";
-import {io} from 'socket.io-client'
+import { io } from "socket.io-client";
 const URL = process.env.REACT_APP_API_URL;
 export const socket = io(URL, {
   query: {
-    username: document.cookie.split("=")[1]
-  }
-})
-
+    username: localStorage.getItem("credentials"),
+  },
+});
 
 function App() {
   const [res, setRes] = useState("Loading...");
@@ -30,7 +29,6 @@ function App() {
       const response = await axios.get(URL);
       setRes(response.data);
     };
-
 
     testQuery();
   }, [URL]);

@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import { hoistCollabCard } from "../../helpers/helperFunction";
 import ModalCard from "./ModalCard.js";
 import axios from "axios";
-import {socket} from "../../App.js"
+import { socket } from "../../App.js";
 
 //input project_id(number), setDisplay(state function)}
 const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   const [conns, setConns] = useState([]);
   const [requestView, setView] = useState(false);
   const [reload, setReload] = useState(false);
-  const user = document.cookie.split("=")[1];
+  const user = localStorage.getItem("credentials");
   const isOwner = user === owner;
   const collaborators = hoistCollabCard(
     conns.filter(
@@ -20,21 +20,20 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   const requesters = conns.filter((e) => e.permissions === "request");
   const URL = process.env.REACT_APP_API_URL;
   const listenForRequests = () => {
-    socket.off().on("request" + project_id, modalReload)
-    console.log("ran")
-  }
-
+    socket.off().on("request" + project_id, modalReload);
+    console.log("ran");
+  };
 
   useEffect(() => {
     axios
       .get(`${URL}connections/${project_id}`)
-      .then((res) => setConns(res.data))
+      .then((res) => setConns(res.data));
 
-      listenForRequests()
+    listenForRequests();
 
-      return () => {
-        socket.off()
-      }
+    return () => {
+      socket.off();
+    };
   }, [URL, project_id, reload]);
 
   const modalReload = () => {
@@ -69,7 +68,6 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   );
   const collabCards = collaborators.map((e, i) => (
     <ModalCard
-      key={i}
       conInfo={e}
       owner={owner}
       modalReload={modalReload}

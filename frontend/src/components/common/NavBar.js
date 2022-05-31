@@ -24,7 +24,7 @@ const NavBar = () => {
   };
 
   const handleSignOut = () => {
-    document.cookie = "credentials=";
+    localStorage.setItem("credentials", "");
     nav("/");
   };
 
@@ -39,7 +39,7 @@ const NavBar = () => {
       <img src={settings} alt="settings" />
       <img onClick={handleProjects} src={home} alt="home" />
       <img onClick={handleCreateProject} src={plus} alt="Add Project" />
-      {document.cookie.split("=")[1] ? (
+      {localStorage.getItem("credentials") ? (
         <img onClick={handleSignOut} src={signOut} alt="Sign Out" />
       ) : (
         <img onClick={handleSignIn} src={signIn} alt="Sign In" />

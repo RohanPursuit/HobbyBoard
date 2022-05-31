@@ -4,7 +4,7 @@ import "./Profile.css";
 
 const Profile = () => {
   //fetch username from cookies
-  let user = document.cookie.split("=")[1];
+  let user = localStorage.getItem("credentials");
   let { username } = useParams();
   if (username) {
     user = username;
@@ -14,7 +14,7 @@ const Profile = () => {
 
   return (
     <div className="Profile">
-      {!document.cookie.split("=")[1] && !username ? (
+      {!localStorage.getItem("credentials") && !username ? (
         <p>Please sign in to view your profile!</p>
       ) : (
         <ProfileDetails username={user} />
