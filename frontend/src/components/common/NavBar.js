@@ -24,7 +24,7 @@ const NavBar = () => {
   };
 
   const handleSignOut = () => {
-    localStorage.setItem("credentials", "");
+    localStorage.removeItem("credentials");
     nav("/");
   };
 
