@@ -45,6 +45,18 @@ const removeCollaborator = async (username, project_id) => {
   }
 };
 
+const removeFollower = async (username, project_id) => {
+  try {
+    const removedFollow = await db.one(
+      "DELETE FROM connections WHERE username=$1 AND project_id=$2 AND permissions='follower' RETURNING *",
+      [username, project_id]
+    );
+    return removedFollow;
+  } catch (error) {
+    return error;
+  }
+};
+
 // input: object w/ project_id key
 // output: array of objects reflecting all user connects w/ the project_id project
 const getAllProjectConnections = async ({ project_id }) => {
@@ -85,24 +97,28 @@ const updateToCollaborator = async ({ username, project_id }) => {
 
 const newFollower = async ({ username, project_id }) => {
   try {
-    const following = await db.one("INSERT INTO connections (username, project_id, permissions) VALUES ($1, $2, $3) RETURNING *",
-    [username, project_id, "follower"])
-    return following
-
-  } catch (err){
-    return err
+    const following = await db.one(
+      "INSERT INTO connections (username, project_id, permissions) VALUES ($1, $2, $3) RETURNING *",
+      [username, project_id, "follower"]
+    );
+    return following;
+  } catch (err) {
+    return err;
   }
-}
+};
 
-const getAllFollowers = async ({pid}) => {
-  try{
-    const followers = await db.one("SELECT * FROM connections WHERE project_id=$1 AND permissions=$2", [pid, "follower"])
+const getAllFollowers = async ({ pid }) => {
+  try {
+    const followers = await db.one(
+      "SELECT * FROM connections WHERE project_id=$1 AND permissions=$2",
+      [pid, "follower"]
+    );
 
-    return followers
-  } catch (err){
-    return err
+    return followers;
+  } catch (err) {
+    return err;
   }
-}
+};
 
 module.exports = {
   joinRequest,
@@ -113,4 +129,5 @@ module.exports = {
   getAllUserConnections,
   newFollower,
   getAllFollowers,
+  removeFollower,
 };
