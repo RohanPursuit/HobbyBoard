@@ -1,13 +1,22 @@
 import { useState } from 'react';
 import axios from 'axios';
 import './NewComment.css';
-const NewComment = ({ post_id, project_id }) => {
+const NewComment = ({ post_id }) => {
   const [comment, setComment] = useState('');
+  const URL = process.env.REACT_APP_API_URL;
   const handleChange = (event) => {
     setComment(event.target.value);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const username = document.cookie.split('=')[1];
+    axios
+      .post(`${URL}posts/:post_id/comments`, { username, comment })
+      .then((_) => event.target.reset());
+  };
   return (
-    <form className="NewComment">
+    <form className="NewComment" onSubmit={handleSubmit}>
       <input
         type="text"
         id="comment"
