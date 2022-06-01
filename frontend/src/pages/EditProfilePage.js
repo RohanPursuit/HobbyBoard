@@ -2,7 +2,7 @@ import ProfileEditForm from "../components/ProfileEditForm";
 import "./EditProfilePage.css";
 
 const EditProfilePage = () => {
-  const user = document.cookie.split("=")[1];
+  const user = localStorage.getItem("credentials");
   return (
     <div className="EditProfile">
       <ProfileEditForm username={user} />

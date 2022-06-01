@@ -24,8 +24,8 @@ INSERT INTO connections (username, project_id, permissions) VALUES
 ('DL', 4, 'owner'),
 ('RS', 2, 'owner'),
 ('BZ', 3, 'collaborator'),
-('BZ', 4, 'request');
--- ('BZ', 3, 'follower');
+('BZ', 4, 'request'),
+('BZ', 3, 'follower');
 
 INSERT INTO posts (project_id, members_only, date, title, contents) VALUES 
 (1, false, '2020-9-04 10:23:54', 'Post 1', 'This is our first test post'),

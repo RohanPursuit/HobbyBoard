@@ -83,6 +83,27 @@ const updateToCollaborator = async ({ username, project_id }) => {
   }
 };
 
+const newFollower = async ({ username, project_id }) => {
+  try {
+    const following = await db.one("INSERT INTO connections (username, project_id, permissions) VALUES ($1, $2, $3) RETURNING *",
+    [username, project_id, "follower"])
+    return following
+
+  } catch (err){
+    return err
+  }
+}
+
+const getAllFollowers = async ({pid}) => {
+  try{
+    const followers = await db.one("SELECT * FROM connections WHERE project_id=$1 AND permissions=$2", [pid, "follower"])
+
+    return followers
+  } catch (err){
+    return err
+  }
+}
+
 module.exports = {
   joinRequest,
   deleteRequest,
@@ -90,4 +111,6 @@ module.exports = {
   removeCollaborator,
   updateToCollaborator,
   getAllUserConnections,
+  newFollower,
+  getAllFollowers,
 };

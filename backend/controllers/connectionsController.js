@@ -7,6 +7,8 @@ const {
   getAllProjectConnections,
   updateToCollaborator,
   getAllUserConnections,
+  newFollower,
+  getAllFollowers,
 } = require("../queries/connectionsQueries");
 
 
@@ -18,6 +20,20 @@ connections.post("/", async (request, response, next) => {
   response.status(200).json(pending);
   next()
 });
+
+//New follower
+connections.post("/followers", async (request, response) => {
+  console.log("Post /connections/followers")
+  const following = await newFollower(request.body)
+  response.status(200).json(following)
+})
+
+//Get all followers of single project
+connections.get("/followers/:pid", async (request, response) => {
+  console.log("Post /connections/followers/:pid")
+  const followers = await getAllFollowers(request.params)
+  response.status(200).json(followers)
+})
 
 connections.delete("/", async (request, response, next) => {
   console.log("delete /connections");

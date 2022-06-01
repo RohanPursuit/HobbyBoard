@@ -40,7 +40,7 @@ const AssociatedProject = (props) => {
         </div>
       </Link>
 
-      {document.cookie.split("=")[1] === props.details.username ? (
+      {localStorage.getItem("credentials") === props.details.username ? (
         props.details.permissions === "owner" ? (
           <button onClick={handleShowModal}>Collaborators</button>
         ) : (
