@@ -162,6 +162,7 @@ const ProjectDetails = () => {
       <PostSection
         project_id={project.project_id}
         project_image={project.project_image}
+        creator={project.creator}
       />
       {showModal && (
         <ConnModal

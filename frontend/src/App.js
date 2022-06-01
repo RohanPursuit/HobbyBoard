@@ -13,6 +13,7 @@ import UserSignIn from "./pages/UserSignIn";
 import Profile from "./pages/Profile";
 import EditProfilePage from "./pages/EditProfilePage";
 import EditProjectPage from "./pages/EditProjectPage";
+import NewPostPage from "./pages/NewPostPage";
 import { io } from "socket.io-client";
 const URL = process.env.REACT_APP_API_URL;
 export const socket = io(URL, {
@@ -56,6 +57,7 @@ function App() {
           <Route path="/projects" element={<AllProjects />} />
           <Route path="/projects/:pid" element={<ProjectDetails />} />
           <Route path="/projects/:pid/edit" element={<EditProjectPage />} />
+          <Route path="/projects/:pid/newPost" element={<NewPostPage />} />
           <Route path="/projects/new" element={<New />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:username" element={<Profile />} />

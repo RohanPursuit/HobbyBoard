@@ -12,6 +12,7 @@ const PostCard = ({
   const URL = process.env.REACT_APP_API_URL;
   const [comments, setComments] = useState([]);
   const [refreshPost, setReset] = useState(false);
+  const username = localStorage.getItem("credentials");
 
   const trigReset = () => {
     setReset(!refreshPost);
@@ -43,11 +44,13 @@ const PostCard = ({
             {title} <span className="postDate">({formattedDate})</span>
           </h3>
           <p>{contents}</p>
-          <NewComment
-            post_id={post_id}
-            project_id={project_id}
-            trigReset={trigReset}
-          />
+          {username ? (
+            <NewComment
+              post_id={post_id}
+              project_id={project_id}
+              trigReset={trigReset}
+            />
+          ) : null}
         </div>
       </div>
       {renderedComments}
