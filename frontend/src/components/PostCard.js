@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import CommCard from "./CommCard";
-import defaultImage from "../helpers/helperFunction";
-import "./PostCard.css";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import CommCard from './CommCard';
+import NewComment from './NewComment';
+import defaultImage from '../helpers/helperFunction';
+import './PostCard.css';
 
 const PostCard = ({
   project_image,
@@ -12,7 +13,7 @@ const PostCard = ({
   const [comments, setComments] = useState([]);
 
   const renderedComments = comments.map((e, i) => (
-    <CommCard commInfo={e} key={"comm" + i} />
+    <CommCard commInfo={e} key={'comm' + i} />
   ));
   useEffect(() => {
     axios
@@ -28,7 +29,7 @@ const PostCard = ({
       <div className="postContainer">
         <img
           className="projectPfp"
-          src={project_image || ""}
+          src={project_image || ''}
           onError={defaultImage}
           alt="This project's image"
         />
@@ -37,6 +38,7 @@ const PostCard = ({
             {title} <span className="postDate">({formattedDate})</span>
           </h3>
           <p>{contents}</p>
+          <NewComment post_id={post_id} />
         </div>
       </div>
       {renderedComments}
