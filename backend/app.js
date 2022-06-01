@@ -33,8 +33,8 @@ app.use(express.json()); // Parse incoming JSON
 // ROUTES
 app.use("/projects", projectsControllers);
 app.use("/users", userController);
-app.use("/connections", connectionsController);
 app.use("/posts", postControllers);
+app.use("/connections", connectionsController);
 app.use("/connections", notify);
 
 function notify(req, res) {

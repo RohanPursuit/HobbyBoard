@@ -1,0 +1,45 @@
+.PostCard {
+  background-color: bisque;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0px;
+}
+
+.PostCard .postContainer {
+  background: orange;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.PostCard .projectPfp {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  padding: 5px;
+  object-fit: cover;
+  align-self: flex-start;
+}
+
+.PostCard .postContent {
+  width: 100%;
+  max-width: 400px;
+}
+
+.PostCard .postContent h3 {
+  margin: 0px;
+}
+
+.PostCard .postContent p {
+  margin: 0px;
+}
+
+.PostCard .postDate {
+  font-size: 0.65em;
+  color: grey;
+}
+
+.PostCard .deleteButton {
+  align-self: flex-start;
+}
