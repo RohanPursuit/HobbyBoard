@@ -21,7 +21,12 @@ const PostCard = ({
   };
 
   const renderedComments = comments.map((e, i) => (
-    <CommCard commInfo={e} key={"comm" + i} />
+    <CommCard
+      creator={creator}
+      trigReset={trigReset}
+      commInfo={e}
+      key={"comm" + i}
+    />
   ));
   useEffect(() => {
     axios
@@ -33,10 +38,12 @@ const PostCard = ({
   const formattedDate = new Date(date).toLocaleDateString();
 
   const handleDelete = () => {
-    axios
-      .delete(`${URL}projects/${project_id}/posts/${post_id}`)
-      .then((_) => reloadPosts())
-      .catch((error) => console.warn(error));
+    if (window.confirm("Are you sure that you'd like to delete this post?")) {
+      axios
+        .delete(`${URL}projects/${project_id}/posts/${post_id}`)
+        .then((_) => reloadPosts())
+        .catch((error) => console.warn(error));
+    }
   };
 
   return (

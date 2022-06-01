@@ -29,3 +29,7 @@
 .CommCard .commentContent h4 {
   margin: 0px;
 }
+
+.CommCard .commDelete {
+  align-self: flex-start;
+}
