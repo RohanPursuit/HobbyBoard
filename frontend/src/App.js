@@ -16,7 +16,11 @@ import EditProjectPage from "./pages/EditProjectPage";
 import NewPostPage from "./pages/NewPostPage";
 import { io } from "socket.io-client";
 const URL = process.env.REACT_APP_API_URL;
-export const socket = io(URL);
+export const socket = io(URL, {
+  query: {
+    username: localStorage.getItem("credentials"),
+  },
+});
 
 function App() {
   const [res, setRes] = useState("Loading...");
