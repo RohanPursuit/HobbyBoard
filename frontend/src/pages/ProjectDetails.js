@@ -14,6 +14,8 @@ const ProjectDetails = () => {
   const [collaborators, setCollaborators] = useState([]);
   const [requests, setRequest] = useState([]);
   const [updateConnections, setUpdateConnections] = useState(false);
+  const [follow, setFollow] = useState(false);
+  const [followers, setFollowers] = useState([]);
   const params = useParams();
   const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
@@ -28,6 +30,7 @@ const ProjectDetails = () => {
       setCollaborators(
         response.data.filter((el) => el.permissions === "collaborator")
       );
+      setFollowers(response.data.filter((el) => el.permissions === "follower"));
       //filter response ??
       setRequest(response.data.filter((el) => el.permissions === "request"));
     });
@@ -67,6 +70,21 @@ const ProjectDetails = () => {
       });
   };
 
+  const handleFollow = () => {
+    axios
+      .post(`${API}connections/followers`, {
+        username: document.cookie.split("=")[1],
+        project_id: project.project_id,
+      })
+      .then(() => {
+        setFollow(!follow);
+        window.location.reload();
+      })
+      .catch(() => {
+        alert("Request failed");
+      });
+  };
+
   const handleCancelRequest = () => {
     const username = localStorage.getItem("credentials");
     const project_id = project.project_id;
@@ -76,6 +94,23 @@ const ProjectDetails = () => {
       .then(() => {
         alert("Request Canceled");
         setUpdateConnections(!updateConnections);
+      })
+      .catch(() => {
+        alert("Error");
+      });
+  };
+
+  const handleCancelFollow = () => {
+    const username = document.cookie.split("=")[1];
+    const project_id = project.project_id;
+    console.log(username, project_id);
+    axios
+      .delete(`${API}connections/${username}`, {
+        data: { username, project_id },
+      })
+      .then(() => {
+        setFollow(!follow);
+        window.location.reload();
       })
       .catch(() => {
         alert("Error");
@@ -156,6 +191,13 @@ const ProjectDetails = () => {
         <button onClick={handleCancelRequest}>Cancel Request</button>
       ) : (
         <button onClick={handleJoin}>Join</button>
+      )}
+      {cred === project.creator ? (
+        <></>
+      ) : followers.find((connection) => connection.username === cred) ? (
+        <button onClick={handleCancelFollow}>Unfollow</button>
+      ) : (
+        <button onClick={handleFollow}>Follow</button>
       )}
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}

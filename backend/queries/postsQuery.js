@@ -56,5 +56,46 @@ const deletePost = async ({ project_id, post_id }) => {
   }
 };
 
+//getLikes
+const getLikes = async (post_id) => {
+  try {
+    const likes = await db.one("SELECT likes FROM posts WHERE post_id=$1", [
+      post_id,
+    ]);
+    return likes;
+  } catch (error) {
+    return error;
+  }
+};
+
+//like/unlike
+const postLike = async (post_id, username) => {
+  let currentLikes = await getLikes(post_id);
+  //check if user already in the like array
+  let count = currentLikes.likes.length;
+  if (currentLikes.likes.includes(username)) {
+    //if so remove
+    const removeLike = await db.one(
+      "UPDATE posts SET likes=array_remove(likes, $1) WHERE post_id=$2 RETURNING *",
+      [username, post_id]
+    );
+    return count - 1;
+  } else {
+    //if not add
+    const addLike = await db.one(
+      "UPDATE posts SET likes=array_append(likes, $1) WHERE post_id=$2 RETURNING *",
+      [username, post_id]
+    );
+    return count + 1;
+  }
+};
+
 //export queries
-module.exports = { getAllPosts, getOnePost, createPost, deletePost };
+module.exports = {
+  getAllPosts,
+  getOnePost,
+  createPost,
+  deletePost,
+  getLikes,
+  postLike,
+};

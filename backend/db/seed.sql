@@ -27,12 +27,12 @@ INSERT INTO connections (username, project_id, permissions) VALUES
 ('BZ', 4, 'request'),
 ('BZ', 3, 'follower');
 
-INSERT INTO posts (project_id, members_only, date, title, contents) VALUES 
-(1, false, '2020-9-04 10:23:54', 'Post 1', 'This is our first test post'),
-(2, true, '2020-9-05 10:23:54', 'Post 2', 'This is our second test post'),
-(2, false, '2020-9-06 10:23:54', 'Post 3', 'This is our third test post'),
-(3, false, '2020-9-07 10:23:54', 'Post 4', 'This is our fourth test post'),
-(5, false, '2020-9-08 10:23:54', 'Post 5', 'This is our fifth test post');
+INSERT INTO posts (project_id, members_only, date, title, contents, likes) VALUES 
+(1, false, '2020-9-04 10:23:54', 'Post 1', 'This is our first test post', ARRAY ['RS', 'BZ','JD','DL']),
+(2, true, '2020-9-05 10:23:54', 'Post 2', 'This is our second test post', ARRAY ['']),
+(2, false, '2020-9-06 10:23:54', 'Post 3', 'This is our third test post', ARRAY ['']),
+(3, false, '2020-9-07 10:23:54', 'Post 4', 'This is our fourth test post', ARRAY ['']),
+(5, false, '2020-9-08 10:23:54', 'Post 5', 'This is our fifth test post', ARRAY ['']);
 
 INSERT INTO comments (post_id, username, comment, date) VALUES 
 (1, 'DL', 'Test comment 1', '2020-9-05 10:23:54'),
