@@ -51,6 +51,7 @@ const deletePost = async ({ project_id, post_id }) => {
     );
     return newPost;
   } catch (error) {
+    console.log(error);
     return error;
   }
 };

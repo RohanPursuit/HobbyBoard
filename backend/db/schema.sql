@@ -37,8 +37,8 @@ CREATE TABLE connections (
     username TEXT,
     project_id INTEGER,
     permissions TEXT,
-    FOREIGN KEY(username) REFERENCES users(username),
-    FOREIGN KEY(project_id) REFERENCES projects(project_id),
+    FOREIGN KEY(username) REFERENCES users(username) ON DELETE CASCADE,
+    FOREIGN KEY(project_id) REFERENCES projects(project_id) ON DELETE CASCADE,
     CONSTRAINT unique_connection UNIQUE (username, project_id, permissions)
 );
 
@@ -49,7 +49,7 @@ CREATE TABLE posts (
     date timestamp NOT NULL,
     title TEXT NOT NULL,
     contents TEXT NOT NULL,
-    FOREIGN KEY(project_id) REFERENCES projects(project_id)
+    FOREIGN KEY(project_id) REFERENCES projects(project_id) ON DELETE CASCADE
 );
 
 CREATE TABLE comments (
@@ -58,6 +58,6 @@ CREATE TABLE comments (
     username TEXT,
     comment TEXT NOT NULL,
     date timestamp NOT NULL,
-    FOREIGN KEY(post_id) REFERENCES posts(post_id),
-    FOREIGN KEY(username) REFERENCES users(username)
+    FOREIGN KEY(post_id) REFERENCES posts(post_id) ON DELETE CASCADE,
+    FOREIGN KEY(username) REFERENCES users(username) ON DELETE CASCADE
 );

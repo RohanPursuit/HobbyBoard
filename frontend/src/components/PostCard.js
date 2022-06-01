@@ -7,6 +7,8 @@ import "./PostCard.css";
 
 const PostCard = ({
   project_image,
+  creator,
+  reloadPosts,
   postInfo: { post_id, project_id, members_only, date, title, contents },
 }) => {
   const URL = process.env.REACT_APP_API_URL;
@@ -30,6 +32,13 @@ const PostCard = ({
 
   const formattedDate = new Date(date).toLocaleDateString();
 
+  const handleDelete = () => {
+    axios
+      .delete(`${URL}projects/${project_id}/posts/${post_id}`)
+      .then((_) => reloadPosts())
+      .catch((error) => console.warn(error));
+  };
+
   return (
     <div className="PostCard">
       <div className="postContainer">
@@ -52,6 +61,11 @@ const PostCard = ({
             />
           ) : null}
         </div>
+        {username === creator && (
+          <button className="deleteButton" onClick={handleDelete}>
+            X
+          </button>
+        )}
       </div>
       {renderedComments}
     </div>

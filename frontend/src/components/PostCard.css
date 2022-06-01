@@ -39,3 +39,7 @@
   font-size: 0.65em;
   color: grey;
 }
+
+.PostCard .deleteButton {
+  align-self: flex-start;
+}

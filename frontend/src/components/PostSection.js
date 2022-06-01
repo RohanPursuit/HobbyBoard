@@ -6,6 +6,7 @@ import "./PostSection.css";
 
 const PostSection = ({ project_id, project_image, creator }) => {
   const [posts, setPosts] = useState([]);
+  const [reload, setReload] = useState(false);
   const URL = process.env.REACT_APP_API_URL;
   const username = localStorage.getItem("credentials");
   const nav = useNavigate();
@@ -21,10 +22,20 @@ const PostSection = ({ project_id, project_image, creator }) => {
         .then((res) => setPosts(res.data))
         .catch((error) => console.warn(error));
     }
-  }, [URL, project_id]);
+  }, [URL, project_id, reload]);
+
+  const reloadPosts = () => {
+    setReload(!reload);
+  };
 
   const renderedPosts = posts.map((e, i) => (
-    <PostCard project_image={project_image} postInfo={e} key={"post" + i} />
+    <PostCard
+      project_image={project_image}
+      creator={creator}
+      reloadPosts={reloadPosts}
+      postInfo={e}
+      key={"post" + i}
+    />
   ));
 
   return (
