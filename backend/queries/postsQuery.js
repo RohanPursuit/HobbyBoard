@@ -71,19 +71,21 @@ const getLikes = async (post_id) => {
 const postLike = async (post_id, username) => {
   let currentLikes = await getLikes(post_id);
   //check if user already in the like array
-  console.log(currentLikes);
+  let count = currentLikes.likes.length;
   if (currentLikes.likes.includes(username)) {
     //if so remove
     const removeLike = await db.one(
       "UPDATE posts SET likes=array_remove(likes, $1) WHERE post_id=$2 RETURNING *",
       [username, post_id]
     );
+    return count - 1;
   } else {
     //if not add
     const addLike = await db.one(
       "UPDATE posts SET likes=array_append(likes, $1) WHERE post_id=$2 RETURNING *",
       [username, post_id]
     );
+    return count + 1;
   }
 };
 

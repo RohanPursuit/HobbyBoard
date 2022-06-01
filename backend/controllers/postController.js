@@ -56,19 +56,23 @@ posts.delete("/:post_id/comments/:comment_id", async (request, response) => {
 });
 
 //get likes
-//returning likes array length
+//input: just post_id in the request params
+//output: likes array length
 posts.get("/:post_id/likes", async (request, response) => {
   console.log(`get likes for post ${request.params.post_id}`);
   const likesObject = await getLikes(request.params.post_id);
   response.status(200).json(likesObject.likes.length);
 });
 
+//add or remove likes as a post route
+//input: post_id and username in the request params
+//output: nothing for now
 posts.post("/:post_id/likes/:username", async (request, response) => {
   const { post_id, username } = request.params;
   console.log(`Adjusting likes for post ${post_id}`);
-  const newLike = await postLike(post_id, username);
+  const newLikes = await postLike(post_id, username);
   //filler response, prob want to refresh/update like counter on the front
-  response.status(200).json("good");
+  response.status(200).json(newLikes);
 });
 
 //export router
