@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import defaultImage from "../helpers/helperFunction";
 import "./CommCard.css";
 
-const CommCard = ({
-  commInfo: { comment_id, post_id, username, comment, date, profile_image },
-}) => {
+const CommCard = ({ commInfo: { username, comment, date, profile_image } }) => {
   const formattedDate = new Date(date).toLocaleDateString();
   return (
     <div className="CommCard">

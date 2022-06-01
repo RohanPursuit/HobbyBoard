@@ -5,7 +5,7 @@ const db = require("../db/dbConfig");
 const getAllComments = async ({ post_id }) => {
   try {
     const allComments = await db.any(
-      "SELECT * FROM comments WHERE post_id=$1",
+      "SELECT comments.username,comments.comment,comments.comment_id, comments.post_id, comments.date, users.profile_image FROM comments JOIN users ON users.username = comments.username WHERE comments.post_id=$1 ORDER BY comments.date ASC",
       post_id
     );
     return allComments;

@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import axios from 'axios';
-import './NewComment.css';
-const NewComment = ({ post_id }) => {
-  const [comment, setComment] = useState('');
+import { useState } from "react";
+import axios from "axios";
+import "./NewComment.css";
+const NewComment = ({ post_id, trigReset }) => {
+  const [comment, setComment] = useState("");
   const URL = process.env.REACT_APP_API_URL;
   const handleChange = (event) => {
     setComment(event.target.value);
@@ -10,10 +10,16 @@ const NewComment = ({ post_id }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const username = document.cookie.split('=')[1];
+    const username = localStorage.getItem("credentials");
     axios
-      .post(`${URL}posts/:post_id/comments`, { username, comment })
-      .then((_) => event.target.reset());
+      .post(`${URL}posts/${post_id}/comments`, {
+        username,
+        comment,
+      })
+      .then((_) => {
+        trigReset();
+        setComment("");
+      });
   };
   return (
     <form className="NewComment" onSubmit={handleSubmit}>
