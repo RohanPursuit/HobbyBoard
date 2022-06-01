@@ -11,7 +11,7 @@ const NewProject = () => {
     details: "",
     project_image: "",
     archived: false,
-    creator: document.cookie.split("=")[1],
+    creator: localStorage.getItem("credentials"),
   });
 
   const handleChange = (event) => {

@@ -37,7 +37,28 @@ CREATE TABLE connections (
     username TEXT,
     project_id INTEGER,
     permissions TEXT,
-    FOREIGN KEY(username) REFERENCES users(username),
-    FOREIGN KEY(project_id) REFERENCES projects(project_id),
+    FOREIGN KEY(username) REFERENCES users(username) ON DELETE CASCADE,
+    FOREIGN KEY(project_id) REFERENCES projects(project_id) ON DELETE CASCADE,
     CONSTRAINT unique_connection UNIQUE (username, project_id, permissions)
+);
+
+CREATE TABLE posts (
+    post_id SERIAL PRIMARY KEY,
+    project_id INTEGER,
+    members_only BOOLEAN DEFAULT true,
+    date timestamp NOT NULL,
+    title TEXT NOT NULL,
+    contents TEXT NOT NULL,
+    likes TEXT [],
+    FOREIGN KEY(project_id) REFERENCES projects(project_id) ON DELETE CASCADE
+);
+
+CREATE TABLE comments (
+    comment_id SERIAL PRIMARY KEY,
+    post_id INTEGER,
+    username TEXT,
+    comment TEXT NOT NULL,
+    date timestamp NOT NULL,
+    FOREIGN KEY(post_id) REFERENCES posts(post_id) ON DELETE CASCADE,
+    FOREIGN KEY(username) REFERENCES users(username) ON DELETE CASCADE
 );

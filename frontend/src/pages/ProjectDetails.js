@@ -3,16 +3,19 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import defaultImage from "../helpers/helperFunction";
 import ConnModal from "../components/common/ConnModal.js";
+import PostSection from "../components/PostSection";
 import "./ProjectDetails.css";
 
 const ProjectDetails = () => {
-  const cred = document.cookie.split("=")[1];
+  const cred = localStorage.getItem("credentials");
   const API = process.env.REACT_APP_API_URL;
   const [project, setProject] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [collaborators, setCollaborators] = useState([]);
   const [requests, setRequest] = useState([]);
   const [updateConnections, setUpdateConnections] = useState(false);
+  const [follow, setFollow] = useState(false);
+  const [followers, setFollowers] = useState([]);
   const params = useParams();
   const nav = useNavigate();
   // console.log(`${API}projects/${params.pid}`);
@@ -27,6 +30,7 @@ const ProjectDetails = () => {
       setCollaborators(
         response.data.filter((el) => el.permissions === "collaborator")
       );
+      setFollowers(response.data.filter((el) => el.permissions === "follower"));
       //filter response ??
       setRequest(response.data.filter((el) => el.permissions === "request"));
     });
@@ -54,7 +58,7 @@ const ProjectDetails = () => {
   const handleJoin = () => {
     axios
       .post(`${API}connections`, {
-        username: document.cookie.split("=")[1],
+        username: localStorage.getItem("credentials"),
         project_id: project.project_id,
       })
       .then(() => {
@@ -66,8 +70,23 @@ const ProjectDetails = () => {
       });
   };
 
+  const handleFollow = () => {
+    axios
+      .post(`${API}connections/followers`, {
+        username: document.cookie.split("=")[1],
+        project_id: project.project_id,
+      })
+      .then(() => {
+        setFollow(!follow);
+        window.location.reload();
+      })
+      .catch(() => {
+        alert("Request failed");
+      });
+  };
+
   const handleCancelRequest = () => {
-    const username = document.cookie.split("=")[1];
+    const username = localStorage.getItem("credentials");
     const project_id = project.project_id;
     console.log(username, project_id);
     axios
@@ -75,6 +94,23 @@ const ProjectDetails = () => {
       .then(() => {
         alert("Request Canceled");
         setUpdateConnections(!updateConnections);
+      })
+      .catch(() => {
+        alert("Error");
+      });
+  };
+
+  const handleCancelFollow = () => {
+    const username = document.cookie.split("=")[1];
+    const project_id = project.project_id;
+    console.log(username, project_id);
+    axios
+      .delete(`${API}connections/${username}`, {
+        data: { username, project_id },
+      })
+      .then(() => {
+        setFollow(!follow);
+        window.location.reload();
       })
       .catch(() => {
         alert("Error");
@@ -133,7 +169,7 @@ const ProjectDetails = () => {
       <p>{project.details}</p>
       {/* Archive Project Button */}
       <p>Archived: {`${project.archived}`}</p>
-      {document.cookie.split("=")[1] === project.creator ? (
+      {localStorage.getItem("credentials") === project.creator ? (
         <div>
           <button onClick={handleArchive}>Archive</button>
           <button onClick={handleEdit}>Edit</button>
@@ -156,32 +192,27 @@ const ProjectDetails = () => {
       ) : (
         <button onClick={handleJoin}>Join</button>
       )}
+      {cred === project.creator ? (
+        <></>
+      ) : followers.find((connection) => connection.username === cred) ? (
+        <button onClick={handleCancelFollow}>Unfollow</button>
+      ) : (
+        <button onClick={handleFollow}>Follow</button>
+      )}
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}
+      <PostSection
+        project_id={project.project_id}
+        project_image={project.project_image}
+        creator={project.creator}
+      />
       {showModal && (
-        <>
-          <select>
-            {collaborators.map((collab, i) => (
-              <option key={i} value={collab.username}>
-                {collab.username}
-              </option>
-            ))}
-          </select>
-
-          <select>
-            {requests.map((req, i) => (
-              <option key={i} value={req.username}>
-                {req.username}
-              </option>
-            ))}
-          </select>
-          <ConnModal
-            setDisplay={handleShowModal}
-            project_id={project.project_id}
-            owner={project.creator}
-            pageReload={pageReload}
-          />
-        </>
+        <ConnModal
+          setDisplay={handleShowModal}
+          project_id={project.project_id}
+          owner={project.creator}
+          pageReload={pageReload}
+        />
       )}
     </div>
   );

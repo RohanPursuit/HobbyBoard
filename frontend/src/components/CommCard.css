@@ -1,0 +1,35 @@
+.CommCard {
+  box-sizing: border-box;
+  background: aqua;
+  min-height: 50px;
+  margin: 5px 0px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  width: 100%;
+}
+
+.CommCard .pfp {
+  height: 45px;
+  width: 45px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.CommCard .commentContent {
+  margin-right: auto;
+}
+
+.CommCard .commentContent p {
+  margin: 0px;
+  font-size: 0.9em;
+}
+
+.CommCard .commentContent h4 {
+  margin: 0px;
+}
+
+.CommCard .commDelete {
+  align-self: flex-start;
+}

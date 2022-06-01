@@ -45,12 +45,24 @@ const removeCollaborator = async (username, project_id) => {
   }
 };
 
+const removeFollower = async (username, project_id) => {
+  try {
+    const removedFollow = await db.one(
+      "DELETE FROM connections WHERE username=$1 AND project_id=$2 AND permissions='follower' RETURNING *",
+      [username, project_id]
+    );
+    return removedFollow;
+  } catch (error) {
+    return error;
+  }
+};
+
 // input: object w/ project_id key
 // output: array of objects reflecting all user connects w/ the project_id project
 const getAllProjectConnections = async ({ project_id }) => {
   try {
     const allProCons = await db.any(
-      "SELECT * FROM connections WHERE project_id=$1",
+      "SELECT connections.username,permissions,connections.project_id,users.profile_image,projects.creator FROM connections JOIN users ON connections.username=users.username JOIN projects ON connections.project_id = projects.project_id WHERE connections.project_id=$1",
       project_id
     );
     return allProCons;
@@ -62,7 +74,7 @@ const getAllProjectConnections = async ({ project_id }) => {
 const getAllUserConnections = async ({ username }) => {
   try {
     const allProCons = await db.any(
-      "SELECT * FROM connections WHERE username=$1",
+      "SELECT username,name,projects.project_id,permissions,project_image,projects.creator,projects.details FROM connections JOIN projects ON connections.project_id=projects.project_id WHERE username=$1",
       username
     );
     return allProCons;
@@ -83,6 +95,31 @@ const updateToCollaborator = async ({ username, project_id }) => {
   }
 };
 
+const newFollower = async ({ username, project_id }) => {
+  try {
+    const following = await db.one(
+      "INSERT INTO connections (username, project_id, permissions) VALUES ($1, $2, $3) RETURNING *",
+      [username, project_id, "follower"]
+    );
+    return following;
+  } catch (err) {
+    return err;
+  }
+};
+
+const getAllFollowers = async ({ pid }) => {
+  try {
+    const followers = await db.one(
+      "SELECT * FROM connections WHERE project_id=$1 AND permissions=$2",
+      [pid, "follower"]
+    );
+
+    return followers;
+  } catch (err) {
+    return err;
+  }
+};
+
 module.exports = {
   joinRequest,
   deleteRequest,
@@ -90,4 +127,7 @@ module.exports = {
   removeCollaborator,
   updateToCollaborator,
   getAllUserConnections,
+  newFollower,
+  getAllFollowers,
+  removeFollower,
 };
