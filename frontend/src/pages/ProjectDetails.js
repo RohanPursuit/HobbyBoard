@@ -33,7 +33,7 @@ const ProjectDetails = () => {
       //filter response ??
       setRequest(response.data.filter((el) => el.permissions === "request"));
     });
-  }, [API, params.pid, updateConnections]);
+  }, [API, params.pid, updateConnections, follow]);
 
   // could move the handleArchive and button to its own component
   // if we plan on having it in more than one place
@@ -77,7 +77,6 @@ const ProjectDetails = () => {
       })
       .then(() => {
         setFollow(!follow);
-        window.location.reload();
       })
       .catch(() => {
         alert("Request failed");
@@ -104,12 +103,11 @@ const ProjectDetails = () => {
     const project_id = project.project_id;
     console.log(username, project_id);
     axios
-      .delete(`${API}connections/${username}`, {
+      .delete(`${API}connections/follower/${username}`, {
         data: { username, project_id },
       })
       .then(() => {
         setFollow(!follow);
-        window.location.reload();
       })
       .catch(() => {
         alert("Error");
