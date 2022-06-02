@@ -7,7 +7,7 @@ import signIn from "../../assets/sign-in.svg";
 import signOut from "../../assets/sign-out.svg";
 import home from "../../assets/home.svg";
 import "./NavBar.css";
-const noNav = ["http://localhost:3000/", "http://localhost:3000/signIn", "http://localhost:3000/signup"]
+const noNav = ["http://localhost:3000", "http://localhost:3000/", "http://localhost:3000/signIn", "http://localhost:3000/signup"]
 
 const NavBar = () => {
   const nav = useNavigate();
