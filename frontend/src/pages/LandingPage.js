@@ -3,15 +3,15 @@ import logo from "../assets/landingLogo.svg";
 import "./LandingPage.css";
 
 function LandingPage() {
-  const nac = useNavigate();
+  const nav = useNavigate();
   const handleExplore = () => {
-    navigator("/projects");
+    nav("/projects");
   };
   const handleSignIn = () => {
-    navigator("/signIn");
+    nav("/signIn");
   };
   const handleSignUp = () => {
-    navigator("/signup");
+    nav("/signup");
   };
   return (
     <div className="LandingPage">
