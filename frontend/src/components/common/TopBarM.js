@@ -20,19 +20,23 @@ const TopBarM = () => {
     nav("/");
   };
 
-  console.log(window.location.href)
+  console.log(window.location.href);
   return (
     <>
-    {window.location.href !== "http://localhost:3000/" ? <div className="TopBarM">
-      <BackButton />
-      <img
-        src={""}
-        alt="HobbyBoard Logo"
-        className="topLogo"
-        onError={defaultImage}
-        onClick={handleHome}
-      />
-    </div>: ""}
+      {window.location.href !== "http://localhost:3001/" ? (
+        <div className="TopBarM">
+          <BackButton />
+          <img
+            src={""}
+            alt="HobbyBoard Logo"
+            className="topLogo"
+            onError={defaultImage}
+            onClick={handleHome}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 };

@@ -27,6 +27,7 @@ const PostCard = ({
       trigReset={trigReset}
       commInfo={e}
       key={"comm" + i}
+      last={i === comments.length - 1}
     />
   ));
   useEffect(() => {
@@ -54,7 +55,7 @@ const PostCard = ({
   };
 
   return (
-    <div className="PostCard">
+    <div className={"PostCard" + (comments.length === 0 ? " OnlyPost" : "")}>
       <div className="postContainer">
         <img
           className="projectPfp"

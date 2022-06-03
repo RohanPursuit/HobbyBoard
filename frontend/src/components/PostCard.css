@@ -1,5 +1,4 @@
 .PostCard {
-  background-color: bisque;
   box-sizing: border-box;
   width: 100%;
   padding: 10px;
@@ -7,7 +6,8 @@
 }
 
 .PostCard .postContainer {
-  background: orange;
+  border-radius: 10px 10px 0px 0px;
+  background: #484848;
   display: flex;
   align-items: center;
   padding: 5px;
@@ -29,6 +29,7 @@
 
 .PostCard .postContent h3 {
   margin: 0px;
+  color: white;
 }
 
 .PostCard .postContent p {
@@ -42,4 +43,8 @@
 
 .PostCard .deleteButton {
   align-self: flex-start;
+}
+
+.OnlyPost .postContainer {
+  border-radius: 10px;
 }

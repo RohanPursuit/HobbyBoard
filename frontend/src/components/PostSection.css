@@ -1,9 +1,7 @@
 .PostSection {
   box-sizing: border-box;
   width: 100%;
-  background-color: cadetblue;
   margin-top: 30px;
-  padding: 10px;
 }
 
 .PostSection .newPost {
