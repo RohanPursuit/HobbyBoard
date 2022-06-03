@@ -3,7 +3,7 @@ CREATE DATABASE hobbyboard_dev;
 
 \c hobbyboard_dev;
 
-DROP TABLE IF EXISTS projects, users, connections ;
+DROP TABLE IF EXISTS projects, users, connections,posts, comments,testTable ;
 
 CREATE TABLE testTable (
     test_id SERIAL PRIMARY KEY,
@@ -49,6 +49,7 @@ CREATE TABLE posts (
     date timestamp NOT NULL,
     title TEXT NOT NULL,
     contents TEXT NOT NULL,
+    likes TEXT [],
     FOREIGN KEY(project_id) REFERENCES projects(project_id) ON DELETE CASCADE
 );
 
