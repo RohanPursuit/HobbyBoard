@@ -7,7 +7,9 @@ import signIn from "../../assets/sign-in.svg";
 import signOut from "../../assets/sign-out.svg";
 import home from "../../assets/home.svg";
 import "./NavBar.css";
-const noNav = ["http://localhost:3000", "http://localhost:3000/", "http://localhost:3000/signIn", "http://localhost:3000/signup"]
+const frontEndURL = process.env.REACT_APP_FRONT_END_URL
+const devFrontEnd = process.env.REACT_APP_DEV_FRONT_END
+const noNav =[frontEndURL, frontEndURL +"/", frontEndURL + "/signIn", frontEndURL + "/signup", devFrontEnd, devFrontEnd +"/", devFrontEnd + "/signIn", devFrontEnd + "/signup",]
 
 const NavBar = () => {
   const nav = useNavigate();
@@ -35,7 +37,10 @@ const NavBar = () => {
 
   return (
     <>
-    {!noNav.includes(window.location.href)? <nav className="Nav">
+    {noNav.includes(window.location.href) ?
+    ""
+    : 
+    <nav className="Nav">
       <TopBarM />
       <img onClick={handleProfile} src={profile} alt="Profile" />
       <img src={settings} alt="settings" />
@@ -46,7 +51,7 @@ const NavBar = () => {
       ) : (
         <img onClick={handleSignIn} src={signIn} alt="Sign In" />
       )}
-    </nav>: ""}
+    </nav>}
     </>
   );
 };
