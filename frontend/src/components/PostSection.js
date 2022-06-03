@@ -4,13 +4,13 @@ import axios from "axios";
 import PostCard from "./PostCard";
 import "./PostSection.css";
 
-const PostSection = ({ project_id, project_image, creator }) => {
+const PostSection = ({ project_id, project_image, creator, member }) => {
   const [posts, setPosts] = useState([]);
   const [reload, setReload] = useState(false);
   const URL = process.env.REACT_APP_API_URL;
   const username = localStorage.getItem("credentials");
   const nav = useNavigate();
-
+  console.log(posts);
   const handleNewPost = () => {
     nav(`/projects/${project_id}/newPost`);
   };
@@ -28,7 +28,9 @@ const PostSection = ({ project_id, project_image, creator }) => {
     setReload(!reload);
   };
 
-  const renderedPosts = posts.map((e, i) => (
+  const filteredPosts = posts.filter((e) => (member ? e : !e.members_only));
+
+  const renderedPosts = filteredPosts.map((e, i) => (
     <PostCard
       project_image={project_image}
       creator={creator}

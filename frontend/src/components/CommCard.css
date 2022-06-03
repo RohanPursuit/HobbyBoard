@@ -1,8 +1,8 @@
 .CommCard {
   box-sizing: border-box;
-  background: aqua;
+  background: #727272;
   min-height: 50px;
-  margin: 5px 0px;
+  margin: 0px 0px;
   display: flex;
   align-items: center;
   padding: 5px;
@@ -32,4 +32,13 @@
 
 .CommCard .commDelete {
   align-self: flex-start;
+}
+
+.lastComm {
+  border-radius: 0px 0px 10px 10px;
+}
+
+.CommCard .commDate {
+  font-size: 0.8em;
+  color: black;
 }
