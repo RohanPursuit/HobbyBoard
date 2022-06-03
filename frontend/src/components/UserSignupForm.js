@@ -97,7 +97,7 @@ function UserSignupForm() {
               placeholder="confirm password"
             />
           </div>
-          <input onClick={inputUserName} type="submit" />
+          <input className="button2" onClick={inputUserName} type="submit" />
         </>
       )}
     </form>
