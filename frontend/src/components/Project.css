@@ -10,7 +10,7 @@
   scroll-behavior: smooth;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .Project .projectContent {
@@ -33,11 +33,11 @@
 
 .Project .projectContent p {
   box-sizing: border-box;
-  height: 68%;
-  width: 300px;
+  height: calc(100% - 10px);
+  width: 100%;
+  height: calc(100% - 20px);
   margin: 0px;
-  overflow-x: scroll;
-  overflow-y: scroll;
+  overflow: scroll;
   text-align: left;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -49,14 +49,26 @@
 .Project h3 {
   box-sizing: border-box;
   font-size: calc(0.9vw + 12.5px);
-  height: 32%;
+  height: auto;
   width: 80%;
   margin: 0px;
   text-align: left;
-  overflow: hidden;
+  overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding-right: 35px;
+}
+
+@media screen and (min-width: 719px) {
+  .Project .projectContent p {
+    height: calc(100% - 30px);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .Project .projectContent p {
+    height: calc(100% - 40px);
+  }
 }
