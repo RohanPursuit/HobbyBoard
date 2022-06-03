@@ -7,4 +7,11 @@
 .PostSection .newPost {
   width: 100%;
   text-align: center;
+  height: 1.65em;
+  font-size: 2em;
+  padding: 0px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
 }
