@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 //import defaultImage
 
-import defaultImage from "../../helpers/helperFunction.js";
+
+import { logoSmall } from "../../assets/svgs";
 const frontEndURL = process.env.REACT_APP_FRONT_END_URL
 const devFrontEnd = process.env.REACT_APP_DEV_FRONT_END
 const noNav =[frontEndURL, frontEndURL +"/", devFrontEnd, devFrontEnd +"/"]
@@ -32,13 +33,7 @@ const TopBarM = () => {
     :
     <div className="TopBarM">
       <BackButton />
-      <img
-        src={""}
-        alt="HobbyBoard Logo"
-        className="topLogo"
-        onError={defaultImage}
-        onClick={handleHome}
-      />
+      <div className="topLogo" onClick={handleHome}>{logoSmall}</div>
     </div>}
     </>
   );
