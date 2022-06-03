@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 //import defaultImage
 
-import defaultImage from "../../helpers/helperFunction.js";
+// import defaultImage from "../../helpers/helperFunction.js";
+import { logoSmall } from "../../assets/svgs";
 
 const TopBarM = () => {
   //set variable for navigate
@@ -23,13 +24,14 @@ const TopBarM = () => {
   return (
     <div className="TopBarM">
       <BackButton />
-      <img
+      {/* <img
         src={""}
         alt="HobbyBoard Logo"
         className="topLogo"
         onError={defaultImage}
         onClick={handleHome}
-      />
+      /> */}
+      <div onClick={handleHome}>{logoSmall}</div>
     </div>
   );
 };
