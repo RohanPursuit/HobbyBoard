@@ -18,7 +18,13 @@ const ProjectDetails = () => {
   const [followers, setFollowers] = useState([]);
   const params = useParams();
   const nav = useNavigate();
+  const username = localStorage.getItem("credentials");
   // console.log(`${API}projects/${params.pid}`);
+  console.log(collaborators);
+  const member =
+    username === project.creator ||
+    collaborators.find((e) => e.username === username);
+  console.log(member);
   useEffect(() => {
     axios
       .get(`${API}projects/${params.pid}`)
@@ -73,12 +79,12 @@ const ProjectDetails = () => {
   const handleFollow = () => {
     axios
       .post(`${API}connections/followers`, {
-        username: document.cookie.split("=")[1],
+        username: localStorage.getItem("credentials"),
         project_id: project.project_id,
       })
       .then(() => {
         setFollow(!follow);
-        window.location.reload();
+        setUpdateConnections(!updateConnections);
       })
       .catch(() => {
         alert("Request failed");
@@ -86,7 +92,6 @@ const ProjectDetails = () => {
   };
 
   const handleCancelRequest = () => {
-    const username = localStorage.getItem("credentials");
     const project_id = project.project_id;
     console.log(username, project_id);
     axios
@@ -101,16 +106,16 @@ const ProjectDetails = () => {
   };
 
   const handleCancelFollow = () => {
-    const username = document.cookie.split("=")[1];
+    const username = localStorage.getItem("credentials");
     const project_id = project.project_id;
     console.log(username, project_id);
     axios
-      .delete(`${API}connections/${username}`, {
+      .delete(`${API}connections/${username}/follower`, {
         data: { username, project_id },
       })
       .then(() => {
         setFollow(!follow);
-        window.location.reload();
+        setUpdateConnections(!updateConnections);
       })
       .catch(() => {
         alert("Error");
@@ -163,8 +168,11 @@ const ProjectDetails = () => {
         className="pBanner"
         onError={defaultImage}
       />
-      <h2>{project.name}</h2>
-      <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
+      <img src={project.profile_image} alt="" />
+      <div className="info">
+        <h2>{project.name}</h2>
+        <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
+      </div>
       <h3>Details:</h3>
       <p>{project.details}</p>
       {/* Archive Project Button */}
@@ -205,6 +213,7 @@ const ProjectDetails = () => {
         project_id={project.project_id}
         project_image={project.project_image}
         creator={project.creator}
+        member={member}
       />
       {showModal && (
         <ConnModal

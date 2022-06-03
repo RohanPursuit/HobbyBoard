@@ -8,10 +8,11 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   text-align: left;
+  padding: 0px;
 }
 
 .ProjectDetails .pBanner {
-  width: 100%;
+  width: 100vw;
   height: 150px;
   object-fit: cover;
 }

@@ -8,6 +8,7 @@ const CommCard = ({
   creator,
   trigReset,
   commInfo: { post_id, comment_id, username, comment, date, profile_image },
+  last,
 }) => {
   const URL = process.env.REACT_APP_API_URL;
   const user = localStorage.getItem("credentials");
@@ -25,7 +26,7 @@ const CommCard = ({
   };
 
   return (
-    <div className="CommCard">
+    <div className={"CommCard" + (last ? " lastComm" : "")}>
       <img
         className="pfp"
         src={profile_image || ""}
@@ -35,7 +36,7 @@ const CommCard = ({
       <div className="commentContent">
         <h4>
           <Link to={`/profile/${username}`}>{username}</Link>{" "}
-          <span className="postDate">({formattedDate})</span>
+          <span className="commDate">({formattedDate})</span>
         </h4>
         <p>{comment}</p>
       </div>

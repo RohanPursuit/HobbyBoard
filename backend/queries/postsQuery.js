@@ -7,7 +7,7 @@ const db = require("../db/dbConfig");
 const getAllPosts = async ({ project_id }) => {
   try {
     const allPosts = await db.any(
-      "SELECT * FROM posts WHERE project_id=$1",
+      "SELECT * FROM posts WHERE project_id=$1 ORDER BY date ASC",
       project_id
     );
     return allPosts;
@@ -33,8 +33,8 @@ const getOnePost = async ({ project_id, post_id }) => {
 const createPost = async (project_id, members_only, title, contents, date) => {
   try {
     const newPost = await db.one(
-      "INSERT INTO posts (project_id, members_only, title, contents, date) VALUES ($1, $2, $3, $4, $5) RETURNING *",
-      [project_id, members_only, title, contents, date]
+      "INSERT INTO posts (project_id, members_only, title, contents, date, likes) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [project_id, members_only, title, contents, date, [""]]
     );
     return newPost;
   } catch (error) {

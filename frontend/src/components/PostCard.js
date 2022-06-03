@@ -9,23 +9,29 @@ const PostCard = ({
   project_image,
   creator,
   reloadPosts,
-  postInfo: { post_id, project_id, members_only, date, title, contents },
+  postInfo: { post_id, project_id, members_only, date, title, contents, likes },
 }) => {
+  // console.log(likes.length);
   const URL = process.env.REACT_APP_API_URL;
   const [comments, setComments] = useState([]);
   const [refreshPost, setReset] = useState(false);
   const username = localStorage.getItem("credentials");
-
+  const [likesDisplay, setLikes] = useState(likes.length);
+  const [currentlyLike, setCurrentLikes] = useState(
+    likes.includes(localStorage.getItem("credentials")) ? true : false
+  );
+  console.log(currentlyLike);
   const trigReset = () => {
     setReset(!refreshPost);
   };
-
+  // console.log(likesDisplay);
   const renderedComments = comments.map((e, i) => (
     <CommCard
       creator={creator}
       trigReset={trigReset}
       commInfo={e}
       key={"comm" + i}
+      last={i === comments.length - 1}
     />
   ));
   useEffect(() => {
@@ -45,9 +51,16 @@ const PostCard = ({
         .catch((error) => console.warn(error));
     }
   };
+  const handleLike = () => {
+    setCurrentLikes(!currentlyLike);
+    axios
+      .post(`${URL}posts/${post_id}/likes/${username}`)
+      .then((response) => setLikes(response.data))
+      .catch((error) => console.warn(error));
+  };
 
   return (
-    <div className="PostCard">
+    <div className={"PostCard" + (comments.length === 0 ? " OnlyPost" : "")}>
       <div className="postContainer">
         <img
           className="projectPfp"
@@ -59,6 +72,14 @@ const PostCard = ({
           <h3>
             {title} <span className="postDate">({formattedDate})</span>
           </h3>
+          <div>
+            likes: {likesDisplay}
+            {currentlyLike ? (
+              <button onClick={handleLike}>unlike</button>
+            ) : (
+              <button onClick={handleLike}>like</button>
+            )}
+          </div>
           <p>{contents}</p>
           {username ? (
             <NewComment
