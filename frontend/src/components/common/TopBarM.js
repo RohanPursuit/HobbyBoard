@@ -20,8 +20,10 @@ const TopBarM = () => {
     nav("/");
   };
 
+  console.log(window.location.href)
   return (
-    <div className="TopBarM">
+    <>
+    {window.location.href !== "http://localhost:3000/" ? <div className="TopBarM">
       <BackButton />
       <img
         src={""}
@@ -30,7 +32,8 @@ const TopBarM = () => {
         onError={defaultImage}
         onClick={handleHome}
       />
-    </div>
+    </div>: ""}
+    </>
   );
 };
 

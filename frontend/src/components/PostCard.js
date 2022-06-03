@@ -9,17 +9,18 @@ const PostCard = ({
   project_image,
   creator,
   reloadPosts,
-  postInfo: { post_id, project_id, members_only, date, title, contents },
+  postInfo: { post_id, project_id, members_only, date, title, contents, likes },
 }) => {
+  // console.log(likes.length);
   const URL = process.env.REACT_APP_API_URL;
   const [comments, setComments] = useState([]);
   const [refreshPost, setReset] = useState(false);
   const username = localStorage.getItem("credentials");
-
+  const [likesDisplay, setLikes] = useState(likes.length);
   const trigReset = () => {
     setReset(!refreshPost);
   };
-
+  // console.log(likesDisplay);
   const renderedComments = comments.map((e, i) => (
     <CommCard
       creator={creator}
@@ -45,6 +46,12 @@ const PostCard = ({
         .catch((error) => console.warn(error));
     }
   };
+  const handleLike = () => {
+    axios
+      .post(`${URL}posts/${post_id}/likes/${username}`)
+      .then((response) => setLikes(response.data))
+      .catch((error) => console.warn(error));
+  };
 
   return (
     <div className="PostCard">
@@ -59,6 +66,9 @@ const PostCard = ({
           <h3>
             {title} <span className="postDate">({formattedDate})</span>
           </h3>
+          <div>
+            likes: {likesDisplay} <button onClick={handleLike}>like</button>
+          </div>
           <p>{contents}</p>
           {username ? (
             <NewComment
