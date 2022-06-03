@@ -57,9 +57,11 @@ function UserSignInForm() {
         />
       </div>
 
-      <input type="submit" />
+      <input type="submit" className="button" />
       <div>
-        <Link to="/signup">Sign Up</Link>
+        <button className="button2">
+          <Link to="/signup">Sign Up</Link>
+        </button>
       </div>
     </form>
   );
