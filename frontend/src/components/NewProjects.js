@@ -37,13 +37,24 @@ const NewProject = () => {
       </div>
       <div className="project-description-input">
         <label htmlFor="details">Description</label>
-        <textarea id="details" type="text" onChange={handleChange} required />
+        <textarea
+          id="details"
+          type="text"
+          onChange={handleChange}
+          placeholder="Description..."
+          required
+        />
       </div>
       <div className="project-image-input">
         <label className="project-image" htmlFor="project_image">
           Image
         </label>
-        <input id="project_image" type="text" onChange={handleChange} />
+        <input
+          id="project_image"
+          type="text"
+          onChange={handleChange}
+          placeholder="Image"
+        />
       </div>
 
       <input type="submit" />
