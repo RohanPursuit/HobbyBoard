@@ -17,6 +17,10 @@ const PostCard = ({
   const [refreshPost, setReset] = useState(false);
   const username = localStorage.getItem("credentials");
   const [likesDisplay, setLikes] = useState(likes.length);
+  const [currentlyLike, setCurrentLikes] = useState(
+    likes.includes(localStorage.getItem("credentials")) ? true : false
+  );
+  console.log(currentlyLike);
   const trigReset = () => {
     setReset(!refreshPost);
   };
@@ -47,6 +51,7 @@ const PostCard = ({
     }
   };
   const handleLike = () => {
+    setCurrentLikes(!currentlyLike);
     axios
       .post(`${URL}posts/${post_id}/likes/${username}`)
       .then((response) => setLikes(response.data))
@@ -67,7 +72,12 @@ const PostCard = ({
             {title} <span className="postDate">({formattedDate})</span>
           </h3>
           <div>
-            likes: {likesDisplay} <button onClick={handleLike}>like</button>
+            likes: {likesDisplay}
+            {currentlyLike ? (
+              <button onClick={handleLike}>unlike</button>
+            ) : (
+              <button onClick={handleLike}>like</button>
+            )}
           </div>
           <p>{contents}</p>
           {username ? (
