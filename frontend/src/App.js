@@ -15,6 +15,7 @@ import EditProfilePage from "./pages/EditProfilePage";
 import EditProjectPage from "./pages/EditProjectPage";
 import NewPostPage from "./pages/NewPostPage";
 import { io } from "socket.io-client";
+import LandingPage from "./pages/LandingPage";
 const URL = process.env.REACT_APP_API_URL;
 export const socket = io(URL, {
   query: {
@@ -43,13 +44,14 @@ function App() {
             exact
             path="/"
             element={
-              <header className="App-header">
-                <Link to="/projects">
-                  <p>All Project</p>
-                </Link>
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>Here is our database call = {res}</p>
-              </header>
+              // <header className="App-header">
+              //   <Link to="/projects">
+              //     <p>All Project</p>
+              //   </Link>
+              //   <img src={logo} className="App-logo" alt="logo" />
+              //   <p>Here is our database call = {res}</p>
+              // </header>
+              <LandingPage />
             }
           />
           <Route path="/signIn" element={<UserSignIn />} />
