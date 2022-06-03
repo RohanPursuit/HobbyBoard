@@ -79,12 +79,12 @@ const ProjectDetails = () => {
   const handleFollow = () => {
     axios
       .post(`${API}connections/followers`, {
-        username: document.cookie.split("=")[1],
+        username: localStorage.getItem("credentials"),
         project_id: project.project_id,
       })
       .then(() => {
         setFollow(!follow);
-        window.location.reload();
+        setUpdateConnections(!updateConnections);
       })
       .catch(() => {
         alert("Request failed");
@@ -106,16 +106,16 @@ const ProjectDetails = () => {
   };
 
   const handleCancelFollow = () => {
-    const username = document.cookie.split("=")[1];
+    const username = localStorage.getItem("credentials");
     const project_id = project.project_id;
     console.log(username, project_id);
     axios
-      .delete(`${API}connections/${username}`, {
+      .delete(`${API}connections/${username}/follower`, {
         data: { username, project_id },
       })
       .then(() => {
         setFollow(!follow);
-        window.location.reload();
+        setUpdateConnections(!updateConnections);
       })
       .catch(() => {
         alert("Error");
@@ -173,8 +173,8 @@ const ProjectDetails = () => {
         <h2>{project.name}</h2>
         <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
       </div>
-        <h3>Details:</h3>
-        <p>{project.details}</p>
+      <h3>Details:</h3>
+      <p>{project.details}</p>
       {/* Archive Project Button */}
       <p>Archived: {`${project.archived}`}</p>
       {localStorage.getItem("credentials") === project.creator ? (

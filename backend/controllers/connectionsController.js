@@ -50,7 +50,7 @@ connections.delete("/:username", async (request, response) => {
   response.status(200).json(removedCollaborator);
 });
 
-connections.delete("/:username", async (request, response) => {
+connections.delete("/:username/follower", async (request, response) => {
   const { username } = request.params;
   const { project_id } = request.body;
   console.log(`DELETE request for ${username} on project ${project_id}`);
