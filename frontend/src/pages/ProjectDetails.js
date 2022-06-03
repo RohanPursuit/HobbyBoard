@@ -18,7 +18,13 @@ const ProjectDetails = () => {
   const [followers, setFollowers] = useState([]);
   const params = useParams();
   const nav = useNavigate();
+  const username = localStorage.getItem("credentials");
   // console.log(`${API}projects/${params.pid}`);
+  console.log(collaborators);
+  const member =
+    username === project.creator ||
+    collaborators.find((e) => e.username === username);
+  console.log(member);
   useEffect(() => {
     axios
       .get(`${API}projects/${params.pid}`)
@@ -86,7 +92,6 @@ const ProjectDetails = () => {
   };
 
   const handleCancelRequest = () => {
-    const username = localStorage.getItem("credentials");
     const project_id = project.project_id;
     console.log(username, project_id);
     axios
@@ -205,6 +210,7 @@ const ProjectDetails = () => {
         project_id={project.project_id}
         project_image={project.project_image}
         creator={project.creator}
+        member={member}
       />
       {showModal && (
         <ConnModal

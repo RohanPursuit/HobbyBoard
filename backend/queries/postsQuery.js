@@ -7,7 +7,7 @@ const db = require("../db/dbConfig");
 const getAllPosts = async ({ project_id }) => {
   try {
     const allPosts = await db.any(
-      "SELECT * FROM posts WHERE project_id=$1",
+      "SELECT * FROM posts WHERE project_id=$1 ORDER BY date ASC",
       project_id
     );
     return allPosts;
