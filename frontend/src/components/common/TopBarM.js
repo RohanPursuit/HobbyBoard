@@ -9,7 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 //import defaultImage
 
-import defaultImage from "../../helpers/helperFunction.js";
+import { logoSmall } from "../../assets/svgs";
+const frontEndURL = process.env.REACT_APP_FRONT_END_URL;
+const devFrontEnd = process.env.REACT_APP_DEV_FRONT_END;
+const noNav = [frontEndURL, frontEndURL + "/", devFrontEnd, devFrontEnd + "/"];
 
 const TopBarM = () => {
   //set variable for navigate
@@ -23,19 +26,15 @@ const TopBarM = () => {
   console.log(window.location.href);
   return (
     <>
-      {window.location.href !== "http://localhost:3001/" ? (
+      {noNav.includes(window.location.href) ? (
+        ""
+      ) : (
         <div className="TopBarM">
           <BackButton />
-          <img
-            src={""}
-            alt="HobbyBoard Logo"
-            className="topLogo"
-            onError={defaultImage}
-            onClick={handleHome}
-          />
+          <div className="topLogo" onClick={handleHome}>
+            {logoSmall}
+          </div>
         </div>
-      ) : (
-        ""
       )}
     </>
   );

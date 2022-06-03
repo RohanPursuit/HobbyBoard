@@ -168,10 +168,13 @@ const ProjectDetails = () => {
         className="pBanner"
         onError={defaultImage}
       />
-      <h2>{project.name}</h2>
-      <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
-      <h3>Details:</h3>
-      <p>{project.details}</p>
+      <img src={project.profile_image} alt="" />
+      <div className="info">
+        <h2>{project.name}</h2>
+        <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
+      </div>
+        <h3>Details:</h3>
+        <p>{project.details}</p>
       {/* Archive Project Button */}
       <p>Archived: {`${project.archived}`}</p>
       {localStorage.getItem("credentials") === project.creator ? (
