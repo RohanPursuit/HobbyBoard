@@ -20,7 +20,9 @@ const NewProject = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(`${API}projects`, project).then(() => navigator("/projects"));
+    axios
+      .post(`${API}projects`, project)
+      .then((res) => navigator(`/projects/${res.data.project_id}`));
   };
 
   return (
