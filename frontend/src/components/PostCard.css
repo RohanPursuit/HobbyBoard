@@ -23,7 +23,7 @@
 
 .PostCard .postContent {
   width: 100%;
-  max-width: 400px;
+  min-width: 0px;
 }
 
 .PostCard .postContent h3 {
@@ -33,6 +33,8 @@
 
 .PostCard .postContent p {
   margin: 0px;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 .PostCard .postDate {
