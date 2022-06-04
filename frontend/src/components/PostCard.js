@@ -74,10 +74,15 @@ const PostCard = ({
           </h3>
           <div>
             likes: {likesDisplay}
+            {"  "}
             {currentlyLike ? (
-              <button onClick={handleLike}>unlike</button>
+              <span className="likeButton" onClick={handleLike}>
+                &#129505;
+              </span>
             ) : (
-              <button onClick={handleLike}>like</button>
+              <span className="likeButton" onClick={handleLike}>
+                &#128420;
+              </span>
             )}
           </div>
           <p>{contents}</p>

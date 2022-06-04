@@ -7,9 +7,11 @@
   align-items: center;
   padding: 5px;
   width: 100%;
+  min-width: 0px;
 }
 
 .CommCard .pfp {
+  align-self: flex-start;
   height: 45px;
   width: 45px;
   border-radius: 100%;
@@ -18,10 +20,16 @@
 }
 
 .CommCard .commentContent {
-  margin-right: auto;
+  box-sizing: border-box;
+  min-width: 0px;
+  width: 100%;
 }
 
 .CommCard .commentContent p {
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
   margin: 0px;
   font-size: 0.9em;
 }

@@ -1,7 +1,6 @@
 .PostCard {
   box-sizing: border-box;
   width: 100%;
-  padding: 10px;
   margin: 10px 0px;
 }
 
@@ -47,4 +46,8 @@
 
 .OnlyPost .postContainer {
   border-radius: 10px;
+}
+
+.PostCard .likeButton:hover {
+  cursor: pointer;
 }

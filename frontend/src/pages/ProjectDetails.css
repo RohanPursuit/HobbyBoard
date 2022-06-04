@@ -4,11 +4,10 @@
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
-  padding: 0px 10px;
   -ms-overflow-style: none;
   scrollbar-width: none;
   text-align: left;
-  padding: 0px;
+  padding: 0px 2.5%;
 }
 
 .ProjectDetails .pBanner {
