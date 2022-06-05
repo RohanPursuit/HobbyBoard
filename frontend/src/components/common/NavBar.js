@@ -46,7 +46,7 @@ const NavBar = () => {
       {/* <img onClick={handleProfile} src={profile} alt="Profile" /> */}
       <div onClick={handleProfile}>{profileCircled}</div>
       {/* <img src={settings} alt="settings" /> */}
-      <div>{settings}</div>
+      <div className="setting">{settings}</div>
       {/* <img onClick={handleProjects} src={home} alt="home" /> */}
       <div onClick={handleProjects}>{home}</div>
       {/* <img onClick={handleCreateProject} src={plus} alt="Add Project" /> */}
