@@ -6,7 +6,7 @@
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background-color: #313131;
+  background-color: #589bc1;
 }
 /* .Nav img {
   display: inline-block;
@@ -28,6 +28,12 @@
 
 .Nav div svg {
   stroke: white;
+}
+
+.Nav .setting svg {
+  fill: white;
+  stroke-width: .1px;
+  transform: scale(1.2)
 }
 
 .Nav img:hover {
