@@ -5,7 +5,7 @@ INSERT INTO testTable(content) VALUES
 
 INSERT INTO users(username, password, email, date, details, created_projects, collaborated_projects, profile_image) VALUES 
 ('BZ', 'password', 'email@email.com', '05/13/2022', 'Can type gud.','{Legal Drive}','{Noob game devs}', null),
-('JD', 'password', 'email@email.com', '05/14/2022', 'Can type gud.','{Noob game devs}', '{}', null),
+('JD', 'password', 'email@email.com', '05/14/2022', 'Hey, i''m new to making games and looking for others to learn and collaborate with.','{Noob game devs}', '{}', 'https://i.imgur.com/bNmjbzk.png?1'),
 ('RS', 'password', 'email@email.com', '05/15/2022', 'Can type gudder.','{T -1Hour,Rohan''s Gamer Dating App}', '{}', null),
 ('DL', 'password', 'email@email.com', '05/16/2022', 'Can type gud.','{Backflippers}', '{}', null);
 
@@ -13,7 +13,7 @@ INSERT INTO users(username, password, email, date, details, created_projects, co
 INSERT INTO projects(name, details, project_image, archived, creator) VALUES
 ('T -1Hour','This is an idea for a video game that begins about an hour before the downfall of society..', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/aptera-0025-1-1607066100.png?crop=1.00xw:1.00xh;0,0&resize=980:*', false, 'RS'),
 ('Rohan''s Gamer Dating App', 'something something games', null, false, 'RS'),
-('Noob game devs', 'Help me make a game.', null, false, 'JD'),
+('Noob game devs', 'Hello, I''m look for others who would like to learn about the process of developing games, to play and understand game design, and to collaborate with others in researching and creating our own games.', 'https://i.imgur.com/s5n9x1q.jpg', false, 'JD'),
 ('Backflippers', 'and we do be hittin backflips 4real', null, false, 'DL'),
 ('Legal Drive', 'An illegal racing game that takes place in New York city, where racers can coordinate street racing events using an underground App. This App will track winners and transfer money to participants.', null, false, 'BZ');
 
