@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #313131;
+  background-color: #243548;
 }
 
 .TopBarM .topLogo {
@@ -24,7 +24,7 @@
   cursor: pointer;
 }
 
-.arrow-back-circle{
+.arrow-back-circle {
   margin-left: 5%;
   position: absolute;
   left: 0px;
@@ -32,11 +32,10 @@
   height: 30px;
   transform: scale(4);
   stroke: white;
-  stroke-width: .6;
+  stroke-width: 0.6;
 }
 @media screen and (min-width: 719px) {
   .TopBarM {
     display: none;
   }
 }
-

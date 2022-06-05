@@ -2,14 +2,16 @@
   box-sizing: border-box;
   width: 100%;
   margin: 10px 0px;
+  padding: 0px 2.5%;
 }
 
 .PostCard .postContainer {
   border-radius: 10px 10px 0px 0px;
-  background: #484848;
+  background: #1a2835;
   display: flex;
   align-items: center;
   padding: 5px;
+  color: white;
 }
 
 .PostCard .projectPfp {
@@ -61,6 +63,15 @@
 
 .PostCard .deleteButton {
   align-self: flex-start;
+  border: 0px solid black;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+  color: white;
+  font-size: larger;
+}
+
+.PostCard .deleteButton:hover {
+  cursor: pointer;
 }
 
 .OnlyPost .postContainer {

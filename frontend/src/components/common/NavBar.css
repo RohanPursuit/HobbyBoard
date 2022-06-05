@@ -6,8 +6,15 @@
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
-  background-color: #313131;
+  background-color: #243548;
 }
+
+.Nav .setting svg {
+  fill: white;
+  stroke-width: 0.1px;
+  transform: scale(1.2);
+}
+
 /* .Nav img {
   display: inline-block;
   padding: 0px 2.5%;
