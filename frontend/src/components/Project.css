@@ -23,11 +23,12 @@
   padding: 0px 20px;
   height: 100%;
   width: 100%;
+  min-width: 0px;
 }
 
 .Project .readWrap {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .Project img {
@@ -51,7 +52,7 @@
   width: 100%;
   /* height: calc(100% - 20px); */
   margin: 0px;
-  margin-bottom: 10%;
+  margin-bottom: 20px;
   height: 70px;
   max-height: 70px;
   overflow: scroll;
@@ -78,7 +79,7 @@
   box-sizing: border-box;
   font-size: calc(0.9vw + 20.5px);
   height: auto;
-  width: 80%;
+  width: 100%;
   margin: 0px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -88,7 +89,6 @@
   text-overflow: ellipsis;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  padding-right: 35px;
 }
 
 @media screen and (min-width: 719px) {
