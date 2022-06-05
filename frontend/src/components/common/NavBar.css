@@ -37,6 +37,12 @@
   stroke: white;
 }
 
+.Nav .setting svg {
+  fill: white;
+  stroke-width: .1px;
+  transform: scale(1.2)
+}
+
 .Nav img:hover {
   cursor: pointer;
 }

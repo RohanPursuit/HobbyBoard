@@ -6,7 +6,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(1, minmax(0px, 1fr));
-  grid-gap: 20px;
+  grid-gap: 80px;
   grid-auto-rows: 125px;
   overflow-y: scroll;
   -ms-overflow-style: none;
