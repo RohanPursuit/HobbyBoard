@@ -8,14 +8,17 @@
   padding: 0px;
   top: 0;
   left: 0;
-  opacity: 40%;
+  opacity: 80%;
+}
+
+.ConnModal .modalContent::-webkit-scrollbar {
+  display: none;
 }
 
 .ConnModal .modalContent {
+  color: white;
   border-radius: 20px;
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -23,20 +26,32 @@
   margin-top: -37.5vh;
   width: 85vw;
   margin-left: -42.5vw;
-  background-color: bisque;
+  background-color: #1a2835;
   z-index: 3;
-  padding: 30px;
+  padding: 15px 10px;
   overflow-y: scroll;
-  grid-template-rows: repeat(10, 1fr);
-}
-
-.ConnModal .norm {
-  grid-column-start: 1;
-  grid-column-end: 3;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .ConnModal .tabBttn {
+  color: white;
+  font-weight: bolder;
   height: 30px;
+  border: none;
+}
+.ConnModal .tabBttn:hover {
+  cursor: pointer;
+}
+
+.ConnModal .colBttn {
+  background-color: #332984;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.ConnModal .reqBttn {
+  background-color: #1528a1;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .ConnModal .xBttn {
@@ -44,9 +59,16 @@
   width: 25px;
   text-align: center;
   margin-left: auto;
-  border-radius: 100%;
-  background-color: red;
+  font-size: larger;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
   color: white;
+  font-weight: bolder;
+}
+
+.ConnModal .xBttn:hover {
+  cursor: pointer;
+  color: #1528a1;
 }
 
 .ConnModal .modTitle {
@@ -54,4 +76,42 @@
   margin: 0px;
   font-size: larger;
   font-weight: bolder;
+}
+
+.ConnModal .last {
+  border-radius: 0px 0px 10px 10px;
+}
+
+.ConnModal .modalRow {
+  width: 100%;
+}
+
+.ConnModal .mRow1 {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ConnModal .mRow2 .tabBttn {
+  width: 50%;
+}
+
+.ConnModal .mRow2 .norm {
+  width: 100%;
+}
+
+.ConnModal .mRow3 {
+  box-sizing: border-box;
+  min-height: 60px;
+  background-color: black;
+  padding-bottom: auto;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.ConnModal .conView {
+  background-color: #332984;
+}
+
+.ConnModal .reqView {
+  background-color: #1528a1;
 }

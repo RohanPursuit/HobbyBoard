@@ -50,14 +50,14 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   const modalTitle = <p className="modTitle">Connections</p>;
   const colBttn = (
     <button
-      className={isOwner ? "tabBttn" : "tabBttn norm"}
+      className={isOwner ? "tabBttn colBttn" : "tabBttn colBttn norm"}
       onClick={handleCollab}
     >
       Collaborators
     </button>
   );
   const reqBttn = (
-    <button className="tabBttn" onClick={handleRequest}>
+    <button className="tabBttn reqBttn" onClick={handleRequest}>
       Request
     </button>
   );
@@ -74,6 +74,7 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
       pageReload={pageReload}
       closeModal={setDisplay}
       key={"c" + i}
+      last={i === collaborators.length - 1}
     />
   ));
   const requestCards = requesters.map((e, i) => (
@@ -82,6 +83,7 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
       owner={owner}
       modalReload={modalReload}
       key={"r" + i}
+      last={i === requesters.length - 1}
     />
   ));
 
@@ -89,11 +91,19 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
     <div className="ConnModal">
       <div className="darkScreen" onClick={setDisplay}></div>
       <div className="modalContent">
-        {modalTitle}
-        {xBttn}
-        {colBttn}
-        {isOwner && reqBttn}
-        {requestView ? requestCards : collabCards}
+        <div className="modalRow mRow1">
+          {modalTitle}
+          {xBttn}
+        </div>
+        <div className="modalRow mRow2">
+          {colBttn}
+          {isOwner && reqBttn}
+        </div>
+        <div
+          className={"modalRow mRow3" + (requestView ? " reqView" : " conView")}
+        >
+          {requestView ? requestCards : collabCards}
+        </div>
       </div>
     </div>
   );

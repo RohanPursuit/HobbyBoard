@@ -15,6 +15,7 @@ const Project = (props) => {
         <div className="projectContent">
           <h3>{props.details.name}</h3>
           <p>{props.details.details}</p>
+        <div className="readWrap"><button>Read More</button></div>
         </div>
       </div>
     </Link>
