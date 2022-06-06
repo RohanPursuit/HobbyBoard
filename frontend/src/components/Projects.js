@@ -14,8 +14,8 @@ const Projects = (props) => {
   }, [API]);
   return (
     <div className="Projects">
-      {projects.map((project) => {
-        return <Project key={project.project_id} details={project} />;
+      {projects.map((project, i) => {
+        return <Project key={project.project_id} details={project} index={i} />;
       })}
     </div>
   );

@@ -160,6 +160,7 @@ const ProjectDetails = () => {
     setUpdateConnections(!updateConnections);
   };
 
+  console.log(project.profile_image)
   return (
     <div className="ProjectDetails">
       <img
