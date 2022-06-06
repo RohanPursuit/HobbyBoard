@@ -1,16 +1,17 @@
 .PostCard {
   box-sizing: border-box;
   width: 100%;
-  padding: 10px;
   margin: 10px 0px;
+  padding: 0px 2.5%;
 }
 
 .PostCard .postContainer {
   border-radius: 10px 10px 0px 0px;
-  background: #484848;
+  background: #1a2835;
   display: flex;
   align-items: center;
   padding: 5px;
+  color: white;
 }
 
 .PostCard .projectPfp {
@@ -23,28 +24,68 @@
 }
 
 .PostCard .postContent {
+  box-sizing: border-box;
   width: 100%;
-  max-width: 400px;
+  min-width: 0px;
 }
 
 .PostCard .postContent h3 {
+  display: inline-block;
+  box-sizing: border-box;
   margin: 0px;
   color: white;
+  max-width: 85%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0px;
 }
 
 .PostCard .postContent p {
   margin: 0px;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
 }
 
 .PostCard .postDate {
+  margin-left: 5px;
+  display: inline-flex;
+  height: auto;
+  align-items: center;
   font-size: 0.65em;
   color: grey;
 }
 
+.PostCard .postTitle {
+  display: flex;
+  align-items: center;
+}
+
 .PostCard .deleteButton {
   align-self: flex-start;
+  border: 0px solid black;
+  background-color: rgba(0, 0, 0, 0);
+  font-weight: bold;
+  color: white;
+  font-size: larger;
+}
+
+.PostCard .deleteButton:hover {
+  cursor: pointer;
 }
 
 .OnlyPost .postContainer {
   border-radius: 10px;
+}
+
+.PostCard .likeButton {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.PostCard .likeButton:hover {
+  cursor: pointer;
 }

@@ -160,6 +160,7 @@ const ProjectDetails = () => {
     setUpdateConnections(!updateConnections);
   };
 
+  console.log(project.profile_image)
   return (
     <div className="ProjectDetails">
       <img
@@ -173,18 +174,41 @@ const ProjectDetails = () => {
         <h2>{project.name}</h2>
         <h3 onClick={handleViewProfile}>Project Owner: {project.creator}</h3>
       </div>
-      <h3>Details:</h3>
-      <p>{project.details}</p>
-      {/* Archive Project Button */}
-      <p>Archived: {`${project.archived}`}</p>
-      {localStorage.getItem("credentials") === project.creator ? (
-        <div>
-          <button onClick={handleArchive}>Archive</button>
-          <button onClick={handleEdit}>Edit</button>
-        </div>
-      ) : (
-        <></>
-      )}
+      <div className="followContainer">
+        {cred === project.creator ? (
+          <button onClick={handleEdit} className="followBttn editBttn">
+            Edit
+          </button>
+        ) : followers.find((connection) => connection.username === cred) ? (
+          <button
+            onClick={handleCancelFollow}
+            className="followBttn unfollowBttn"
+          >
+            Unfollow
+          </button>
+        ) : (
+          <button onClick={handleFollow} className="followBttn">
+            Follow
+          </button>
+        )}
+      </div>
+      <div className="proDetails">
+        <h3>Details</h3>
+        <p>{project.details}</p>
+        {/* Archive Project Button */}
+        {localStorage.getItem("credentials") === project.creator ? (
+          <div className="archHold">
+            <button
+              onClick={handleArchive}
+              className={project.archived ? "archBttn" : "archBttn archive"}
+            >
+              {project.archived ? "Unarchive" : "Archive"}
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
       {/* Edit Project Page Button for authorized users */}
       {/* Delete Project Button */}
       {/* Links/Resources */}
@@ -194,18 +218,17 @@ const ProjectDetails = () => {
       {/* Contributors */}
       {cred === project.creator ||
       collaborators.find((connection) => connection.username === cred) ? (
-        <button onClick={handleShowModal}>Collaborators</button>
+        <button onClick={handleShowModal} className="collabBttn member">
+          Collaborators
+        </button>
       ) : requests.find((connection) => connection.username === cred) ? (
-        <button onClick={handleCancelRequest}>Cancel Request</button>
+        <button onClick={handleCancelRequest} className="collabBttn cancel">
+          Cancel Request
+        </button>
       ) : (
-        <button onClick={handleJoin}>Join</button>
-      )}
-      {cred === project.creator ? (
-        <></>
-      ) : followers.find((connection) => connection.username === cred) ? (
-        <button onClick={handleCancelFollow}>Unfollow</button>
-      ) : (
-        <button onClick={handleFollow}>Follow</button>
+        <button onClick={handleJoin} className="collabBttn join">
+          Join
+        </button>
       )}
       {/* If visitor is the creator or collaborator on the current project
       a collaborators button should be rendered */}

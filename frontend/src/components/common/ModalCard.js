@@ -8,6 +8,7 @@ const ModalCard = ({
   modalReload,
   pageReload,
   closeModal,
+  last,
 }) => {
   const URL = process.env.REACT_APP_API_URL;
   const user = localStorage.getItem("credentials");
@@ -53,7 +54,9 @@ const ModalCard = ({
   };
 
   const cardClass =
-    "ModalCard" + (permissions === "request" ? " reqCard" : " colCard");
+    "ModalCard" +
+    (permissions === "request" ? " reqCard" : " colCard") +
+    (last ? " last" : "");
 
   return (
     <div className={cardClass}>
@@ -69,13 +72,17 @@ const ModalCard = ({
         </p>
         {permissions === "request" && (
           <>
-            <button onClick={handleAcceptRequest}>Accept</button>{" "}
-            <button onClick={handleDenyRequest}>Deny</button>
+            <button onClick={handleAcceptRequest} className="add">
+              Accept
+            </button>{" "}
+            <button onClick={handleDenyRequest} className="remove">
+              Deny
+            </button>
           </>
         )}
       </div>
       {permissions !== "request" && (username === user || user === owner) && (
-        <button onClick={handleRemoveCollaborator}>
+        <button onClick={handleRemoveCollaborator} className="remove">
           {username === user ? "Leave" : "Kick"}
         </button>
       )}

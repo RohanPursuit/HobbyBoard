@@ -32,7 +32,7 @@ const NewComment = ({ post_id, trigReset }) => {
       ></input>
       {comment ? (
         <button type="submit" id="commentSubmit">
-          S
+          &#9654;
         </button>
       ) : null}
     </form>

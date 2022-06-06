@@ -44,11 +44,19 @@
 }
 
 .NewCommentFocus {
-  border: asolid blue 2px;
+  border: solid blue 2px;
 }
 
 .NewComment #commentSubmit {
+  text-align: center;
+  color: white;
   border-radius: 100%;
+  border: none;
+  background-color: rgba(128, 0, 0, 0);
   height: 25px;
   width: 25px;
+}
+
+.NewComment #commentSubmit:hover {
+  cursor: pointer;
 }
