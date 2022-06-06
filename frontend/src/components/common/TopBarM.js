@@ -23,7 +23,6 @@ const TopBarM = () => {
     nav("/");
   };
 
-  console.log(window.location.href);
   return (
     <>
       {noNav.includes(window.location.href) ? (

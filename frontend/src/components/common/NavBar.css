@@ -33,6 +33,7 @@
   transform: scale(1.5);
 }
 
+
 .Nav div svg {
   stroke: white;
 }
@@ -41,6 +42,10 @@
   fill: white;
   stroke-width: .1px;
   transform: scale(1.2)
+}
+
+.Nav .currentLocation svg {
+  stroke: #379EDE;
 }
 
 .Nav img:hover {
