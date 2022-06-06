@@ -84,7 +84,7 @@
 
 .ProjectDetails .proDetails {
   text-align: center;
-  padding: 0px 12.5%;
+  padding: 0px 5.5%;
   color: white;
   margin-bottom: 30px;
 }
@@ -112,6 +112,14 @@
 
 .ProjectDetails .archive {
   background-color: #fa1e4e;
+}
+
+.ProjectDetails .proDetails {
+  margin-top: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  background-color: #1a2835;
 }
 
 @media screen and (min-width: 719px) {

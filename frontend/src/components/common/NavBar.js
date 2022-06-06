@@ -27,6 +27,8 @@ const noNav = [
   devFrontEnd + "/signIn",
   devFrontEnd + "/signup",
 ];
+const homePaths = [devFrontEnd + "/projects", devFrontEnd + "/projects/", frontEndURL + "/projects", frontEndURL + "/projects/"]
+const createPaths = [devFrontEnd + "/projects/new", devFrontEnd + "/projects/new/", frontEndURL + "/projects/new", frontEndURL + "/projects/new/"]
 
 const NavBar = () => {
   const nav = useNavigate();
@@ -52,9 +54,11 @@ const NavBar = () => {
     nav("/projects");
   };
 
+  const currentLocation = window.location.href
+  console.log(currentLocation, homePaths)
   return (
     <>
-      {noNav.includes(window.location.href) ? (
+      {noNav.includes(currentLocation) ? (
         ""
       ) : (
         <nav className="Nav">
@@ -64,9 +68,9 @@ const NavBar = () => {
           {/* <img src={settings} alt="settings" /> */}
           <div className="setting">{settings}</div>
           {/* <img onClick={handleProjects} src={home} alt="home" /> */}
-          <div onClick={handleProjects}>{home}</div>
+          <div className={homePaths.includes(currentLocation)? "currentLocation":""}  onClick={handleProjects}>{home}</div>
           {/* <img onClick={handleCreateProject} src={plus} alt="Add Project" /> */}
-          <div onClick={handleCreateProject}>{circlePlus}</div>
+          <div className={createPaths.includes(currentLocation)? "currentLocation":""}  onClick={handleCreateProject}>{circlePlus}</div>
           {localStorage.getItem("credentials") ? (
             // <img onClick={handleSignOut} src={signOut} alt="Sign Out" />
             <div onClick={handleSignOut}>{signOut}</div>
