@@ -4,7 +4,8 @@ INSERT INTO testTable(content) VALUES
 ('This is our database''s test data');
 
 INSERT INTO users(username, password, email, date, details, created_projects, collaborated_projects, profile_image) VALUES 
-('BZ', 'password', 'email@email.com', '05/13/2022', 'Can type gud.','{Legal Drive}','{Noob game devs}', null),
+
+('BZ', 'password', 'email@email.com', '05/13/2022', 'Can type gud.','{Legal Drive}','{Noob game devs}', 'https://drive.google.com/uc?id=1xNU72FBvkrAmhZTtKbqPMTm-yPuU3CUx&export=download'),
 ('JD', 'password', 'email@email.com', '05/14/2022', 'Hey, i''m new to making games and looking for others to learn and collaborate with.','{Noob game devs}', '{}', 'https://i.imgur.com/bNmjbzk.png?1'),
 ('RS', 'password', 'email@email.com', '05/15/2022', 'Can type gudder.','{T -1Hour,Rohan''s Gamer Dating App}', '{}', 'https://upload.wikimedia.org/wikipedia/commons/e/ed/Jamie_Foxx_Django_avp.jpg'),
 ('DylanL', 'password', 'email@email.com', '05/16/2022', 'Full Stack Web Developer & Computer Technician','{Backflippers}', '{}', 'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg0NTEzNzgyNTMyNDE2OTk5/black-cat-gettyimages-901574784.jpg');
@@ -15,7 +16,7 @@ INSERT INTO projects(name, details, project_image, archived, creator) VALUES
 ('Noob game devs', 'Hello, I''m look for others who would like to learn about the process of developing games, to play and understand game design, and to collaborate with others in researching and creating our own games.', 'https://i.imgur.com/s5n9x1q.jpg', false, 'JD'),
 ('CompatABLE', 'An idea for creating a website that can be used to find compatability between two different pieces of technology, be it hardware or software', 'https://www.invensis.net/blog/wp-content/uploads/2015/06/Compatibility-Testing-Invensis.jpg', false, 'DylanL'),
 ('Rohan''s Gamer Dating App', 'something something games', null, false, 'RS'),
-('Legal Drive', 'An illegal racing game that takes place in New York city, where racers can coordinate street racing events using an underground App. This App will track winners and transfer money to participants.', null, false, 'BZ');
+('Legal Drive', 'An illegal racing game that takes place in New York city, where racers can coordinate street racing events using an underground App. This App will track winners and transfer money to participants.', 'https://www.harlemworldmagazine.com/wp-content/uploads/2020/09/The-Fate-Of-The-Furious-64-f3.jpg', false, 'BZ');
 
 INSERT INTO connections (username, project_id, permissions) VALUES
 ('BZ', 5, 'owner'),
