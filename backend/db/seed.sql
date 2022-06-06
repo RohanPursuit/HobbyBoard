@@ -7,7 +7,7 @@ INSERT INTO users(username, password, email, date, details, created_projects, co
 ('BZ', 'password', 'email@email.com', '05/13/2022', 'Can type gud.','{Legal Drive}','{Noob game devs}', null),
 ('JD', 'password', 'email@email.com', '05/14/2022', 'Can type gud.','{Noob game devs}', '{}', null),
 ('RS', 'password', 'email@email.com', '05/15/2022', 'Can type gudder.','{T -1Hour,Rohan''s Gamer Dating App}', '{}', null),
-('DylanL', 'password', 'email@email.com', '05/16/2022', 'Can type gud.','{Backflippers}', '{}', 'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg0NTEzNzgyNTMyNDE2OTk5/black-cat-gettyimages-901574784.jpg');
+('DylanL', 'password', 'email@email.com', '05/16/2022', 'Full Stack Web Developer & Computer Technician','{Backflippers}', '{}', 'https://www.history.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTg0NTEzNzgyNTMyNDE2OTk5/black-cat-gettyimages-901574784.jpg');
 
 
 INSERT INTO projects(name, details, project_image, archived, creator) VALUES
