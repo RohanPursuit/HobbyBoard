@@ -37,8 +37,8 @@ INSERT INTO posts (project_id, members_only, date, title, contents, likes) VALUE
 (2, true, '2020-9-05 10:23:54', 'Post 2', 'This is our second test post', ARRAY ['']),
 (2, false, '2020-9-06 10:23:54', 'Post 3', 'This is our third test post', ARRAY ['']),
 (2, false, '2020-9-07 10:23:54', 'Post 4', 'This is our fourth test post', ARRAY ['']),
-(3, true, '2022-3-04 10:23:54', 'Post 5', 'Discord: -here-, Facebook: -here-', ARRAY ['']),
-(3, false, '2022-5-07 10:23:54', 'Post 5', 'We''re in Alpha! Looking for members to help with video editing! ', ARRAY ['', 'JD', 'BZ']),
+(3, true, '2022-3-04 10:23:54', 'Group Links', 'Discord: -here-, Facebook: -here-', ARRAY ['']),
+(3, false, '2022-5-07 10:23:54', 'LF Video Editor', 'We''re in Alpha! Looking for members to help with video editing! ', ARRAY ['', 'JD', 'BZ']),
 (4, false, '2020-9-08 10:23:54', 'Post 5', 'This is our fifth test post', ARRAY ['']);
 
 INSERT INTO comments (post_id, username, comment, date) VALUES 
@@ -50,5 +50,5 @@ INSERT INTO comments (post_id, username, comment, date) VALUES
 (3, 'BZ', 'Test comment 6', '2020-9-05 10:23:54'),
 (3, 'RS', 'Test comment 7', '2020-9-05 10:23:54'),
 (4, 'JD', 'Test comment 8', '2020-9-05 10:23:54'),
-(7, 'JD', 'Sounds good!', '2022-6-03 10:23:54'),
-(7, 'BZ', 'Works for me!', '2022-6-04 10:23:54');
+(6, 'JD', 'Sounds good!', '2022-6-03 10:23:54'),
+(6, 'BZ', 'Works for me!', '2022-6-04 10:23:54');
