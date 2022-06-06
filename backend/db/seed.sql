@@ -19,10 +19,10 @@ INSERT INTO projects(name, details, project_image, archived, creator) VALUES
 
 INSERT INTO connections (username, project_id, permissions) VALUES
 ('BZ', 5, 'owner'),
-('JD', 3, 'owner'),
+('JD', 2, 'owner'),
 ('RS', 1, 'owner'),
-('DylanL', 4, 'owner'),
-('RS', 2, 'owner'),
+('RS', 4, 'owner'),
+('DylanL', 3, 'owner'),
 ('BZ', 3, 'collaborator'),
 ('BZ', 4, 'request'),
 ('BZ', 4, 'follower'),
