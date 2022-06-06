@@ -11,7 +11,7 @@ INSERT INTO users(username, password, email, date, details, created_projects, co
 
 
 INSERT INTO projects(name, details, project_image, archived, creator) VALUES
-('T -1Hour','This is an idea for a video game that begins about an hour before the downfall of society..', 'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/aptera-0025-1-1607066100.png?crop=1.00xw:1.00xh;0,0&resize=980:*', false, 'RS'),
+('Reset','With the project Reset I would like to explore the idea of an apocalyptic video game that begins about a day or two before the apocalypse. Reset is an open world game with a single player/co-op mode. However for this project I will be focusing on making a playable demo of the single player/co-op experience. My main motivation for creating a game like Reset is exploring player decision making during the initial events at the beginning of the apocalypse.', 'https://static.onecms.io/wp-content/uploads/sites/28/2021/02/19/new-york-city-evening-NYCTG0221.jpg', false, 'RS'),
 ('Rohan''s Gamer Dating App', 'something something games', null, false, 'RS'),
 ('Noob game devs', 'Help me make a game.', null, false, 'JD'),
 ('Backflippers', 'and we do be hittin backflips 4real', null, false, 'DL'),
