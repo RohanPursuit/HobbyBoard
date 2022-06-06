@@ -12,9 +12,9 @@ INSERT INTO users(username, password, email, date, details, created_projects, co
 
 INSERT INTO projects(name, details, project_image, archived, creator) VALUES
 ('Reset','With the project Reset I would like to explore the idea of an apocalyptic video game that begins about a day or two before the apocalypse. Reset is an open world game with a single player/co-op mode. However for this project I will be focusing on making a playable demo of the single player/co-op experience. My main motivation for creating a game like Reset is exploring player decision making during the initial events at the beginning of the apocalypse.', 'https://static.onecms.io/wp-content/uploads/sites/28/2021/02/19/new-york-city-evening-NYCTG0221.jpg', false, 'RS'),
-('Rohan''s Gamer Dating App', 'something something games', null, false, 'RS'),
 ('Noob game devs', 'Hello, I''m look for others who would like to learn about the process of developing games, to play and understand game design, and to collaborate with others in researching and creating our own games.', 'https://i.imgur.com/s5n9x1q.jpg', false, 'JD'),
 ('CompatABLE', 'An idea for creating a website that can be used to find compatability between two different pieces of technology, be it hardware or software', 'https://www.invensis.net/blog/wp-content/uploads/2015/06/Compatibility-Testing-Invensis.jpg', false, 'DylanL'),
+('Rohan''s Gamer Dating App', 'something something games', null, false, 'RS'),
 ('Legal Drive', 'An illegal racing game that takes place in New York city, where racers can coordinate street racing events using an underground App. This App will track winners and transfer money to participants.', null, false, 'BZ');
 
 INSERT INTO connections (username, project_id, permissions) VALUES
