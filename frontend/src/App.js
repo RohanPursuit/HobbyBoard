@@ -1,8 +1,7 @@
-import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import New from "./pages/New";
 import AllProjects from "./pages/AllProjects";
 import ProjectDetails from "./pages/ProjectDetails";
@@ -33,7 +32,7 @@ function App() {
     };
 
     testQuery();
-  }, [URL]);
+  }, [res]);
 
   return (
     <div className="App">

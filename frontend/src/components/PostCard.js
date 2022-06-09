@@ -66,7 +66,7 @@ const PostCard = ({
           className="projectPfp"
           src={project_image || ""}
           onError={defaultImage}
-          alt="This project's image"
+          alt="Project's banner"
         />
         <div className="postContent">
           <div className="postTitle">

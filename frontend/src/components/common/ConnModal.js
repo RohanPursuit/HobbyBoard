@@ -34,7 +34,7 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
     return () => {
       socket.off();
     };
-  }, [URL, project_id, reload]);
+  }, [URL, project_id, reload, listenForRequests]);
 
   const modalReload = () => {
     setReload(!reload);
