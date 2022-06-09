@@ -35,6 +35,7 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   function listenForRequests() {
     socket.off().on("request" + project_id, modalReload);
     console.log("ran");
+    
   }
 
   const modalReload = () => {
