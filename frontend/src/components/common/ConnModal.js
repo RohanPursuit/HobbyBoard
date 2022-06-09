@@ -1,5 +1,5 @@
 import "./ConnModal.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { hoistCollabCard } from "../../helpers/helperFunction";
 import ModalCard from "./ModalCard.js";
 import axios from "axios";
@@ -19,10 +19,11 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   );
   const requesters = conns.filter((e) => e.permissions === "request");
   const URL = process.env.REACT_APP_API_URL;
-  const listenForRequests = () => {
+  const listenForRequests = useCallback(() => {
     socket.off().on("request" + project_id, modalReload);
     console.log("ran");
-  };
+  }
+  )
 
   useEffect(() => {
     axios
@@ -34,7 +35,7 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
     return () => {
       socket.off();
     };
-  }, [URL, project_id, reload, listenForRequests]);
+  }, [URL, project_id, reload]);
 
   const modalReload = () => {
     setReload(!reload);
