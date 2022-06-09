@@ -19,10 +19,6 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   );
   const requesters = conns.filter((e) => e.permissions === "request");
   const URL = process.env.REACT_APP_API_URL;
-  const listenForRequests = () => {
-    socket.off().on("request" + project_id, modalReload);
-    console.log("ran");
-  };
 
   useEffect(() => {
     axios
@@ -35,6 +31,12 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
       socket.off();
     };
   }, [URL, project_id, reload]);
+
+  function listenForRequests() {
+    socket.off().on("request" + project_id, modalReload);
+    console.log("ran");
+    
+  }
 
   const modalReload = () => {
     setReload(!reload);
