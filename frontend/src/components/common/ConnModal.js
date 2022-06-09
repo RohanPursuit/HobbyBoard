@@ -22,8 +22,7 @@ const ConnModal = ({ project_id, setDisplay, owner, pageReload }) => {
   const listenForRequests = useCallback(() => {
     socket.off().on("request" + project_id, modalReload);
     console.log("ran");
-  }
-  )
+  }, [URL])
 
   useEffect(() => {
     axios
