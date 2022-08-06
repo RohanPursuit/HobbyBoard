@@ -23,7 +23,6 @@ export const socket = io(URL, {
 });
 
 function App() {
-  
   const [res, setRes] = useState("Loading...");
 
   useEffect(() => {
